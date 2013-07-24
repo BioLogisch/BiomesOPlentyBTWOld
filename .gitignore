@@ -6,9 +6,10 @@
 
 !*/net/minecraft/src/biomesoplenty/*
 !*/net/minecraft/src/biomesoplenty/*/*
+!*/net/minecraft/src/biomesoplenty/*/*/*
 
 !BiomeGenBase.java
 !BlockDirt.java
 !MapGenVillage.java
-!WorldChunkManager.java
 !WorldProvider.java
+!WorldType.java
