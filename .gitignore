@@ -10,5 +10,5 @@
 !BiomeGenBase.java
 !BlockDirt.java
 !MapGenVillage.java
-!WorldChunkManager.java
-!WorldProvider.java!WorldType.java
+!WorldProvider.java
+!WorldType.java
