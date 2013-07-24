@@ -40,7 +40,7 @@ public class BiomeGenOriginValley extends BiomeGenBase
 	@Override
 	public int getBiomeGrassColor()
 	{
-		return 10682207;
+		return 0xABFF67;
 	}
 
 	/**
@@ -49,7 +49,7 @@ public class BiomeGenOriginValley extends BiomeGenBase
 	@Override
 	public int getBiomeFoliageColor()
 	{
-		return 10682207;
+		return 0x4FFF2B;
 	}
 
 	/**
@@ -58,23 +58,6 @@ public class BiomeGenOriginValley extends BiomeGenBase
 	@Override
 	public int getSkyColorByTemp(float par1)
 	{
-		//if (BOPConfiguration.skyColors)
-			return 8703228;
-		/*else
-		{
-			par1 /= 3.0F;
-
-			if (par1 < -1.0F)
-			{
-				par1 = -1.0F;
-			}
-
-			if (par1 > 1.0F)
-			{
-				par1 = 1.0F;
-			}
-
-			return Color.getHSBColor(0.62222224F - par1 * 0.05F, 0.5F + par1 * 0.1F, 1.0F).getRGB();
-		}*/
+		return 0x8FBEFF;
 	}
 }

@@ -104,9 +104,103 @@ public class ChunkProviderGenerateBOP extends ChunkProviderGenerate implements I
         return true;
     }
 
-    /**
-     * Populates chunk with ores etc etc
-     */
+    public void replaceBlocksForBiome(int par1, int par2, byte[] par3ArrayOfByte, BiomeGenBase[] par4ArrayOfBiomeGenBase)
+    {
+        byte var5 = 63;
+        double var6 = 0.03125D;
+        this.stoneNoise = this.noiseGen4.generateNoiseOctaves(this.stoneNoise, par1 * 16, par2 * 16, 0, 16, 16, 1, var6 * 2.0D, var6 * 2.0D, var6 * 2.0D);
+
+        for (int var8 = 0; var8 < 16; ++var8)
+        {
+            for (int var9 = 0; var9 < 16; ++var9)
+            {
+                BiomeGenBase var10 = par4ArrayOfBiomeGenBase[var9 + var8 * 16];
+                float var11 = var10.getFloatTemperature();
+                int var12 = (int)(this.stoneNoise[var8 + var9 * 16] / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
+                int var13 = -1;
+                byte var14 = var10.topBlock;
+                byte var15 = var10.fillerBlock;
+
+                for (int var16 = 127; var16 >= 0; --var16)
+                {
+                    int var17 = (var9 * 16 + var8) * 128 + var16;
+
+                    if (var16 <= 0 + this.rand.nextInt(5))
+                    {
+                        par3ArrayOfByte[var17] = (byte)Block.bedrock.blockID;
+                    }
+                    else
+                    {
+                        byte var18 = par3ArrayOfByte[var17];
+
+                        if (var18 == 0)
+                        {
+                            var13 = -1;
+                        }
+                        else if (var18 == Block.stone.blockID)
+                        {
+                            if (var13 == -1)
+                            {
+                                if (var12 <= 0)
+                                {
+                                    var14 = 0;
+                                    var15 = (byte)Block.stone.blockID;
+                                }
+                                else if (var16 >= var5 - 4 && var16 <= var5 + 1)
+                                {
+									if(var10.biomeID == BOPBiomes.originValley.biomeID)
+									{
+										var14 = (byte)Block.sand.blockID;
+										var15 = (byte)Block.sand.blockID;
+									}
+									else
+									{
+										var14 = var10.topBlock;
+										var15 = var10.fillerBlock;
+									}
+                                }
+
+                                if (var16 < var5 && var14 == 0)
+                                {
+                                    if (var11 < 0.15F)
+                                    {
+                                        var14 = (byte)Block.ice.blockID;
+                                    }
+                                    else
+                                    {
+                                        var14 = (byte)Block.waterStill.blockID;
+                                    }
+                                }
+
+                                var13 = var12;
+
+                                if (var16 >= var5 - 1)
+                                {
+                                    par3ArrayOfByte[var17] = var14;
+                                }
+                                else
+                                {
+                                    par3ArrayOfByte[var17] = var15;
+                                }
+                            }
+                            else if (var13 > 0)
+                            {
+                                --var13;
+                                par3ArrayOfByte[var17] = var15;
+
+                                if (var13 == 0 && var15 == Block.sand.blockID)
+                                {
+                                    var13 = this.rand.nextInt(4);
+                                    var15 = (byte)Block.sandStone.blockID;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     public void populate(IChunkProvider par1IChunkProvider, int par2, int par3)
     {
         BlockSand.fallInstantly = true;
