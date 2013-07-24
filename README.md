@@ -10,6 +10,12 @@
 
 ## Changelog 
 
+Version 0.0.8 (MC 1.5.2) (BTW 4.891) '25/7/2013'
+- Switched to using a BOP worldtype
+- (Hopefully) fixed all of the generation bugs
+- Added alpha beaches to the Origin Valley biome
+- Changed the Origin Valley biome colours
+
 Version 0.0.7 (MC 1.5.2) (BTW 4.89) '19/7/2013'
 - Fixed a bug preventing natural structures from generating
 
