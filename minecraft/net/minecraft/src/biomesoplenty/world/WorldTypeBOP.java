@@ -12,6 +12,6 @@ public class WorldTypeBOP extends WorldType
 	@Override
     public String getTranslateName()
     {
-        return "Biomes 'O Plenty";
+        return "Biomes O' Plenty";
     }
 }
