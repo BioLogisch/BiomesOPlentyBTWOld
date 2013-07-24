@@ -6,6 +6,7 @@
 
 !*/net/minecraft/src/biomesoplenty/*
 !*/net/minecraft/src/biomesoplenty/*/*
+!*/net/minecraft/src/biomesoplenty/*/*/*
 
 !BiomeGenBase.java
 !BlockDirt.java
