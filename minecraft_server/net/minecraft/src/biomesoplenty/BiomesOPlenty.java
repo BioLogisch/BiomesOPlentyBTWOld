@@ -6,7 +6,7 @@ import net.minecraft.src.biomesoplenty.configuration.BOPBiomes;
 
 public class BiomesOPlenty extends FCAddOn
 {
-    public static String bopVersionString = "0.0.7";
+    public static String bopVersionString = "0.0.8";
     public static BiomesOPlenty m_instance = new BiomesOPlenty();
     
     public static void vanillaConstruct()
