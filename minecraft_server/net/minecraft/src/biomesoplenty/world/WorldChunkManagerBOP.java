@@ -1,12 +1,21 @@
-package net.minecraft.src;
+package net.minecraft.src.biomesoplenty.world;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import net.minecraft.src.BiomeCache;
+import net.minecraft.src.BiomeGenBase;
+import net.minecraft.src.ChunkPosition;
+import net.minecraft.src.GenLayer;
+import net.minecraft.src.IntCache;
+import net.minecraft.src.World;
+import net.minecraft.src.WorldChunkManager;
+import net.minecraft.src.WorldType;
 import net.minecraft.src.biomesoplenty.configuration.BOPBiomes;
+import net.minecraft.src.biomesoplenty.world.layer.BiomeLayer;
 
-public class WorldChunkManager
+public class WorldChunkManagerBOP extends WorldChunkManager
 {
     private GenLayer genBiomes;
 
@@ -19,33 +28,26 @@ public class WorldChunkManager
     /** A list of biomes that the player can spawn in. */
     private List biomesToSpawnIn;
 
-    protected WorldChunkManager()
+    protected WorldChunkManagerBOP()
     {
         this.biomeCache = new BiomeCache(this);
         this.biomesToSpawnIn = new ArrayList();
-        this.biomesToSpawnIn.add(BiomeGenBase.forest);
-        this.biomesToSpawnIn.add(BiomeGenBase.plains);
-        this.biomesToSpawnIn.add(BiomeGenBase.taiga);
-        this.biomesToSpawnIn.add(BiomeGenBase.taigaHills);
-        this.biomesToSpawnIn.add(BiomeGenBase.forestHills);
-        this.biomesToSpawnIn.add(BiomeGenBase.jungle);
-        this.biomesToSpawnIn.add(BiomeGenBase.jungleHills);
         
-        for (BiomeGenBase biome : BOPBiomes.bopBiomesToSpawnIn) //BIOMES O PLENTY
+        for(int i = 0; i < BOPBiomes.bopBiomes.size(); i++)
         {
-            this.biomesToSpawnIn.add(biome);;
+        	biomesToSpawnIn.add(BOPBiomes.bopBiomes.get(i));
         }
     }
 
-    public WorldChunkManager(long par1, WorldType par3WorldType)
+    public WorldChunkManagerBOP(long par1, WorldType par3WorldType)
     {
         this();
-        GenLayer[] var4 = GenLayer.initializeAllBiomeGenerators(par1, par3WorldType);
+        GenLayer[] var4 = BiomeLayer.initializeAllBiomeGenerators(par1, par3WorldType);
         this.genBiomes = var4[0];
         this.biomeIndexLayer = var4[1];
     }
 
-    public WorldChunkManager(World par1World)
+    public WorldChunkManagerBOP(World par1World)
     {
         this(par1World.getSeed(), par1World.getWorldInfo().getTerrainType());
     }

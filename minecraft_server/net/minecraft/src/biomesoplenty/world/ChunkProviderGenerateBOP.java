@@ -1,4 +1,4 @@
-package net.minecraft.src.biomesoplenty.overrides;
+package net.minecraft.src.biomesoplenty.world;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

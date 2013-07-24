@@ -1,5 +1,6 @@
 package net.minecraft.src.biomesoplenty.configuration;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -55,12 +56,12 @@ import net.minecraft.src.biomesoplenty.biomes.BiomeGenTundra;
 import net.minecraft.src.biomesoplenty.biomes.BiomeGenVolcano;
 import net.minecraft.src.biomesoplenty.biomes.BiomeGenWetland;
 import net.minecraft.src.biomesoplenty.biomes.BiomeGenWoodland;
+import net.minecraft.src.biomesoplenty.world.WorldTypeBOP;
 
 public class BOPBiomes 
 {
-	public static final BiomeGenBase[] base11Biomes = new BiomeGenBase[] {BiomeGenBase.desert, BiomeGenBase.forest, BiomeGenBase.extremeHills, BiomeGenBase.swampland, BiomeGenBase.plains, BiomeGenBase.taiga};
-    public static final BiomeGenBase[] base12Biomes = new BiomeGenBase[] {BiomeGenBase.desert, BiomeGenBase.forest, BiomeGenBase.extremeHills, BiomeGenBase.swampland, BiomeGenBase.plains, BiomeGenBase.taiga, BiomeGenBase.jungle};
-    
+	public static WorldType worldtypebop;
+	
     public static final BiomeGenBase[] villageSpawnBiomes = new BiomeGenBase[] {BiomeGenBase.plains, BiomeGenBase.desert};
     
     public static final BiomeGenBase[] strongholdSpawnBiomes = new BiomeGenBase[] {BiomeGenBase.desert, BiomeGenBase.forest, BiomeGenBase.extremeHills, BiomeGenBase.swampland, BiomeGenBase.taiga, BiomeGenBase.icePlains, BiomeGenBase.iceMountains, BiomeGenBase.desertHills, BiomeGenBase.forestHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.jungle, BiomeGenBase.jungleHills};
@@ -117,44 +118,76 @@ public class BOPBiomes
 	public static final BiomeGenBase wetland = new BiomeGenWetland(246).setColor(522674).setBiomeName("Wetland").func_76733_a(9154376).setMinMaxHeight(-0.2F, 0.4F).setTemperatureRainfall(0.8F, 0.9F);
 	public static final BiomeGenBase woodland = new BiomeGenWoodland(247).setColor(353825).setBiomeName("Woodland").func_76733_a(5159473).setTemperatureRainfall(1.7F, 0.2F).setMinMaxHeight(0.3F, 0.4F);
     
-    public static final BiomeGenBase[] bopBiomes = new BiomeGenBase[] {alps, arctic, birchForest, bog, borealForest, brushland, chaparral, coniferousForest, coniferousForestSnow, deciduousForest, dunes, fen, field, frostForest, glacier, grassland, grove, heathland, highland,/*icyHills,*/ jadeCliffs, lushSwamp, marsh, meadow, moor, mountain, mysticGrove, /*oasis,*/ ominousWoods, originValley, polar, prairie, rainforest, redwoodForest, sacredSprings, savanna, scrubland, shield, shrubland, sludgepit, spruceWoods, steppe, temperateRainforest, thicket, timber, tropicalRainforest, tropics, tundra, volcano, wetland, woodland };
+    public static final ArrayList<BiomeGenBase> bopBiomes = new ArrayList<BiomeGenBase>();
     
     public static final BiomeGenBase[] bopVillageSpawnBiomes = new BiomeGenBase[] {alps, arctic, birchForest, bog, borealForest, brushland, chaparral, coniferousForest, coniferousForestSnow, deciduousForest, dunes, fen, field, frostForest, glacier, grassland, grove, heathland, highland, /*icyHills,*/ jadeCliffs, lushSwamp, marsh, meadow, moor, mountain, mysticGrove, /*oasis,*/ ominousWoods, originValley, polar, prairie, rainforest, redwoodForest, sacredSprings, savanna, scrubland, shield, shrubland, sludgepit, spruceWoods, steppe, temperateRainforest, thicket, timber, tropicalRainforest, tropics, tundra, wetland, woodland };
     
     public static final BiomeGenBase[] bopStrongholdSpawnBiomes = new BiomeGenBase[] {alps, arctic, birchForest, bog, borealForest, brushland, chaparral, coniferousForest, coniferousForestSnow, deciduousForest, dunes, fen, field, frostForest, glacier, grassland, grove, heathland, highland, /*icyHills,*/ jadeCliffs, lushSwamp, marsh, meadow, moor, mountain, mysticGrove, /*oasis,*/ ominousWoods, originValley, polar, prairie, rainforest, redwoodForest, sacredSprings, savanna, scrubland, shield, shrubland, sludgepit, spruceWoods, steppe, temperateRainforest, thicket, timber, tropicalRainforest, tropics, tundra, volcano, wetland, woodland };
-    
-    public static final BiomeGenBase[] bopBiomesToSpawnIn = new BiomeGenBase[] {alps, birchForest, borealForest, brushland, chaparral, coniferousForest, coniferousForestSnow, deciduousForest, fen, field, frostForest, grove, heathland, /*icyHills,*/ jadeCliffs, meadow, mountain, /*oasis,*/ prairie, rainforest, redwoodForest, sacredSprings, savanna, scrubland, shield, spruceWoods, temperateRainforest, thicket, timber, tropicalRainforest, woodland };
-    
-    public static BiomeGenBase[] biomesForWorldType;
-	
+
     public BOPBiomes(WorldType worldtype)
     {
-       switch (worldtype.getWorldTypeID())
-        {
-            case 8:
-                biomesForWorldType = base11Biomes;
-                break;
-            default:
-                biomesForWorldType = base12Biomes;
-        }
-
-       Set<BiomeGenBase> newBiomesForWorld = new HashSet(Arrays.asList(biomesForWorldType));
-       
-       for (BiomeGenBase biome : bopBiomes)
-       {
-    	   newBiomesForWorld.add(biome);
-       }
-       
-       biomesForWorldType = newBiomesForWorld.toArray(new BiomeGenBase[0]);
     }
 
 	public static void init()
 	{
+		worldtypebop = new WorldTypeBOP();
+		
+		bopBiomes.add(alps);
+		bopBiomes.add(arctic);
+		bopBiomes.add(birchForest);
+		bopBiomes.add(bog);
+		bopBiomes.add(borealForest);
+		bopBiomes.add(brushland);
+		bopBiomes.add(chaparral);
+		bopBiomes.add(coniferousForest);
+		bopBiomes.add(coniferousForestSnow);
+		bopBiomes.add(deciduousForest);
+		bopBiomes.add(dunes);
+		bopBiomes.add(fen);
+		bopBiomes.add(field);
+		bopBiomes.add(frostForest);
+		bopBiomes.add(glacier);
+		bopBiomes.add(grassland);
+		bopBiomes.add(grove);
+		bopBiomes.add(heathland);
+		bopBiomes.add(highland);
+		//bopBiomes.add(icyHills);
+		bopBiomes.add(jadeCliffs);
+		bopBiomes.add(lushSwamp);
+		bopBiomes.add(marsh);
+		bopBiomes.add(meadow);
+		bopBiomes.add(moor);
+		bopBiomes.add(mountain);
+		bopBiomes.add(mysticGrove);
+		//bopBiomes.add(oasis);
+		bopBiomes.add(ominousWoods);
+		bopBiomes.add(originValley);
+		bopBiomes.add(polar);
+		bopBiomes.add(prairie);
+		bopBiomes.add(rainforest);
+		bopBiomes.add(redwoodForest);
+		bopBiomes.add(sacredSprings);
+		bopBiomes.add(savanna);
+		bopBiomes.add(scrubland);
+		bopBiomes.add(shield);
+		bopBiomes.add(shrubland);
+		bopBiomes.add(sludgepit);
+		bopBiomes.add(spruceWoods);
+		bopBiomes.add(steppe);
+		bopBiomes.add(temperateRainforest);
+		bopBiomes.add(thicket);
+		bopBiomes.add(timber);
+		bopBiomes.add(tropicalRainforest);
+		bopBiomes.add(tropics);
+		bopBiomes.add(tundra);
+		bopBiomes.add(volcano);
+		bopBiomes.add(wetland);
+		bopBiomes.add(woodland);
 	}
 	
-    public static BiomeGenBase[] getBiomesForWorldType() 
+    public static ArrayList<BiomeGenBase> getBiomesForWorldType() 
     {
-        return biomesForWorldType;
+        return bopBiomes;
     }
     
     public static BiomeGenBase[] getVillageSpawnBiomes()
