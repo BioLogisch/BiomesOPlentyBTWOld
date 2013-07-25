@@ -42,7 +42,7 @@ public class BiomeGenMysticGrove extends BiomeGenBase
 		spawnableMonsterList.clear();
 		spawnableCreatureList.clear();
 		spawnableWaterCreatureList.clear();
-		spawnableMonsterList.add(new SpawnListEntry(EntityWitch.class, 10, 4, 4));
+		//spawnableMonsterList.add(new SpawnListEntry(EntityWitch.class, 10, 4, 4));
 	}
 
 	/**
