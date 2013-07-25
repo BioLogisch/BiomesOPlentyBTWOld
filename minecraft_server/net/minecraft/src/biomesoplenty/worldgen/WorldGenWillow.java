@@ -109,7 +109,7 @@ public class WorldGenWillow extends WorldGenerator
 
 						if (var10 == 0 || var10 == Block.leaves.blockID || var10 == Block.waterMoving.blockID || var10 == Block.waterStill.blockID)
 						{
-							this.setBlockAndMetadata(par1World, par3, par4 + var16, par5, Block.leaves.blockID, 0);
+							this.setBlockAndMetadata(par1World, par3, par4 + var16, par5, Block.wood.blockID, 0);
 						}
 					}
 
