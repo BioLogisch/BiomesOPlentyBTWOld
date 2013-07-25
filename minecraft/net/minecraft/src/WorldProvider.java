@@ -1,5 +1,6 @@
 package net.minecraft.src;
 
+import net.minecraft.src.biomesoplenty.BiomesOPlenty;
 import net.minecraft.src.biomesoplenty.configuration.BOPBiomes;
 import net.minecraft.src.biomesoplenty.world.ChunkProviderGenerateBOP;
 import net.minecraft.src.biomesoplenty.world.WorldChunkManagerBOP;
@@ -69,7 +70,7 @@ public abstract class WorldProvider
             FlatGeneratorInfo var1 = FlatGeneratorInfo.createFlatGeneratorFromString(this.worldObj.getWorldInfo().getGeneratorOptions());
             this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenBase.biomeList[var1.getBiome()], 0.5F, 0.5F);
         }
-        else if (this.worldObj.getWorldInfo().getTerrainType() == BOPBiomes.worldtypebop)
+        else if (this.worldObj.getWorldInfo().getTerrainType() == BiomesOPlenty.BIOMEOP)
         {
         	this.worldChunkMgr = new WorldChunkManagerBOP(this.worldObj);
         }

@@ -60,8 +60,6 @@ import net.minecraft.src.biomesoplenty.world.WorldTypeBOP;
 
 public class BOPBiomes 
 {
-	public static WorldType worldtypebop;
-	
     public static final BiomeGenBase[] villageSpawnBiomes = new BiomeGenBase[] {BiomeGenBase.plains, BiomeGenBase.desert};
     
     public static final BiomeGenBase[] strongholdSpawnBiomes = new BiomeGenBase[] {BiomeGenBase.desert, BiomeGenBase.forest, BiomeGenBase.extremeHills, BiomeGenBase.swampland, BiomeGenBase.taiga, BiomeGenBase.icePlains, BiomeGenBase.iceMountains, BiomeGenBase.desertHills, BiomeGenBase.forestHills, BiomeGenBase.extremeHillsEdge, BiomeGenBase.jungle, BiomeGenBase.jungleHills};
@@ -130,8 +128,6 @@ public class BOPBiomes
 
 	public static void init()
 	{
-		worldtypebop = new WorldTypeBOP();
-		
 		bopBiomes.add(alps);
 		bopBiomes.add(arctic);
 		bopBiomes.add(birchForest);
