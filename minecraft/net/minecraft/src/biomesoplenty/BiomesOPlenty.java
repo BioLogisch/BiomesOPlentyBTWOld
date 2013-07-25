@@ -7,7 +7,7 @@ import net.minecraft.src.biomesoplenty.integration.BetterThanHorsesIntegration;
 
 public class BiomesOPlenty extends FCAddOn
 {
-    public static String bopVersionString = "0.0.8";
+    public static String bopVersionString = "0.0.9";
     public static BiomesOPlenty m_instance = new BiomesOPlenty();
     
     public static void vanillaConstruct()
