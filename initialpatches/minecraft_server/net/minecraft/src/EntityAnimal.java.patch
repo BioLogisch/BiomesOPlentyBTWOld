@@ -1,0 +1,28 @@
+--- ../src_base/minecraft_server/net/minecraft/src/EntityAnimal.java
++++ ../src_work/minecraft_server/net/minecraft/src/EntityAnimal.java
+@@ -663,9 +663,9 @@
+ 
+     public void setRevengeTarget(EntityLiving var1)
+     {
+-        this.breeding = var1;
+-
+-        if (this.breeding != null)
++    	this.entityLivingToAttack = var1;
++
++        if (this.entityLivingToAttack != null)
+         {
+             this.revengeTimer = 300;
+         }
+@@ -699,9 +699,9 @@
+ 
+     public void OnNearbyAnimalAttacked(EntityAnimal var1, EntityLiving var2)
+     {
+-        if (this.breeding == null)
+-        {
+-            this.breeding = var2;
++        if (this.entityLivingToAttack == null)
++        {
++        	this.entityLivingToAttack = var2;
+             this.revengeTimer = 150;
+         }
+         else if (this.revengeTimer < 150)

@@ -1,0 +1,16 @@
+--- ../src_base/minecraft/net/minecraft/src/BlockDirt.java
++++ ../src/minecraft/net/minecraft/src/BlockDirt.java
+@@ -1,4 +1,6 @@
+ package net.minecraft.src;
++
++import net.minecraft.src.biomesoplenty.BiomesOPlenty;
+ 
+ public class BlockDirt extends Block
+ {
+@@ -6,5 +8,6 @@
+     {
+         super(par1, Material.ground);
+         this.setCreativeTab(CreativeTabs.tabBlock);
++        BiomesOPlenty.vanillaConstruct();//BIOMES O PLENTY
+     }
+ }

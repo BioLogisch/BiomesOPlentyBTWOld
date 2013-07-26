@@ -1,0 +1,59 @@
+--- ../src_base/minecraft/net/minecraft/src/BiomeGenBase.java
++++ ../src/minecraft/net/minecraft/src/BiomeGenBase.java
+@@ -160,7 +160,7 @@
+     /**
+      * Sets the temperature and rainfall of this biome.
+      */
+-    private BiomeGenBase setTemperatureRainfall(float par1, float par2)
++    public BiomeGenBase setTemperatureRainfall(float par1, float par2) //BIOMES O PLENTY
+     {
+         if (par1 > 0.1F && par1 < 0.2F)
+         {
+@@ -177,7 +177,7 @@
+     /**
+      * Sets the minimum and maximum height of this biome. Seems to go from -2.0 to 2.0.
+      */
+-    private BiomeGenBase setMinMaxHeight(float par1, float par2)
++    public BiomeGenBase setMinMaxHeight(float par1, float par2) //BIOMES O PLENTY
+     {
+         this.minHeight = par1;
+         this.maxHeight = par2;
+@@ -187,7 +187,7 @@
+     /**
+      * Disable the rain for the biome.
+      */
+-    private BiomeGenBase setDisableRain()
++    public BiomeGenBase setDisableRain() //BIOMES O PLENTY
+     {
+         this.enableRain = false;
+         return this;
+@@ -212,25 +212,25 @@
+     /**
+      * sets enableSnow to true during biome initialization. returns BiomeGenBase.
+      */
+-    protected BiomeGenBase setEnableSnow()
++    public BiomeGenBase setEnableSnow() //BIOMES O PLENTY
+     {
+         this.enableSnow = true;
+         return this;
+     }
+ 
+-    protected BiomeGenBase setBiomeName(String par1Str)
++    public BiomeGenBase setBiomeName(String par1Str) //BIOMES O PLENTY
+     {
+         this.biomeName = par1Str;
+         return this;
+     }
+ 
+-    protected BiomeGenBase func_76733_a(int par1)
++    public BiomeGenBase func_76733_a(int par1) //BIOMES O PLENTY
+     {
+         this.field_76754_C = par1;
+         return this;
+     }
+ 
+-    protected BiomeGenBase setColor(int par1)
++    public BiomeGenBase setColor(int par1) //BIOMES O PLENTY
+     {
+         this.color = par1;
+         return this;

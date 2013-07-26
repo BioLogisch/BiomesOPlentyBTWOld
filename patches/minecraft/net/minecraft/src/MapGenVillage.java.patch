@@ -1,0 +1,16 @@
+--- ../src_base/minecraft/net/minecraft/src/MapGenVillage.java
++++ ../src/minecraft/net/minecraft/src/MapGenVillage.java
+@@ -7,10 +7,12 @@
+ import java.util.Random;
+ import java.util.Map.Entry;
+ 
++import net.minecraft.src.biomesoplenty.configuration.BOPBiomes;
++
+ public class MapGenVillage extends MapGenStructure
+ {
+     /** A list of all the biomes villages can spawn in. */
+-    public static final List villageSpawnBiomes = Arrays.asList(new BiomeGenBase[] {BiomeGenBase.plains, BiomeGenBase.desert});
++    public static final List villageSpawnBiomes = Arrays.asList(BOPBiomes.getVillageSpawnBiomes()); //BIOMES O PLENTY
+ 
+     /** World terrain type, 0 for normal, 1 for flat map */
+     private int terrainType;
