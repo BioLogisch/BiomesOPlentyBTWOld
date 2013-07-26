@@ -10,6 +10,12 @@
 
 ## Changelog 
 
+Version 0.0.9 (MC 1.5.2) (BTW 4.891) '26/7/2013'
+- (Properly) removed witches from the Mystic Grove
+- Added Better Than Horses compatibility
+- Fixed willow trees
+- Fixed the "BIOMESOP" worldtype in multiplayer
+
 Version 0.0.8 (MC 1.5.2) (BTW 4.891) '25/7/2013'
 - Switched to using a BOP worldtype
 - (Hopefully) fixed all of the generation bugs
