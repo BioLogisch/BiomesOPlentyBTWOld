@@ -11,7 +11,7 @@ def cmdsplit(args):
         args = args.replace('\\', '\\\\')
     return shlex.split(args)
                     
-def cleanDirs(path):
+def cleanDirs(bop_dirpath):
     if not os.path.isdir(path):
         return
  
@@ -33,15 +33,15 @@ def main():
     parser.add_option('-m', '--mcp-dir', action='store', dest='mcp_dir', help='Path to MCP', default=None)
     options, _ = parser.parse_args()
     
-    forge_dir = os.path.dirname(os.path.abspath(__file__))
+    bop_dir = os.path.dirname(os.path.abspath(__file__))
     
-    mcp = os.path.join(forge_dir, 'mcp')
+    mcp = os.path.join(bop_dir, 'mcp')
     if not options.mcp_dir is None:
         mcp = os.path.abspath(options.mcp_dir)
     elif os.path.isfile(os.path.join('..', 'runtime', 'commands.py')):
         mcp = os.path.abspath('..')
     
-    patchd = os.path.normpath(os.path.join(forge_dir, 'patches'))
+    patchd = os.path.normpath(os.path.join(bop_dir, 'patches'))
     base = os.path.normpath(os.path.join(mcp, 'src_base'))
     work = os.path.normpath(os.path.join(mcp, 'src'))
     
