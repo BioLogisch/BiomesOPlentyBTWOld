@@ -19,7 +19,7 @@ public class BetterThanHorsesIntegration
 	{
 		try 
 		{
-			Class BTH = Class.forName("net.minecraft.src.BTHBetterThanHorses");
+			Class BTH = Class.forName("BTHBetterThanHorses");
 			ArrayList biomeSpawnList = (ArrayList)BTH.getField("biomeSpawnList").get(null);
 			biomeSpawnList.add(new Object[] {horseBiomeList, 5, 2, 6});   
 		} 
