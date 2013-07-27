@@ -18,6 +18,7 @@ import net.minecraft.src.WorldGenSand;
 import net.minecraft.src.WorldGenWaterlily;
 import net.minecraft.src.WorldGenerator;
 import net.minecraft.src.biomesoplenty.overrides.WorldGenMinableBOP;
+import net.minecraft.src.biomesoplenty.worldgen.WorldGenBOPFlowers;
 import net.minecraft.src.biomesoplenty.worldgen.WorldGenBoulder;
 import net.minecraft.src.biomesoplenty.worldgen.WorldGenGravel;
 import net.minecraft.src.biomesoplenty.worldgen.WorldGenMelon;
@@ -377,10 +378,10 @@ public class BiomeDecoratorBOP extends BiomeDecorator
 		boneSpine2Gen = new WorldGenBoneSpine2();
 		cattailGen = new WorldGenCattail();
 		crystalGen = new WorldGenCrystal1();
-		crystalGen2 = new WorldGenCrystal2();
+		crystalGen2 = new WorldGenCrystal2();*/
 		mushroomBrownGen = new WorldGenBOPFlowers(Block.mushroomBrown.blockID, 0);
 		mushroomRedGen = new WorldGenBOPFlowers(Block.mushroomRed.blockID, 0);
-		toadstoolGen = new WorldGenBOPFlowers(Blocks.mushrooms.get().blockID, 0);
+		/*toadstoolGen = new WorldGenBOPFlowers(Blocks.mushrooms.get().blockID, 0);
 		portobelloGen = new WorldGenBOPFlowers(Blocks.mushrooms.get().blockID, 1);
 		blueMilkGen = new WorldGenBOPFlowers(Blocks.mushrooms.get().blockID, 2);
 		glowshroomGen = new WorldGenBOPFlowers(Blocks.mushrooms.get().blockID, 3);
@@ -1279,18 +1280,18 @@ public class BiomeDecoratorBOP extends BiomeDecorator
 
 				 if (randomGenerator.nextInt(4) == 0)
 				 {
-					 var2 = chunk_X + randomGenerator.nextInt(16) + 8;
-					 var3 = randomGenerator.nextInt(128);
-					 var4 = chunk_Z + randomGenerator.nextInt(16) + 8;
-					 mushroomBrownGen.generate(currentWorld, randomGenerator, var2, var3, var4);
+					 var3 = chunk_X + randomGenerator.nextInt(16) + 8;
+					 var4 = randomGenerator.nextInt(128);
+					 var5 = chunk_Z + randomGenerator.nextInt(16) + 8;
+					 mushroomBrownGen.generate(currentWorld, randomGenerator, var3, var4, var5);
 				 }
 
 				 if (randomGenerator.nextInt(8) == 0)
 				 {
-					 var2 = chunk_X + randomGenerator.nextInt(16) + 8;
-					 var3 = randomGenerator.nextInt(128);
-					 var4 = chunk_Z + randomGenerator.nextInt(16) + 8;
-					 mushroomRedGen.generate(currentWorld, randomGenerator, var2, var3, var4);
+					 var3 = chunk_X + randomGenerator.nextInt(16) + 8;
+					 var4 = randomGenerator.nextInt(128);
+					 var5 = chunk_Z + randomGenerator.nextInt(16) + 8;
+					 mushroomRedGen.generate(currentWorld, randomGenerator, var3, var4, var5);
 				 }
 			 }
 			 catch (Exception e)
