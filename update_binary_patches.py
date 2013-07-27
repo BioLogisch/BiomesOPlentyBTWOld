@@ -66,7 +66,7 @@ def updatepatches():
             if not os.path.exists(patch_dir):
                 os.makedirs(patch_dir)
             
-            call(["bsdiff", file_base[len(work)+1:], file_work[len(work)+1:], patch_file])
+            call(["bsdiff", file_base, file_work, patch_file])
 
     cleanDirs(patchd)
     
