@@ -3,11 +3,14 @@ import urllib, zipfile, json, urllib2
 import shutil, glob, fnmatch
 import subprocess, logging, re, shlex
 import csv, ConfigParser
+import zipfile,os.path
 from hashlib import md5  # pylint: disable-msg=E0611
 from pprint import pprint
 from zipfile import ZipFile
 from pprint import pprint
 from contextlib import closing
+from runtime.commands import Commands, CLIENT, SERVER, CalledProcessError
+from runtime.mcp import recompile_side
   
 #==========================================================================
 #                      Patching
@@ -128,7 +131,113 @@ def decompile(mcp_dir, bop_dir):
     decompile(None, False, False, False, False, False, False, False, False, False, False, False, False)
     reset_logger()    
     os.chdir(bop_dir) 
-      
+    
+#==========================================================================
+#                      MCP Recompile Process
+#==========================================================================
+def recompile(conffile, only_client, only_server):
+    errorcode = 0
+    try:
+        commands = Commands(conffile, verify=True)
+
+        # client or server
+        process_client = True
+        process_server = True
+        if only_client and not only_server:
+            process_server = False
+        if only_server and not only_client:
+            process_client = False
+
+        if process_client:
+            try:
+                recompile_side(commands, CLIENT)
+            except CalledProcessError:
+                errorcode = 2
+                pass
+        if process_server:
+            try:
+                recompile_side(commands, SERVER)
+            except CalledProcessError:
+                errorcode = 3
+                pass
+    except Exception:  # pylint: disable-msg=W0703
+        logging.exception('FATAL ERROR')
+        sys.exit(1)    
+        
+#==========================================================================
+#                      Binary Patch Setup
+#==========================================================================
+def copyreobfuscatedfiles(bop_dir, mcp_dir):
+    basediff = os.path.join(bop_dir, 'basediff')
+    minecraft_jar_loc = os.path.join(basediff, 'work', 'MINECRAFT-JAR')
+    minecraft_server_jar_loc = os.path.join(basediff, 'work', 'MINECRAFT_SERVER-JAR')
+
+    if os.path.exists(minecraft_jar_loc):
+        shutil.rmtree(minecraft_jar_loc)
+    if os.path.exists(minecraft_server_jar_loc):
+        shutil.rmtree(minecraft_server_jar_loc)
+    copytree(os.path.join(mcp_dir, 'reobf', 'minecraft'), minecraft_jar_loc) 
+    copytree(os.path.join(mcp_dir, 'reobf', 'minecraft_server'), minecraft_server_jar_loc)
+    
+def unzipandcopybtw(bop_dir):
+    basediff = os.path.join(bop_dir, 'basediff')
+    base_loc = os.path.join(basediff, 'base')
+    filelist = os.listdir(os.path.join(basediff, 'btw'))
+    zippath = os.path.join(basediff, 'btw', '\n'.join(fname for fname in filelist if fname.startswith("BTWMod") and fname.endswith('.zip')))
+    
+    btwtemp = os.path.join(basediff, 'btw', 'btwtemp')
+    unzip(zippath, btwtemp)
+    copytree(os.path.join(btwtemp, 'MINECRAFT-JAR'), base_loc) 
+    copytree(os.path.join(btwtemp, 'MINECRAFT_SERVER-JAR'), base_loc)    
+    shutil.rmtree(os.path.join(basediff, 'btw', 'btwtemp'))  
+    shutil.rmtree(os.path.join(basediff, 'base', 'btwmodtex'))   
+    shutil.rmtree(os.path.join(basediff, 'base', 'net'))    
+    shutil.rmtree(os.path.join(basediff, 'base', 'textures'))  
+    shutil.rmtree(os.path.join(basediff, 'base', 'title'))  
+    
+#==========================================================================
+#                     Cleanup
+#==========================================================================
+def cleanup(bop_dir, mcp_dir):
+    basediff = os.path.join(bop_dir, 'basediff')
+    btw_minecraft_jar_loc = os.path.join(basediff, 'base', 'MINECRAFT-JAR')
+    btw_minecraft_server_jar_loc = os.path.join(basediff, 'base', 'MINECRAFT_SERVER-JAR')
+    work_minecraft_jar_loc = os.path.join(basediff, 'work', 'MINECRAFT-JAR')
+    work_minecraft_server_jar_loc = os.path.join(basediff, 'work', 'MINECRAFT_SERVER-JAR')
+    bop_mcp_csrc_loc = os.path.join(mcp_dir, 'src', 'minecraft', 'net', 'minecraft', 'src', 'biomesoplenty')
+    bop_mcp_ssrc_loc = os.path.join(mcp_dir, 'src', 'minecraft_server', 'net', 'minecraft', 'src', 'biomesoplenty')
+    
+    if os.path.exists(btw_minecraft_jar_loc):
+        shutil.rmtree(btw_minecraft_jar_loc)
+    if os.path.exists(btw_minecraft_server_jar_loc):
+        shutil.rmtree(btw_minecraft_server_jar_loc)
+        
+    if os.path.exists(work_minecraft_jar_loc):
+        shutil.rmtree(work_minecraft_jar_loc)
+    if os.path.exists(work_minecraft_server_jar_loc):
+        shutil.rmtree(work_minecraft_server_jar_loc)
+        
+    if os.path.exists(bop_mcp_csrc_loc):
+        shutil.rmtree(bop_mcp_csrc_loc)
+    if os.path.exists(bop_mcp_ssrc_loc):
+        shutil.rmtree(bop_mcp_ssrc_loc)
+        
+#==========================================================================
+#                      Zip Extraction
+#==========================================================================
+def unzip(source_filename, dest_dir):
+    with zipfile.ZipFile(source_filename) as zf:
+        for member in zf.infolist():
+            # Path traversal defense copied from
+            # http://hg.python.org/cpython/file/tip/Lib/http/server.py#l789
+            words = member.filename.split('/')
+            path = dest_dir
+            for word in words[:-1]:
+                drive, word = os.path.splitdrive(word)
+                head, word = os.path.split(word)
+                if word in (os.curdir, os.pardir, ''): continue
+                path = os.path.join(path, word)
+            zf.extract(member, path)
         
 #==========================================================================
 # Taken from: http://stackoverflow.com/questions/7545299/distutil-shutil-copytree

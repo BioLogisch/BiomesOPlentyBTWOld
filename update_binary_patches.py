@@ -28,13 +28,14 @@ def cleanDirs(path):
     if len(files) == 0:
         os.rmdir(path)
         
-def main():
+def updatepatches():
     print("Creating patches")
     bop_dir = os.path.dirname(os.path.abspath(__file__))
+    basediff = os.path.normpath(os.path.join(bop_dir, 'basediff'))
     
-    patchd = os.path.normpath(os.path.join(bop_dir, 'patches'))
-    base = os.path.normpath(os.path.join(bop_dir, 'base'))
-    work = os.path.normpath(os.path.join(bop_dir, 'work'))
+    patchd = os.path.normpath(os.path.join(basediff, 'patches'))
+    base = os.path.normpath(os.path.join(basediff, 'base'))
+    work = os.path.normpath(os.path.join(basediff, 'work'))
     
     for path, _, filelist in os.walk(work, followlinks=True):
         for cur_file in fnmatch.filter(filelist, '*.class'):
@@ -43,7 +44,7 @@ def main():
             
             if not os.path.isfile(file_base):
             	print("Missing base file %s using work file..."%(file_base))
-            	non_btw_edits = os.path.normpath(os.path.join(bop_dir, 'nonbtwedits'))
+            	non_btw_edits = os.path.normpath(os.path.join(basediff, 'nonbtwedits'))
             	non_btw_edits_copy = os.path.normpath(os.path.join(non_btw_edits, path[len(work)+1:])).replace(os.path.sep, '/')
             	if not os.path.exists(non_btw_edits_copy):
                     os.makedirs(non_btw_edits_copy)
@@ -58,9 +59,9 @@ def main():
             if not os.path.exists(patch_dir):
                 os.makedirs(patch_dir)
             
-            call(["bsdiff", file_base[len(bop_dir)+1:], file_work[len(bop_dir)+1:], patch_file])
+            call(["bsdiff", file_base[len(work)+1:], file_work[len(work)+1:], patch_file])
 
     cleanDirs(patchd)
     
 if __name__ == '__main__':
-    main()
+    updatepatches()
