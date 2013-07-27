@@ -37,10 +37,18 @@ def apply_bop_patches(mcp_dir, bop_dir, src_dir, copy_files=True):
     if os.path.isdir(os.path.join(bop_dir, 'patches', 'minecraft_server')):
         apply_patches(mcp_dir, os.path.join(bop_dir, 'patches', 'minecraft_server'), src_dir)
         
-    #if copy_files and os.path.isdir(os.path.join(bop_dir, 'src', 'minecraft')):
-        #copytree(os.path.join(bop_dir, 'src', 'minecraft'), os.path.join(src_dir, 'minecraft'))
-    #if copy_files and os.path.isdir(os.path.join(bop_dir, 'src', 'minecraft_server')):
-        #copytree(os.path.join(bop_dir, 'src', 'minecraft_server'), os.path.join(src_dir, 'minecraft_server'))
+def repatch_bop(bop_dir, mcp_dir):
+    print 'Applying BOP patches'
+    sys.stdout.flush()
+    
+    src_dir = os.path.join(mcp_dir, 'src')
+    orig_dir = os.path.join(mcp_dir, 'src_base')
+
+    if os.path.isdir(os.path.join(bop_dir, 'patches', 'minecraft')):
+        repatch(mcp_dir, os.path.join(bop_dir, 'patches', 'minecraft'), src_dir, orig_dir)
+        
+    if os.path.isdir(os.path.join(bop_dir, 'patches', 'minecraft_server')):
+        repatch(mcp_dir, os.path.join(bop_dir, 'patches', 'minecraft_server'), src_dir, orig_dir)
 
 def fix_patch(in_file, out_file, find=None, rep=None):
     #Fixes the following issues in the patch file if they exist:
@@ -94,6 +102,31 @@ def apply_patches(mcp_dir, patch_dir, target_dir, find=None, rep=None):
         for cur_file in fnmatch.filter(filelist, '*.patch'):
             patch_file = os.path.normpath(os.path.join(patch_dir, path[len(patch_dir)+1:], cur_file))
             target_file = os.path.join(target_dir, fix_patch(patch_file, temp, find, rep))
+            process = subprocess.Popen(cmd, cwd=target_dir, bufsize=-1)
+            process.communicate()
+
+    if os.path.isfile(temp):
+        os.remove(temp)
+        
+def repatch(mcp_dir, patch_dir, target_dir, orig_dir, find=None, rep=None):
+    # Attempts to apply a directory full of patch files onto a target directory.
+    sys.path.append(mcp_dir)
+    
+    temp = os.path.abspath('temp.patch')
+    cmd = cmdsplit('patch -p2 -i "%s" ' % temp)
+    
+    if os.name == 'nt':
+        applydiff = os.path.abspath(os.path.join(mcp_dir, 'runtime', 'bin', 'applydiff.exe'))
+        cmd = cmdsplit('"%s" -uf -p2 -i "%s"' % (applydiff, temp))
+    
+    for path, _, filelist in os.walk(patch_dir, followlinks=True):
+        for cur_file in fnmatch.filter(filelist, '*.patch'):
+            patch_file = os.path.normpath(os.path.join(patch_dir, path[len(patch_dir)+1:], cur_file))
+            target_file = os.path.join(target_dir, fix_patch(patch_file, temp, find, rep))
+            orig_file = os.path.join(orig_dir, fix_patch(patch_file, temp, find, rep))
+            if os.path.isfile(target_file):
+                os.remove(target_file)
+            shutil.copyfile(orig_file, target_file)
             process = subprocess.Popen(cmd, cwd=target_dir, bufsize=-1)
             process.communicate()
 
