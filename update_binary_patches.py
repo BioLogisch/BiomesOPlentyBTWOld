@@ -36,9 +36,13 @@ def updatepatches():
     patchd = os.path.normpath(os.path.join(basediff, 'patches'))
     base = os.path.normpath(os.path.join(basediff, 'base'))
     work = os.path.normpath(os.path.join(basediff, 'work'))
+    non_btw_edits = os.path.normpath(os.path.join(basediff, 'nonbtwedits'))
     
     if os.path.exists(patchd):
         shutil.rmtree(patchd)
+        
+    if os.path.exists(non_btw_edits):
+        shutil.rmtree(non_btw_edits)
     
     for path, _, filelist in os.walk(work, followlinks=True):
         for cur_file in fnmatch.filter(filelist, '*.class'):
@@ -47,11 +51,7 @@ def updatepatches():
             
             if not os.path.isfile(file_base):
             	print("Missing base file %s using work file..."%(file_base))
-            	non_btw_edits = os.path.normpath(os.path.join(basediff, 'nonbtwedits'))
             	non_btw_edits_copy = os.path.normpath(os.path.join(non_btw_edits, path[len(work)+1:])).replace(os.path.sep, '/')
-            	
-                if os.path.exists(non_btw_edits):
-                    shutil.rmtree(non_btw_edits)
             	
             	if not os.path.exists(non_btw_edits_copy):
                     os.makedirs(non_btw_edits_copy)
