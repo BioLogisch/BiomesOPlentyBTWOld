@@ -50,7 +50,6 @@ def main():
             	shutil.copyfile(file_work, os.path.normpath(os.path.join(non_btw_edits_copy, cur_file)).replace(os.path.sep, '/'))
             	continue
             
-            #patch = ''.join(difflib.unified_diff(fromlines, tolines, '../' + file_base[len(bop_dir)+1:], '../' + file_work[len(bop_dir)+1:], '', '', n=3))
             patch_dir = os.path.join(patchd, path[len(work)+1:])
             patch_file = os.path.join(patch_dir, cur_file + '.patch')
             
@@ -60,14 +59,6 @@ def main():
                 os.makedirs(patch_dir)
             
             call(["bsdiff", file_base[len(bop_dir)+1:], file_work[len(bop_dir)+1:], patch_file])
-            
-            #if len(patch) > 0:
-
-            #else:
-                #if os.path.isfile(patch_file):
-                    #print("Deleting empty patch: %s"%(patch_file))
-                    #os.remove(patch_file)
-                    
 
     cleanDirs(patchd)
     
