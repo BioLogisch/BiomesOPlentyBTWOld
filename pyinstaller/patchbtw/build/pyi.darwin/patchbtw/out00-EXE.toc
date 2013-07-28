@@ -1,0 +1,10 @@
+('/Users/aarongauntlett/Documents/Minecraft Development/bopbtw/dist/pyinstaller-2.0/patchbtw/dist/patchbtw',
+ True,
+ False,
+ None,
+ None,
+ [],
+ None,
+ True,
+ 0,
+ 1374983765)
