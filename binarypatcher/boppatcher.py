@@ -19,6 +19,8 @@ def apply_binary_patches(bop_dir, copy_files=True):
     print 'Applying binary patches'
     sys.stdout.flush()
 
+    os.chdir(bop_dir)
+
     if os.path.isdir(os.path.join(bop_dir, 'patches', 'MINECRAFT-JAR')):
         apply_patches(os.path.join(bop_dir, 'patches', 'MINECRAFT-JAR'), os.path.join(bop_dir, 'btw', 'btwtemp', 'MINECRAFT-JAR'))
         
@@ -55,7 +57,7 @@ def apply_patches(patch_dir, target_dir, find=None, rep=None):
         for cur_file in fnmatch.filter(filelist, '*.patch'):
             patch_file = os.path.normpath(os.path.join(patch_dir, path[len(patch_dir)+1:], cur_file))
             target_file = os.path.join(target_dir, fix_patch(patch_file, temp, find, rep))
-            call(["bspatch", target_file, target_file, patch_file])
+            call(["java", "-Xmx200m", "ie.wombat.jbdiff.JBPatch", target_file, target_file, patch_file])
 
     if os.path.isfile(temp):
         os.remove(temp)

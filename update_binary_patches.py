@@ -66,7 +66,9 @@ def updatepatches():
             if not os.path.exists(patch_dir):
                 os.makedirs(patch_dir)
             
-            call(["bsdiff", file_base, file_work, patch_file])
+            os.chdir(bop_dir)
+            
+            call(["java", "-Xmx200m", "ie.wombat.jbdiff.JBDiff", file_base, file_work, patch_file])
 
     cleanDirs(patchd)
     
