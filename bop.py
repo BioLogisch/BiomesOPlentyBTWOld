@@ -9,6 +9,7 @@ from pprint import pprint
 from zipfile import ZipFile
 from pprint import pprint
 from contextlib import closing
+from subprocess import call
 from runtime.commands import Commands, CLIENT, SERVER, CalledProcessError
 from runtime.mcp import recompile_side
   
@@ -228,6 +229,44 @@ def unzipandcopybtw(bop_dir):
     shutil.rmtree(os.path.join(basediff, 'base', 'textures'))  
     shutil.rmtree(os.path.join(basediff, 'base', 'title'))  
     
+#==========================================================================
+#                      Create Dist
+#==========================================================================
+def movetodist(bop_dir):
+    basediffdir = os.path.join(bop_dir, 'basediff')
+    nonbtweditsdir = os.path.join(basediffdir, 'nonbtwedits')
+    patchesdir = os.path.join(basediffdir, 'patches')
+    binarypatcherdir = os.path.join(bop_dir, 'binarypatcher')
+    distdir = os.path.join(bop_dir, 'tempdist')
+        
+    if os.path.exists(distdir):
+        shutil.rmtree(distdir)
+    
+    if os.path.exists(os.path.join(binarypatcherdir, 'nonbtwedits')):
+        shutil.rmtree(os.path.join(binarypatcherdir, 'nonbtwedits'))
+        
+    if os.path.exists(os.path.join(binarypatcherdir, 'patches')):
+        shutil.rmtree(os.path.join(binarypatcherdir, 'patches'))
+    
+    copytree(nonbtweditsdir, os.path.join(binarypatcherdir, 'nonbtwedits')) 
+    copytree(patchesdir, os.path.join(binarypatcherdir, 'patches')) 
+    copytree(binarypatcherdir, distdir) 
+    
+    if os.path.exists(os.path.join(distdir, 'python')):
+        shutil.rmtree(os.path.join(distdir, 'python'))
+        
+    copytree(os.path.join(bop_dir, 'ie'), os.path.join(distdir, 'ie'))
+    
+def createapplication(bop_dir):
+    os.chdir(os.path.join(bop_dir, 'pyinstaller'))
+    
+    call(["python", "pyinstaller.py", "--onefile", os.path.join(bop_dir, 'binarypatcher', 'python', 'patchbtw.py')])
+    copytree(os.path.join(bop_dir, 'pyinstaller', 'patchbtw', 'dist'), os.path.join(bop_dir, 'tempdist'))
+    
+    if os.path.exists(os.path.join(bop_dir, 'pyinstaller', 'patchbtw')):
+        shutil.rmtree(os.path.join(bop_dir, 'pyinstaller', 'patchbtw'))
+    
+    os.chdir(bop_dir)
 #==========================================================================
 #                     Cleanup
 #==========================================================================

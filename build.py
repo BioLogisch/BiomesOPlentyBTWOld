@@ -8,7 +8,7 @@ from optparse import OptionParser
 def bop_main(bop_dir, mcp_dir):
     sys.path.append(mcp_dir)
     from runtime.reobfuscate import reobfuscate
-    from bop import copytree, reset_logger, recompile, copyreobfuscatedfiles, unzipandcopybtw, cleanup
+    from bop import copytree, reset_logger, recompile, copyreobfuscatedfiles, unzipandcopybtw, movetodist, createapplication, cleanup
     from update_binary_patches import updatepatches
     
     print '=============================== Build Biomes O Plenty Start ====================================='
@@ -29,6 +29,10 @@ def bop_main(bop_dir, mcp_dir):
     unzipandcopybtw(bop_dir)
     print 'Creating Binary Patches'
     updatepatches()
+    print 'Moving Files To Temporary Dist Folder'
+    movetodist(bop_dir)
+    print 'Creating Patcher Application'
+    createapplication(bop_dir)
     print 'Cleaning Up'
     cleanup(bop_dir, mcp_dir)
 

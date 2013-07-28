@@ -1,1 +1,4 @@
 dist
+tempdist
+*.log
+pyinstaller/*.log
