@@ -1,4 +1,8 @@
 dist
 tempdist
+
+bop.pyc
+update_binary_patches.pyc
+
 *.log
 pyinstaller/*.log
