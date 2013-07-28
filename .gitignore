@@ -1,8 +1,5 @@
 dist
 tempdist
 
-bop.pyc
-update_binary_patches.pyc
-
+*.pyc
 *.log
-pyinstaller/*.log
