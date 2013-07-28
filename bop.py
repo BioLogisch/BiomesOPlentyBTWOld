@@ -265,8 +265,18 @@ def createapplication(bop_dir):
     
     if os.path.exists(os.path.join(bop_dir, 'pyinstaller', 'patchbtw')):
         shutil.rmtree(os.path.join(bop_dir, 'pyinstaller', 'patchbtw'))
+        
+    filelist = [ f for f in os.listdir(".") if f.endswith(".log") ]
+    for f in filelist:
+        os.remove(f)
     
     os.chdir(bop_dir)
+    
+def packagedist(bop_dir):
+    zipdir(os.path.join(bop_dir, 'tempdist'), os.path.join(bop_dir, 'dist', 'BOP-BTW-Patcher-%d.zip' % sys.platform))
+
+    if os.path.exists(os.path.join(bop_dir, 'tempdist')):
+        shutil.rmtree(os.path.join(bop_dir, 'tempdist'))
 #==========================================================================
 #                     Cleanup
 #==========================================================================
@@ -295,7 +305,7 @@ def cleanup(bop_dir, mcp_dir):
         shutil.rmtree(bop_mcp_ssrc_loc)
         
 #==========================================================================
-#                      Zip Extraction
+#                      Zip
 #==========================================================================
 def unzip(source_filename, dest_dir):
     with zipfile.ZipFile(source_filename) as zf:
@@ -310,6 +320,16 @@ def unzip(source_filename, dest_dir):
                 if word in (os.curdir, os.pardir, ''): continue
                 path = os.path.join(path, word)
             zf.extract(member, path)
+            
+def zipdir(basedir, archivename):
+    assert os.path.isdir(basedir)
+    with closing(ZipFile(archivename, "w", ZIP_DEFLATED)) as z:
+        for root, dirs, files in os.walk(basedir):
+            #NOTE: ignore empty directories
+            for fn in files:
+                absfn = os.path.join(root, fn)
+                zfn = absfn[len(basedir)+len(os.sep):] #XXX: relative path
+                z.write(absfn, zfn)
         
 #==========================================================================
 # Taken from: http://stackoverflow.com/questions/7545299/distutil-shutil-copytree

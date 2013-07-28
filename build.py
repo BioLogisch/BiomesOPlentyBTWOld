@@ -33,6 +33,8 @@ def bop_main(bop_dir, mcp_dir):
     movetodist(bop_dir)
     print 'Creating Patcher Application'
     createapplication(bop_dir)
+    print 'Packaging Files'
+    packagedist(bop_dir)
     print 'Cleaning Up'
     cleanup(bop_dir, mcp_dir)
 
