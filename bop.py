@@ -6,7 +6,7 @@ import csv, ConfigParser
 import zipfile,os.path
 from hashlib import md5  # pylint: disable-msg=E0611
 from pprint import pprint
-from zipfile import ZipFile
+from zipfile import ZipFile, ZIP_DEFLATED
 from pprint import pprint
 from contextlib import closing
 from subprocess import call
@@ -255,6 +255,9 @@ def movetodist(bop_dir):
     if os.path.exists(os.path.join(distdir, 'python')):
         shutil.rmtree(os.path.join(distdir, 'python'))
         
+    if os.path.isfile(os.path.join(bop_dir, 'tempdist', '.gitignore')):
+        os.remove(os.path.join(bop_dir, 'tempdist', '.gitignore'))
+        
     copytree(os.path.join(bop_dir, 'ie'), os.path.join(distdir, 'ie'))
     
 def createapplication(bop_dir):
@@ -273,7 +276,11 @@ def createapplication(bop_dir):
     os.chdir(bop_dir)
     
 def packagedist(bop_dir):
-    zipdir(os.path.join(bop_dir, 'tempdist'), os.path.join(bop_dir, 'dist', 'BOP-BTW-Patcher-%d.zip' % sys.platform))
+    if os.path.exists(os.path.join(bop_dir, 'dist')):
+        shutil.rmtree(os.path.join(bop_dir, 'dist'))
+    os.makedirs(os.path.join(bop_dir, 'dist'))
+    
+    zipdir(os.path.join(bop_dir, 'tempdist'), os.path.join(bop_dir, 'dist', 'BOP-BTW-Patcher-%s.zip' % sys.platform))
 
     if os.path.exists(os.path.join(bop_dir, 'tempdist')):
         shutil.rmtree(os.path.join(bop_dir, 'tempdist'))
