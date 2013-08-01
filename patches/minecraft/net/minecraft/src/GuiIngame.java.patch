@@ -1,0 +1,20 @@
+--- ../src_base/minecraft/net/minecraft/src/GuiIngame.java
++++ ../src/minecraft/net/minecraft/src/GuiIngame.java
+@@ -427,6 +427,17 @@
+             this.drawString(var8, var36, var6 - var8.getStringWidth(var36) - 2, 2, 14737632);
+             var36 = "Allocated memory: " + var45 * 100L / var46 + "% (" + var45 / 1024L / 1024L + "MB)";
+             this.drawString(var8, var36, var6 - var8.getStringWidth(var36) - 2, 12, 14737632);
++            
++            int k3 = MathHelper.floor_double(this.mc.thePlayer.posX);
++            int j3 = MathHelper.floor_double(this.mc.thePlayer.posY);
++            int l4 = MathHelper.floor_double(this.mc.thePlayer.posZ);
++            
++            if (this.mc.theWorld != null && this.mc.theWorld.blockExists(k3, j3, l4))
++            {
++                Chunk chunk = this.mc.theWorld.getChunkFromBlockCoords(k3, l4);
++                this.drawString(var8, "Biome: " + chunk.getBiomeGenForWorldCoords(k3 & 15, l4 & 15, this.mc.theWorld.getWorldChunkManager()).biomeName, 2, 74, 14737632);
++            }
++            
+             this.RenderModDebugOverlay();
+             GL11.glPopMatrix();
+             this.mc.mcProfiler.endSection();
