@@ -26,7 +26,7 @@ def main(bop_dir):
     
 if __name__ == '__main__':
     if hasattr(sys, 'frozen'):
-        bop_dir = os.path.realpath(sys.executable)	
+        bop_dir = os.path.dirname(sys.executable)
     else:
         bop_dir = os.path.dirname(os.path.realpath(sys.argv[0]))
     
