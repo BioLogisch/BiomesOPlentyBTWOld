@@ -1,6 +1,5 @@
 package net.minecraft.src.biomesoplenty;
 
-import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.FCAddOn;
 import net.minecraft.src.FCAddOnHandler;
 import net.minecraft.src.WorldType;
@@ -23,14 +22,13 @@ public class BiomesOPlenty extends FCAddOn
     @Override
     public void PreInitialize() 
     {
-    	//BetterThanHorsesIntegration.init();
+    	BOPBiomes.init();
+    	BetterThanHorsesIntegration.init();
     }
 	
 	@Override
 	public void Initialize() 
-	{
-    	BOPBiomes.init();
-		
+	{		
 		FCAddOnHandler.LogMessage("[BiomesOPlenty] Biomes O Plenty Version " + bopVersionString + " Initializing...");
         FCAddOnHandler.LogMessage("[BiomesOPlenty] Biomes O Plenty Initialization Complete.");
 	}

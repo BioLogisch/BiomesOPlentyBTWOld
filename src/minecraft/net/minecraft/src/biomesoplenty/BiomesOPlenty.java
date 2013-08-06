@@ -22,14 +22,13 @@ public class BiomesOPlenty extends FCAddOn
     @Override
     public void PreInitialize() 
     {
-    	//BetterThanHorsesIntegration.init();
+    	BOPBiomes.init();
+    	BetterThanHorsesIntegration.init();
     }
 	
 	@Override
 	public void Initialize() 
 	{
-    	BOPBiomes.init();
-    	
 		FCAddOnHandler.LogMessage("[BiomesOPlenty] Biomes O Plenty Version " + bopVersionString + " Initializing...");
         FCAddOnHandler.LogMessage("[BiomesOPlenty] Biomes O Plenty Initialization Complete.");
 	}
