@@ -26,3 +26,16 @@
              this.revengeTimer = 150;
          }
          else if (this.revengeTimer < 150)
+@@ -712,9 +712,9 @@
+ 
+     public void OnNearbyFireStartAttempt(EntityPlayer var1)
+     {
+-        if (this.breeding == null)
+-        {
+-            this.breeding = var1;
++        if (this.entityLivingToAttack == null)
++        {
++            this.entityLivingToAttack = var1;
+             this.revengeTimer = 150;
+         }
+         else if (this.revengeTimer < 150)
