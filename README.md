@@ -9,6 +9,9 @@
 - **ted80** - "Biome Fanatic" - Biome Execution, General
 
 ## Changelog 
+Version 0.1.1 (MC 1.5.2) (BTW 4.89112) '9/8/2013'
+- Switched to a Java-based patcher
+- Removed a feral creature from the Ominous Woods
 
 Version 0.1.0 (MC 1.5.2) (BTW 4.8911) '4/8/2013'
 - Switched to a new patcher system
