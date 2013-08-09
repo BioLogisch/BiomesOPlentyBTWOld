@@ -251,36 +251,19 @@ def movetodist(bop_dir):
     copytree(nonbtweditsdir, os.path.join(binarypatcherdir, 'nonbtwedits')) 
     copytree(patchesdir, os.path.join(binarypatcherdir, 'patches')) 
     copytree(binarypatcherdir, distdir) 
-    
-    if os.path.exists(os.path.join(distdir, 'python')):
-        shutil.rmtree(os.path.join(distdir, 'python'))
         
     if os.path.isfile(os.path.join(bop_dir, 'tempdist', '.gitignore')):
         os.remove(os.path.join(bop_dir, 'tempdist', '.gitignore'))
         
-    copytree(os.path.join(bop_dir, 'ie'), os.path.join(distdir, 'ie'))
-    
-def createapplication(bop_dir):
-    os.chdir(os.path.join(bop_dir, 'pyinstaller'))
-    
-    call(["python", "pyinstaller.py", "--onefile", os.path.join(bop_dir, 'binarypatcher', 'python', 'patchbtw.py')])
-    copytree(os.path.join(bop_dir, 'pyinstaller', 'patchbtw', 'dist'), os.path.join(bop_dir, 'tempdist'))
-    
-    if os.path.exists(os.path.join(bop_dir, 'pyinstaller', 'patchbtw')):
-        shutil.rmtree(os.path.join(bop_dir, 'pyinstaller', 'patchbtw'))
-        
-    filelist = [ f for f in os.listdir(".") if f.endswith(".log") ]
-    for f in filelist:
-        os.remove(f)
-    
-    os.chdir(bop_dir)
+    if os.path.exists(os.path.join(distdir, 'java')):
+        shutil.rmtree(os.path.join(distdir, 'java'))
     
 def packagedist(bop_dir):
     if os.path.exists(os.path.join(bop_dir, 'dist')):
         shutil.rmtree(os.path.join(bop_dir, 'dist'))
     os.makedirs(os.path.join(bop_dir, 'dist'))
     
-    zipdir(os.path.join(bop_dir, 'tempdist'), os.path.join(bop_dir, 'dist', 'BOP-BTW-Patcher-%s.zip' % sys.platform))
+    zipdir(os.path.join(bop_dir, 'tempdist'), os.path.join(bop_dir, 'dist', 'BOP-BTW-Patcher-Universal.zip'))
 
     if os.path.exists(os.path.join(bop_dir, 'tempdist')):
         shutil.rmtree(os.path.join(bop_dir, 'tempdist'))
