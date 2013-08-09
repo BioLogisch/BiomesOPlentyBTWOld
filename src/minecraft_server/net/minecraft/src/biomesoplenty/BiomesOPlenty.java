@@ -9,7 +9,7 @@ import net.minecraft.src.biomesoplenty.world.WorldTypeBOP;
 
 public class BiomesOPlenty extends FCAddOn
 {
-    public static String bopVersionString = "0.1.0";
+    public static String bopVersionString = "0.1.1";
     public static BiomesOPlenty m_instance = new BiomesOPlenty();
     
     public static final WorldType BIOMEOP = (new WorldTypeBOP());  
