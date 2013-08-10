@@ -3,12 +3,15 @@ package net.minecraft.src.biomesoplenty;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.FCAddOn;
 import net.minecraft.src.FCAddOnHandler;
+import net.minecraft.src.StringTranslate;
 import net.minecraft.src.WorldType;
 import net.minecraft.src.biomesoplenty.configuration.BOPBiomes;
 import net.minecraft.src.biomesoplenty.configuration.BOPBlocks;
 import net.minecraft.src.biomesoplenty.configuration.BOPConfiguration;
 import net.minecraft.src.biomesoplenty.configuration.CreativeTabsBOP;
 import net.minecraft.src.biomesoplenty.integration.BetterThanHorsesIntegration;
+import net.minecraft.src.biomesoplenty.utils.LanguageRegistry;
+import net.minecraft.src.biomesoplenty.utils.Localization;
 import net.minecraft.src.biomesoplenty.world.WorldTypeBOP;
 
 public class BiomesOPlenty extends FCAddOn
@@ -36,9 +39,15 @@ public class BiomesOPlenty extends FCAddOn
     {
 		tabBiomesOPlenty = new CreativeTabsBOP(CreativeTabs.getNextID(), "tabBiomesOPlenty");
     	
-    	BOPBlocks.init();
+		if (BOPConfiguration.mainConfigFile.getBoolean("enableCustomBlocks"))
+		{
+			BOPBlocks.init();
+		}
+		
     	BOPBiomes.init();
     	BetterThanHorsesIntegration.init();
+    	
+		LanguageRegistry.addStringLocalization("itemGroup.tabBiomesOPlenty", "Biomes O' Plenty");
     }
 	
 	@Override
@@ -46,6 +55,17 @@ public class BiomesOPlenty extends FCAddOn
 	{
 		FCAddOnHandler.LogMessage("[BiomesOPlenty] Biomes O Plenty Version " + bopVersionString + " Initializing...");
         FCAddOnHandler.LogMessage("[BiomesOPlenty] Biomes O Plenty Initialization Complete.");
+	}
+	
+	@Override
+	public void OnLanguageLoaded(StringTranslate translate) 
+	{
+		for (int l = 0; l < LanguageRegistry.localizations.size(); l++)
+		{
+			Localization localization = LanguageRegistry.localizations.get(l);
+			
+	        translate.GetTranslateTable().put(localization.getTarget(), localization.getName());
+		}
 	}
 	
 	@Override

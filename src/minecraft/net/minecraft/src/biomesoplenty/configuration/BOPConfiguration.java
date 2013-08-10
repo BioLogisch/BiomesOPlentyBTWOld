@@ -3,6 +3,7 @@ package net.minecraft.src.biomesoplenty.configuration;
 import java.io.File;
 
 import net.minecraft.src.biomesoplenty.utils.ConfigFile;
+import net.minecraft.src.biomesoplenty.utils.ConfigUtils;
 
 public class BOPConfiguration
 {
@@ -16,6 +17,7 @@ public class BOPConfiguration
 	{
 	    mainConfigFile = new BOPConfiguration.Main();
 	    biomeGenConfigFile = new BOPConfiguration.BiomeGen();
+	    idConfigFile = new BOPConfiguration.IDs();
 	}
 
 	public static class Main extends ConfigFile
@@ -23,6 +25,7 @@ public class BOPConfiguration
 		@Override
 		public void setDefaults() 
 		{
+			properties.setProperty("enableCustomBlocks", "false");
 		}
 
 		@Override
@@ -106,6 +109,27 @@ public class BOPConfiguration
 		public String getHeader()
 		{
 			return "Biomes O Plenty Biome Gen Config";
+		}
+	}
+
+	public static class IDs extends ConfigFile
+	{
+		@Override
+		public void setDefaults() 
+		{
+			ConfigUtils.setBlockID(properties, "planksID", 1947);
+		}
+
+		@Override
+		public File getConfigFile() 
+		{
+			return new File(this.baseConfigDir + File.separator + "biomesoplenty" + File.separator + "ids.cfg");
+		}
+
+		@Override
+		public String getHeader()
+		{
+			return "Biomes O Plenty ID Config";
 		}
 	}
 }

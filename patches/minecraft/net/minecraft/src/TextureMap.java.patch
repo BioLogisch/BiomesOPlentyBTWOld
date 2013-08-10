@@ -1,0 +1,89 @@
+--- ../src_base/minecraft/net/minecraft/src/TextureMap.java
++++ ../src/minecraft/net/minecraft/src/TextureMap.java
+@@ -11,6 +11,7 @@
+ import java.util.Iterator;
+ import java.util.List;
+ import java.util.Map;
++
+ import net.minecraft.client.Minecraft;
+ 
+ public class TextureMap implements IconRegister
+@@ -74,41 +75,50 @@
+             }
+         }
+ 
+-        HashMap var20 = new HashMap();
+-        Stitcher var21 = TextureManager.instance().createStitcher(this.textureName);
++        HashMap hashmap = new HashMap();
++        Stitcher stitcher = TextureManager.instance().createStitcher(this.textureName);
+         this.mapTexturesStiched.clear();
+         this.listTextureStiched.clear();
+         Texture var23 = TextureManager.instance().makeTexture("missingno", 2, this.missingImage.getWidth(), this.missingImage.getHeight(), 10496, 6408, 9728, 9728, false, this.missingImage);
+-        StitchHolder var24 = new StitchHolder(var23);
+-        var21.addStitchHolder(var24);
+-        var20.put(var24, Arrays.asList(new Texture[] {var23}));
++        StitchHolder stitchholder = new StitchHolder(var23);
++        stitcher.addStitchHolder(stitchholder);
++        hashmap.put(stitchholder, Arrays.asList(new Texture[] {var23}));
+         Iterator var5 = this.textureStichedMap.keySet().iterator();
+ 
+-        while (var5.hasNext())
+-        {
+-            String var6 = (String)var5.next();
+-            String var7 = this.basePath + var6 + this.textureExt;
+-            List var8 = TextureManager.instance().createTexture(var7);
+-
+-            if (!var8.isEmpty())
+-            {
+-                StitchHolder var9 = new StitchHolder((Texture)var8.get(0));
+-                var21.addStitchHolder(var9);
+-                var20.put(var9, var8);
++        for (Map.Entry<String, TextureStitched> entry : ((Map<String, TextureStitched>)textureStichedMap).entrySet())
++        {
++            String name = entry.getKey();
++            String path;
++            if (name.indexOf(':') == -1)
++            {
++                path = this.basePath + name + this.textureExt;
++            }
++            else
++            {
++                String domain = name.substring(0, name.indexOf(':'));
++                String file = name.substring(name.indexOf(':') + 1);
++                path = domain + "/" + basePath + file + textureExt;
++            }
++            List list = TextureManager.instance().createNewTexture(name, path, entry.getValue());
++            if (!list.isEmpty())
++            {
++                StitchHolder stitchholder1 = new StitchHolder((Texture)list.get(0));
++                stitcher.addStitchHolder(stitchholder1);
++                hashmap.put(stitchholder1, list);
+             }
+         }
+ 
+         try
+         {
+-            var21.doStitch();
++            stitcher.doStitch();
+         }
+         catch (StitcherException var18)
+         {
+             throw var18;
+         }
+ 
+-        this.atlasTexture = var21.getTexture();
+-        var5 = var21.getStichSlots().iterator();
++        this.atlasTexture = stitcher.getTexture();
++        var5 = stitcher.getStichSlots().iterator();
+ 
+         while (var5.hasNext())
+         {
+@@ -116,7 +126,7 @@
+             StitchHolder var27 = var26.getStitchHolder();
+             Texture var28 = var27.func_98150_a();
+             String var29 = var28.getTextureName();
+-            List var10 = (List)var20.get(var27);
++            List var10 = (List)hashmap.get(var27);
+             TextureStitched var11 = (TextureStitched)this.textureStichedMap.get(var29);
+             boolean var12 = false;
+ 

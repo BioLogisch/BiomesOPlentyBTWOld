@@ -1,0 +1,11 @@
+--- ../src_base/minecraft/net/minecraft/src/TexturePackCustom.java
++++ ../src/minecraft/net/minecraft/src/TexturePackCustom.java
+@@ -91,7 +91,7 @@
+             {
+                 ZipEntry var2 = (ZipEntry)var1.nextElement();
+ 
+-                if (var2.getName().startsWith("textures/"))
++                if (var2.getName().startsWith(""))
+                 {
+                     return true;
+                 }

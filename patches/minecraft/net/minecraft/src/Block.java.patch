@@ -1,0 +1,46 @@
+--- ../src_base/minecraft/net/minecraft/src/Block.java
++++ ../src/minecraft/net/minecraft/src/Block.java
+@@ -5,6 +5,8 @@
+ 
+ public class Block
+ {
++    protected static int[] blockFireSpreadSpeed = new int[4096];
++    protected static int[] blockFlammability = new int[4096];
+     /**
+      * used as foreach item, if item.tab = current tab, display it on the screen
+      */
+@@ -313,7 +315,7 @@
+     /**
+      * Sets the footstep sound for the block. Returns the object for convenience in constructing.
+      */
+-    protected Block setStepSound(StepSound par1StepSound)
++    public Block setStepSound(StepSound par1StepSound)
+     {
+         this.stepSound = par1StepSound;
+         return this;
+@@ -341,7 +343,7 @@
+     /**
+      * Sets the the blocks resistance to explosions. Returns the object for convenience in constructing.
+      */
+-    protected Block setResistance(float par1)
++    public Block setResistance(float par1)
+     {
+         this.blockResistance = par1 * 3.0F;
+         return this;
+@@ -1611,4 +1613,16 @@
+         canBlockGrass[0] = true;
+         StatList.initBreakableStats();
+     }
++    
++    /**
++     * Called by BlockFire to setup the burn values of vanilla blocks.
++     * @param id The block id
++     * @param encouragement How much the block encourages fire to spread
++     * @param flammability how easy a block is to catch fire
++     */
++    public static void setBurnProperties(int id, int encouragement, int flammability)
++    {
++        blockFireSpreadSpeed[id] = encouragement;
++        blockFlammability[id] = flammability;
++    }
+ }

@@ -1,0 +1,92 @@
+--- ../src_base/minecraft/net/minecraft/src/TextureManager.java
++++ ../src/minecraft/net/minecraft/src/TextureManager.java
+@@ -62,49 +62,70 @@
+ 
+     public List createTexture(String par1Str)
+     {
+-        ArrayList var2 = new ArrayList();
+-        ITexturePack var3 = Minecraft.getMinecraft().texturePackList.getSelectedTexturePack();
++        return createNewTexture(par1Str, par1Str, null);
++    }
++
++    public List createNewTexture(String textureName, String textureFile, TextureStitched stitched)
++    {
++        String par1Str = textureFile;
++        ArrayList arraylist = new ArrayList();
++        ITexturePack itexturepack = Minecraft.getMinecraft().texturePackList.getSelectedTexturePack();
+ 
+         try
+         {
+-            BufferedImage var9 = ImageIO.read(var3.getResourceAsStream("/" + par1Str));
+-            int var10 = var9.getHeight();
+-            int var11 = var9.getWidth();
+-            String var12 = this.getBasename(par1Str);
++            BufferedImage bufferedimage = null;
++            int i = 0;
++            int j = 0;
++            FileNotFoundException fnfe = null;
++            try
++            {
++                bufferedimage = ImageIO.read(itexturepack.getResourceAsStream("/" + textureFile));
++                i = bufferedimage.getHeight();
++                j = bufferedimage.getWidth();
++            }
++            catch (FileNotFoundException e)
++            {
++                fnfe = e;
++            }
++            String s1 = textureName;
+ 
+-            if (this.hasAnimationTxt(par1Str, var3))
++            if (fnfe != null)
+             {
+-                int var13 = var11;
+-                int var14 = var11;
+-                int var15 = var10 / var11;
++                throw fnfe;
++            }
++            else if (this.hasAnimationTxt(par1Str, itexturepack))
++            {
++                int k = j;
++                int l = j;
++                int i1 = i / j;
+ 
+-                for (int var16 = 0; var16 < var15; ++var16)
++                for (int j1 = 0; j1 < i1; ++j1)
+                 {
+-                    Texture var17 = this.makeTexture(var12, 2, var13, var14, 10496, 6408, 9728, 9728, false, var9.getSubimage(0, var14 * var16, var13, var14));
+-                    var2.add(var17);
++                    Texture texture = this.makeTexture(s1, 2, k, l, 10496, 6408, 9728, 9728, false, bufferedimage.getSubimage(0, l * j1, k, l));
++                    arraylist.add(texture);
+                 }
+             }
+-            else if (var11 == var10)
++            else if (j == i)
+             {
+-                var2.add(this.makeTexture(var12, 2, var11, var10, 10496, 6408, 9728, 9728, false, var9));
++                arraylist.add(this.makeTexture(s1, 2, j, i, 10496, 6408, 9728, 9728, false, bufferedimage));
+             }
+             else
+             {
+                 Minecraft.getMinecraft().getLogAgent().logWarning("TextureManager.createTexture: Skipping " + par1Str + " because of broken aspect ratio and not animation");
+             }
+ 
+-            return var2;
++            return arraylist;
+         }
+-        catch (FileNotFoundException var18)
++        catch (FileNotFoundException filenotfoundexception)
+         {
+             Minecraft.getMinecraft().getLogAgent().logWarning("TextureManager.createTexture called for file " + par1Str + ", but that file does not exist. Ignoring.");
+         }
+-        catch (IOException var19)
++        catch (IOException ioexception)
+         {
+             Minecraft.getMinecraft().getLogAgent().logWarning("TextureManager.createTexture encountered an IOException when trying to read file " + par1Str + ". Ignoring.");
+         }
+ 
+-        return var2;
++        return arraylist;
+     }
+ 
+     /**
