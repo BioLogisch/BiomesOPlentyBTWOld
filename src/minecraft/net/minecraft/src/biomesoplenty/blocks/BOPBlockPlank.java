@@ -9,7 +9,6 @@ import net.minecraft.src.IconRegister;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
 import net.minecraft.src.biomesoplenty.BiomesOPlenty;
-import java.util.List;
 
 public class BOPBlockPlank extends Block
 {

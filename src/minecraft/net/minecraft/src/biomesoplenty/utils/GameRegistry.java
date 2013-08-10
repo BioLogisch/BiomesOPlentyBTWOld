@@ -3,7 +3,6 @@ package net.minecraft.src.biomesoplenty.utils;
 import net.minecraft.src.Block;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemBlock;
-import net.minecraft.src.biomesoplenty.api.BOPAPIBlocks;
 import net.minecraft.src.biomesoplenty.itemblock.ItemMultiBlock;
 
 public class GameRegistry 

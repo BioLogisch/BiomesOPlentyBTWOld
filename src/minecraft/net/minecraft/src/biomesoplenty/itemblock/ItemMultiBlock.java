@@ -1,12 +1,8 @@
 package net.minecraft.src.biomesoplenty.itemblock;
 
-import java.util.List;
-
 import net.minecraft.src.Block;
-import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.ItemBlockWithMetadata;
 import net.minecraft.src.ItemStack;
-import net.minecraft.src.biomesoplenty.utils.LanguageRegistry;
 
 public class ItemMultiBlock extends ItemBlockWithMetadata
 {

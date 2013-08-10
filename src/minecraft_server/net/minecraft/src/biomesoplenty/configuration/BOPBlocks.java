@@ -1,14 +1,10 @@
 package net.minecraft.src.biomesoplenty.configuration;
 
 import net.minecraft.src.Block;
-import net.minecraft.src.BlockStone;
-import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.biomesoplenty.BiomesOPlenty;
 import net.minecraft.src.biomesoplenty.api.BOPAPIBlocks;
 import net.minecraft.src.biomesoplenty.blocks.BOPBlockPlank;
-import net.minecraft.src.biomesoplenty.itemblock.ItemMultiBlock;
 import net.minecraft.src.biomesoplenty.utils.ConfigUtils;
 import net.minecraft.src.biomesoplenty.utils.GameRegistry;
 import net.minecraft.src.biomesoplenty.utils.LanguageRegistry;
