@@ -16,3 +16,12 @@
      private Icon[] iconArray;
  
      protected BlockFire(int par1)
+@@ -26,6 +26,8 @@
+      */
+     public void initializeBlock()
+     {
++        abilityToCatchFire = Block.blockFlammability;
++        chanceToEncourageFire = Block.blockFireSpreadSpeed;
+         this.setBurnRate(Block.planks.blockID, 5, 20);
+         this.setBurnRate(Block.woodDoubleSlab.blockID, 5, 20);
+         this.setBurnRate(Block.woodSingleSlab.blockID, 5, 20);
