@@ -4,22 +4,108 @@ import java.io.File;
 
 import net.minecraft.src.biomesoplenty.utils.ConfigFile;
 
-public class BOPConfiguration extends ConfigFile
+public class BOPConfiguration
 {
-	@Override
-	public void setDefaults() 
+	public static ConfigFile mainConfigFile;
+	public static ConfigFile biomeGenConfigFile;
+	public static ConfigFile terrainGenConfigFile;
+	public static ConfigFile idConfigFile;
+	public static ConfigFile miscConfigFile;
+	
+	public static void init()
 	{
+	    mainConfigFile = new BOPConfiguration.Main();
+	    biomeGenConfigFile = new BOPConfiguration.BiomeGen();
 	}
 
-	@Override
-	public File getConfigFile() 
+	public static class Main extends ConfigFile
 	{
-		return new File(this.baseConfigDir + File.separator + "biomesoplenty" + File.separator + "base.cfg");
+		@Override
+		public void setDefaults() 
+		{
+		}
+
+		@Override
+		public File getConfigFile() 
+		{
+			return new File(this.baseConfigDir + File.separator + "biomesoplenty" + File.separator + "main.cfg");
+		}
+
+		@Override
+		public String getHeader()
+		{
+			return "Biomes O Plenty Main Config";
+		}
 	}
-	
-	@Override
-	public String getHeader()
+
+	public static class BiomeGen extends ConfigFile
 	{
-		return "Biomes O Plenty Base Config";
+		@Override
+		public void setDefaults() 
+		{
+			properties.setProperty("alpsGeneration", "true");
+			properties.setProperty("arcticGeneration", "true");
+			properties.setProperty("birchForestGeneration", "true");
+			properties.setProperty("bogGeneration", "true");
+			properties.setProperty("borealForestGeneration", "true");
+			properties.setProperty("brushlandGeneration", "true");
+			properties.setProperty("chaparralGeneration", "true");
+			properties.setProperty("coniferousForestGeneration", "true");
+			properties.setProperty("coniferousForestSnowGeneration", "true");
+			properties.setProperty("deciduousForestGeneration", "true");
+			properties.setProperty("dunesGeneration", "true");
+			properties.setProperty("fenGeneration", "true");
+			properties.setProperty("fieldGeneration", "true");
+			properties.setProperty("frostForestGeneration", "true");
+			properties.setProperty("glacierGeneration", "true");
+			properties.setProperty("grasslandGeneration", "true");
+			properties.setProperty("groveGeneration", "true");
+			properties.setProperty("heathlandGeneration", "true");
+			properties.setProperty("highlandGeneration", "true");
+			//properties.setProperty("icyHillsGeneration", "true");
+			properties.setProperty("jadeCliffsGeneration", "true");
+			properties.setProperty("lushSwampGeneration", "true");
+			properties.setProperty("marshGeneration", "true");
+			properties.setProperty("meadowGeneration", "true");
+			properties.setProperty("moorGeneration", "true");
+			properties.setProperty("mountainGeneration", "true");
+			properties.setProperty("mysticGroveGeneration", "true");
+			//properties.setProperty("oasisGeneration", "true");
+			properties.setProperty("ominousWoodsGeneration", "true");
+			properties.setProperty("originValleyGeneration", "true");
+			properties.setProperty("polarGeneration", "true");
+			properties.setProperty("prairieGeneration", "true");
+			properties.setProperty("rainforestGeneration", "true");
+			properties.setProperty("redwoodForestGeneration", "true");
+			properties.setProperty("sacredSpringsGeneration", "true");
+			properties.setProperty("savannaGeneration", "true");
+			properties.setProperty("scrublandGeneration", "true");
+			properties.setProperty("shieldGeneration", "true");
+			properties.setProperty("shrublandGeneration", "true");
+			properties.setProperty("sludgepitGeneration", "true");
+			properties.setProperty("spruceWoodsGeneration", "true");
+			properties.setProperty("steppeGeneration", "true");
+			properties.setProperty("temperateRainforestGeneration", "true");
+			properties.setProperty("thicketGeneration", "true");
+			properties.setProperty("timberGeneration", "true");
+			properties.setProperty("tropicalRainforestGeneration", "true");
+			properties.setProperty("tropicsGeneration", "true");
+			properties.setProperty("tundraGeneration", "true");
+			properties.setProperty("volcanoGeneration", "true");
+			properties.setProperty("wetlandGeneration", "true");
+			properties.setProperty("woodlandGeneration", "true");
+		}
+
+		@Override
+		public File getConfigFile() 
+		{
+			return new File(this.baseConfigDir + File.separator + "biomesoplenty" + File.separator + "biomegen.cfg");
+		}
+
+		@Override
+		public String getHeader()
+		{
+			return "Biomes O Plenty Biome Gen Config";
+		}
 	}
 }

@@ -15,8 +15,6 @@ public class BiomesOPlenty extends FCAddOn
     public static String bopVersionString = "0.1.1";
     public static BiomesOPlenty m_instance = new BiomesOPlenty();
     
-    public ConfigFile bopBaseConfig = new BOPConfiguration();
-    
     public static final WorldType BIOMEOP = (new WorldTypeBOP());  
     
     public static void vanillaConstruct()
@@ -27,6 +25,7 @@ public class BiomesOPlenty extends FCAddOn
     @Override
     public void PreInitialize() 
     {
+    	BOPConfiguration.init();
     	ConfigFileManager.setDefaultValues();
     	BOPBiomes.init();
     	BetterThanHorsesIntegration.init();
