@@ -1,11 +1,8 @@
 package net.minecraft.src.biomesoplenty.configuration;
 
 import net.minecraft.src.Block;
-import net.minecraft.src.BlockDirt;
 import net.minecraft.src.BlockStone;
 import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.FCBlockPane;
-import net.minecraft.src.Material;
 import net.minecraft.src.biomesoplenty.utils.GameRegistry;
 
 public class BOPBlocks 

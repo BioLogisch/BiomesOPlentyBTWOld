@@ -9,9 +9,6 @@ import net.minecraft.src.biomesoplenty.configuration.BOPBlocks;
 import net.minecraft.src.biomesoplenty.configuration.BOPConfiguration;
 import net.minecraft.src.biomesoplenty.configuration.CreativeTabsBOP;
 import net.minecraft.src.biomesoplenty.integration.BetterThanHorsesIntegration;
-import net.minecraft.src.biomesoplenty.utils.ConfigFile;
-import net.minecraft.src.biomesoplenty.utils.ConfigFileManager;
-import net.minecraft.src.biomesoplenty.utils.GameRegistry;
 import net.minecraft.src.biomesoplenty.world.WorldTypeBOP;
 
 public class BiomesOPlenty extends FCAddOn
