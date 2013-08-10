@@ -1,0 +1,11 @@
+--- ../src_base/minecraft_server/net/minecraft/src/FCAddOn.java
++++ ../src/minecraft_server/net/minecraft/src/FCAddOn.java
+@@ -6,6 +6,8 @@
+     {
+         FCAddOnHandler.AddMod(this);
+     }
++    
++    public void InitializeConfigs() {}
+ 
+     public void PreInitialize() {}
+ 

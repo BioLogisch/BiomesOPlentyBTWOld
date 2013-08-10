@@ -1,0 +1,19 @@
+--- ../src_base/minecraft/net/minecraft/src/Item.java
++++ ../src/minecraft/net/minecraft/src/Item.java
+@@ -779,4 +779,16 @@
+         StatList.initStats();
+         m_bSuppressConflictWarnings = false;
+     }
++
++    /**
++     * Gets a list of tabs that items belonging to this class can display on,
++     * combined properly with getSubItems allows for a single item to span
++     * many sub-items across many tabs.
++     *
++     * @return A list of all tabs that this item could possibly be one.
++     */
++    public CreativeTabs[] getCreativeTabs()
++    {
++    	return new CreativeTabs[]{ getCreativeTab() };
++    }
+ }

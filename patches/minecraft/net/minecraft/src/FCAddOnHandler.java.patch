@@ -1,0 +1,41 @@
+--- ../src_base/minecraft/net/minecraft/src/FCAddOnHandler.java
++++ ../src/minecraft/net/minecraft/src/FCAddOnHandler.java
+@@ -8,8 +8,10 @@
+ import java.util.logging.Level;
+ import java.util.logging.Logger;
+ import java.util.logging.SimpleFormatter;
++
+ import net.minecraft.client.Minecraft;
+ import net.minecraft.server.MinecraftServer;
++import net.minecraft.src.biomesoplenty.utils.ConfigFileManager;
+ 
+ public class FCAddOnHandler
+ {
+@@ -30,6 +32,7 @@
+         {
+             InitializeLogger();
+             LogMessage("...Add-On Handler Initializing...");
++            InitializeConfigs();
+             PreInitializeMods();
+             Iterator var0 = m_ModList.iterator();
+ 
+@@ -74,6 +77,19 @@
+         }
+ 
+         m_Logger.fine(var0);
++    }
++    
++    public static void InitializeConfigs()
++    {
++        Iterator var0 = m_ModList.iterator();
++
++        while (var0.hasNext())
++        {
++            FCAddOn var1 = (FCAddOn)var0.next();
++            var1.InitializeConfigs();
++        }
++        
++    	ConfigFileManager.setDefaultValues();
+     }
+ 
+     public static void PreInitializeMods()

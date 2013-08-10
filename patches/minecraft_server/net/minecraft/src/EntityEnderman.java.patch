@@ -1,0 +1,11 @@
+--- ../src_base/minecraft_server/net/minecraft/src/EntityEnderman.java
++++ ../src/minecraft_server/net/minecraft/src/EntityEnderman.java
+@@ -5,7 +5,7 @@
+ 
+ public class EntityEnderman extends EntityMob
+ {
+-    private static boolean[] carriableBlocks = new boolean[256];
++    private static boolean[] carriableBlocks = new boolean[4096];
+ 
+     /**
+      * Counter to delay the teleportation of an enderman towards the currently attacked target

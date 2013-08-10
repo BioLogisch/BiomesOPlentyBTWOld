@@ -1,0 +1,11 @@
+--- ../src_base/minecraft/net/minecraft/src/FCBetterThanWolves.java
++++ ../src/minecraft/net/minecraft/src/FCBetterThanWolves.java
+@@ -513,7 +513,7 @@
+     public static final int fcCustomSpawnEntityPacketTypeSpiderWeb = 10;
+     public static final int fcCustomSpawnEntityPacketTypeSoulSand = 11;
+     public static StepSound fcSoundSquishFootstep = new FCStepSoundSquish("squish", 0.5F, 0.1F);
+-    public static boolean[] m_bBlocksPotentialFluidSources = new boolean[256];
++    public static boolean[] m_bBlocksPotentialFluidSources = new boolean[4096];
+     public static int fcBlockWoodSidingItemStubID;
+     public static int fcBlockWoodMouldingItemStubID;
+     public static int fcBlockWoodCornerItemStubID;

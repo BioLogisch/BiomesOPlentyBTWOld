@@ -1,21 +1,27 @@
 package net.minecraft.src.biomesoplenty;
 
+import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.FCAddOn;
 import net.minecraft.src.FCAddOnHandler;
 import net.minecraft.src.WorldType;
 import net.minecraft.src.biomesoplenty.configuration.BOPBiomes;
+import net.minecraft.src.biomesoplenty.configuration.BOPBlocks;
 import net.minecraft.src.biomesoplenty.configuration.BOPConfiguration;
+import net.minecraft.src.biomesoplenty.configuration.CreativeTabsBOP;
 import net.minecraft.src.biomesoplenty.integration.BetterThanHorsesIntegration;
 import net.minecraft.src.biomesoplenty.utils.ConfigFile;
 import net.minecraft.src.biomesoplenty.utils.ConfigFileManager;
+import net.minecraft.src.biomesoplenty.utils.GameRegistry;
 import net.minecraft.src.biomesoplenty.world.WorldTypeBOP;
 
 public class BiomesOPlenty extends FCAddOn
 {
-    public static String bopVersionString = "0.1.1";
+    public static String bopVersionString = "0.1.2";
     public static BiomesOPlenty m_instance = new BiomesOPlenty();
     
     public static final WorldType BIOMEOP = (new WorldTypeBOP());  
+    
+	public static CreativeTabs tabBiomesOPlenty;
     
     public static void vanillaConstruct()
     {
@@ -23,10 +29,17 @@ public class BiomesOPlenty extends FCAddOn
     }
     
     @Override
-    public void PreInitialize() 
+    public void InitializeConfigs()
     {
     	BOPConfiguration.init();
-    	ConfigFileManager.setDefaultValues();
+    }
+    
+    @Override
+    public void PreInitialize() 
+    {
+		tabBiomesOPlenty = new CreativeTabsBOP(CreativeTabs.getNextID(), "tabBiomesOPlenty");
+    	
+    	BOPBlocks.init();
     	BOPBiomes.init();
     	BetterThanHorsesIntegration.init();
     }

@@ -1,0 +1,83 @@
+--- ../src_base/minecraft/net/minecraft/src/ContainerCreative.java
++++ ../src/minecraft/net/minecraft/src/ContainerCreative.java
+@@ -10,20 +10,20 @@
+ 
+     public ContainerCreative(EntityPlayer par1EntityPlayer)
+     {
+-        InventoryPlayer var2 = par1EntityPlayer.inventory;
+-        int var3;
++        InventoryPlayer inventoryplayer = par1EntityPlayer.inventory;
++        int i;
+ 
+-        for (var3 = 0; var3 < 5; ++var3)
++        for (i = 0; i < 5; ++i)
+         {
+-            for (int var4 = 0; var4 < 9; ++var4)
++            for (int j = 0; j < 9; ++j)
+             {
+-                this.addSlotToContainer(new Slot(GuiContainerCreative.getInventory(), var3 * 9 + var4, 9 + var4 * 18, 18 + var3 * 18));
++                this.addSlotToContainer(new Slot(GuiContainerCreative.getInventory(), i * 9 + j, 9 + j * 18, 18 + i * 18));
+             }
+         }
+ 
+-        for (var3 = 0; var3 < 9; ++var3)
++        for (i = 0; i < 9; ++i)
+         {
+-            this.addSlotToContainer(new Slot(var2, var3, 9 + var3 * 18, 112));
++            this.addSlotToContainer(new Slot(inventoryplayer, i, 9 + i * 18, 112));
+         }
+ 
+         this.scrollTo(0.0F);
+@@ -39,27 +39,27 @@
+      */
+     public void scrollTo(float par1)
+     {
+-        int var2 = this.itemList.size() / 9 - 5 + 1;
+-        int var3 = (int)((double)(par1 * (float)var2) + 0.5D);
++        int i = this.itemList.size() / 9 - 5 + 1;
++        int j = (int)((double)(par1 * (float)i) + 0.5D);
+ 
+-        if (var3 < 0)
++        if (j < 0)
+         {
+-            var3 = 0;
++            j = 0;
+         }
+ 
+-        for (int var4 = 0; var4 < 5; ++var4)
++        for (int k = 0; k < 5; ++k)
+         {
+-            for (int var5 = 0; var5 < 9; ++var5)
++            for (int l = 0; l < 9; ++l)
+             {
+-                int var6 = var5 + (var4 + var3) * 9;
++                int i1 = l + (k + j) * 9;
+ 
+-                if (var6 >= 0 && var6 < this.itemList.size())
++                if (i1 >= 0 && i1 < this.itemList.size())
+                 {
+-                    GuiContainerCreative.getInventory().setInventorySlotContents(var5 + var4 * 9, (ItemStack)this.itemList.get(var6));
++                    GuiContainerCreative.getInventory().setInventorySlotContents(l + k * 9, (ItemStack)this.itemList.get(i1));
+                 }
+                 else
+                 {
+-                    GuiContainerCreative.getInventory().setInventorySlotContents(var5 + var4 * 9, (ItemStack)null);
++                    GuiContainerCreative.getInventory().setInventorySlotContents(l + k * 9, (ItemStack)null);
+                 }
+             }
+         }
+@@ -82,11 +82,11 @@
+     {
+         if (par2 >= this.inventorySlots.size() - 9 && par2 < this.inventorySlots.size())
+         {
+-            Slot var3 = (Slot)this.inventorySlots.get(par2);
++            Slot slot = (Slot)this.inventorySlots.get(par2);
+ 
+-            if (var3 != null && var3.getHasStack())
++            if (slot != null && slot.getHasStack())
+             {
+-                var3.putStack((ItemStack)null);
++                slot.putStack((ItemStack)null);
+             }
+         }
+ 

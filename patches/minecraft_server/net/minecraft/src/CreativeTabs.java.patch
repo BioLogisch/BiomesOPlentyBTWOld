@@ -1,0 +1,39 @@
+--- ../src_base/minecraft_server/net/minecraft/src/CreativeTabs.java
++++ ../src/minecraft_server/net/minecraft/src/CreativeTabs.java
+@@ -2,7 +2,7 @@
+ 
+ public class CreativeTabs
+ {
+-    public static final CreativeTabs[] creativeTabArray = new CreativeTabs[12];
++    public static CreativeTabs[] creativeTabArray = new CreativeTabs[12];
+     public static final CreativeTabs tabBlock = new CreativeTabBlock(0, "buildingBlocks");
+     public static final CreativeTabs tabDecorations = new CreativeTabDeco(1, "decorations");
+     public static final CreativeTabs tabRedstone = new CreativeTabRedstone(2, "redstone");
+@@ -19,7 +19,7 @@
+     private final String tabLabel;
+ 
+     /** Texture to use. */
+-    private String theTexture = "list_items.png";
++    private String backgroundImageName = "list_items.png";
+     private boolean hasScrollbar = true;
+ 
+     /** Whether to draw the title in the foreground of the creative GUI */
+@@ -34,7 +34,7 @@
+ 
+     public CreativeTabs setBackgroundImageName(String par1Str)
+     {
+-        this.theTexture = par1Str;
++        this.backgroundImageName = par1Str;
+         return this;
+     }
+ 
+@@ -49,4 +49,9 @@
+         this.hasScrollbar = false;
+         return this;
+     }
++    
++    public static int getNextID()
++    {
++        return creativeTabArray.length;
++    }
+ }

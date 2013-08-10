@@ -1,0 +1,18 @@
+--- ../src_base/minecraft_server/net/minecraft/src/BlockFire.java
++++ ../src/minecraft_server/net/minecraft/src/BlockFire.java
+@@ -5,13 +5,13 @@
+ public class BlockFire extends Block
+ {
+     /** The chance this block will encourage nearby blocks to catch on fire */
+-    public static int[] chanceToEncourageFire = new int[256];
++    public static int[] chanceToEncourageFire = new int[4096];
+ 
+     /**
+      * This is an array indexed by block ID the larger the number in the array the more likely a block type will catch
+      * fires
+      */
+-    public static int[] abilityToCatchFire = new int[256];
++    public static int[] abilityToCatchFire = new int[4096];
+     private Icon[] iconArray;
+ 
+     protected BlockFire(int par1)
