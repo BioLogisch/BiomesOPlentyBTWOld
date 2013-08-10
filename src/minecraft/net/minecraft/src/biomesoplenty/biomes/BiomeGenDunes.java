@@ -1,6 +1,5 @@
 package net.minecraft.src.biomesoplenty.biomes;
 
-import java.awt.Color;
 import java.util.Random;
 
 import net.minecraft.src.BiomeGenBase;

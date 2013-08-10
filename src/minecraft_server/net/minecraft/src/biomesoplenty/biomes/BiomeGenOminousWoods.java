@@ -8,7 +8,6 @@ import net.minecraft.src.EntityBat;
 import net.minecraft.src.EntityCaveSpider;
 import net.minecraft.src.EntityEnderman;
 import net.minecraft.src.EntitySpider;
-import net.minecraft.src.FCEntityWolfDire;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.WorldGenTallGrass;
 import net.minecraft.src.WorldGenerator;

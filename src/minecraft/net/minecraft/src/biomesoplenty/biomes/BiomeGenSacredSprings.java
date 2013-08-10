@@ -1,11 +1,9 @@
 package net.minecraft.src.biomesoplenty.biomes;
 
-import java.awt.Color;
 import java.util.Random;
 
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.Block;
-import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenShrub;
 import net.minecraft.src.WorldGenerator;

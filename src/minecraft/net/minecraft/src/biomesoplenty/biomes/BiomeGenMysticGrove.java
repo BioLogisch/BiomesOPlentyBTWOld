@@ -4,8 +4,6 @@ import java.util.Random;
 
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.Block;
-import net.minecraft.src.EntityWitch;
-import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.WorldGenTallGrass;
 import net.minecraft.src.WorldGenerator;
 import net.minecraft.src.biomesoplenty.worldgen.WorldGenMystic1;

@@ -3,7 +3,6 @@ package net.minecraft.src.biomesoplenty.biomes;
 import java.util.Random;
 
 import net.minecraft.src.BiomeGenBase;
-import net.minecraft.src.Block;
 import net.minecraft.src.World;
 
 public class BiomeGenPolar extends BiomeGenBase

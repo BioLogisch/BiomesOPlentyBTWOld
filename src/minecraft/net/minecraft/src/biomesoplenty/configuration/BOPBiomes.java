@@ -56,7 +56,6 @@ import net.minecraft.src.biomesoplenty.biomes.BiomeGenTundra;
 import net.minecraft.src.biomesoplenty.biomes.BiomeGenVolcano;
 import net.minecraft.src.biomesoplenty.biomes.BiomeGenWetland;
 import net.minecraft.src.biomesoplenty.biomes.BiomeGenWoodland;
-import net.minecraft.src.biomesoplenty.world.WorldTypeBOP;
 
 public class BOPBiomes 
 {

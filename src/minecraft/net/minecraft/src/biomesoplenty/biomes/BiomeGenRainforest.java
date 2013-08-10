@@ -4,7 +4,6 @@ import java.util.Random;
 
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.Block;
-import net.minecraft.src.EntityCaveSpider;
 import net.minecraft.src.EntityOcelot;
 import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.World;

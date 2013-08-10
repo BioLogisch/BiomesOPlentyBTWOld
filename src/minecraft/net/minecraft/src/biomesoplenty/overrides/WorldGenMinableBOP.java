@@ -1,7 +1,5 @@
 package net.minecraft.src.biomesoplenty.overrides;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.util.Random;
 
 import net.minecraft.src.Block;
