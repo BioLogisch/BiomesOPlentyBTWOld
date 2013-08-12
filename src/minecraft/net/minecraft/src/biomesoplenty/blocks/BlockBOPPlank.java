@@ -18,7 +18,7 @@ public class BlockBOPPlank extends Block
 	public BlockBOPPlank(int blockID)
 	{
 		super(blockID, Material.wood);
-		setBurnProperties(this.blockID, 5, 20);
+		setBurnProperties(blockID, 5, 20);
 		setHardness(1.0F);
 		setResistance(5.0F);
 		this.setCreativeTab(BiomesOPlenty.tabBiomesOPlenty);

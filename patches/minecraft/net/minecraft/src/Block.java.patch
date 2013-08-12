@@ -27,6 +27,15 @@
      {
          this.blockResistance = par1 * 3.0F;
          return this;
+@@ -1567,7 +1569,7 @@
+         Item.itemsList[cobblestoneWall.blockID] = (new ItemMultiTextureTile(cobblestoneWall.blockID - 256, cobblestoneWall, BlockWall.types)).setUnlocalizedName("cobbleWall");
+         Item.itemsList[anvil.blockID] = (new ItemAnvilBlock(anvil)).setUnlocalizedName("anvil");
+ 
+-        for (int var0 = 0; var0 < 256; ++var0)
++        for (int var0 = 0; var0 < 4096; ++var0)
+         {
+             if (blocksList[var0] != null)
+             {
 @@ -1611,4 +1613,118 @@
          canBlockGrass[0] = true;
          StatList.initBreakableStats();
