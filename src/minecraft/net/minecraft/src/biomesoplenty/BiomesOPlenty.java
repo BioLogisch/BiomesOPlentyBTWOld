@@ -3,13 +3,18 @@ package net.minecraft.src.biomesoplenty;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.FCAddOn;
 import net.minecraft.src.FCAddOnHandler;
+import net.minecraft.src.ItemStack;
 import net.minecraft.src.StringTranslate;
 import net.minecraft.src.WorldType;
+import net.minecraft.src.biomesoplenty.api.BOPAPIBlocks;
 import net.minecraft.src.biomesoplenty.configuration.BOPBiomes;
 import net.minecraft.src.biomesoplenty.configuration.BOPBlocks;
 import net.minecraft.src.biomesoplenty.configuration.BOPConfiguration;
+import net.minecraft.src.biomesoplenty.configuration.BOPCrafting;
+import net.minecraft.src.biomesoplenty.configuration.BOPItems;
 import net.minecraft.src.biomesoplenty.configuration.CreativeTabsBOP;
 import net.minecraft.src.biomesoplenty.integration.BetterThanHorsesIntegration;
+import net.minecraft.src.biomesoplenty.oredict.OreDictionary;
 import net.minecraft.src.biomesoplenty.utils.LanguageRegistry;
 import net.minecraft.src.biomesoplenty.utils.Localization;
 import net.minecraft.src.biomesoplenty.world.WorldTypeBOP;
@@ -39,9 +44,10 @@ public class BiomesOPlenty extends FCAddOn
     {
 		tabBiomesOPlenty = new CreativeTabsBOP(CreativeTabs.getNextID(), "tabBiomesOPlenty");
     	
-		if (BOPConfiguration.mainConfigFile.getBoolean("enableCustomBlocks"))
+		if (BOPConfiguration.mainConfigFile.getBoolean("enableCustomContent"))
 		{
 			BOPBlocks.init();
+			BOPItems.init();
 		}
 		
     	BOPBiomes.init();
@@ -71,5 +77,9 @@ public class BiomesOPlenty extends FCAddOn
 	@Override
 	public void PostInitialize()
 	{
+		if (BOPConfiguration.mainConfigFile.getBoolean("enableCustomContent"))
+		{
+			BOPCrafting.init();
+		}
 	}
 }

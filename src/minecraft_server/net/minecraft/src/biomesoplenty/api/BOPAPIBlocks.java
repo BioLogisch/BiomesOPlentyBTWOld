@@ -6,4 +6,8 @@ public class BOPAPIBlocks
 {
 	// Planks and logs
 	public static Block planks = null;
+	public static Block logs1 = null;
+	public static Block logs2 = null;
+	public static Block logs3 = null;
+	public static Block logs4 = null;
 }

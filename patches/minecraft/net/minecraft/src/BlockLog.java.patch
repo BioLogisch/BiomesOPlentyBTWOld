@@ -1,0 +1,19 @@
+--- ../src_base/minecraft/net/minecraft/src/BlockLog.java
++++ ../src/minecraft/net/minecraft/src/BlockLog.java
+@@ -168,4 +168,16 @@
+         super(var1, var2);
+         this.setCreativeTab(CreativeTabs.tabBlock);
+     }
++    
++    @Override
++    public boolean canSustainLeaves(World world, int x, int y, int z)
++    {
++        return true;
++    }
++    
++    @Override
++    public boolean isWood(World world, int x, int y, int z)
++    {
++        return true;
++    }
+ }

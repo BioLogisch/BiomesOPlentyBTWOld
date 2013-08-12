@@ -1,24 +1,26 @@
 --- ../src_base/minecraft_server/net/minecraft/src/FCAddOnHandler.java
 +++ ../src/minecraft_server/net/minecraft/src/FCAddOnHandler.java
-@@ -8,7 +8,9 @@
+@@ -8,7 +8,10 @@
  import java.util.logging.Level;
  import java.util.logging.Logger;
  import java.util.logging.SimpleFormatter;
 +
  import net.minecraft.server.MinecraftServer;
++import net.minecraft.src.biomesoplenty.oredict.OreDictionary;
 +import net.minecraft.src.biomesoplenty.utils.ConfigFileManager;
  
  public class FCAddOnHandler
  {
-@@ -29,6 +31,7 @@
+@@ -29,6 +32,8 @@
          {
              InitializeLogger();
              LogMessage("...Add-On Handler Initializing...");
++            OreDictionary.getOreName(0);
 +            InitializeConfigs();
              PreInitializeMods();
              Iterator var0 = m_ModList.iterator();
  
-@@ -74,6 +77,19 @@
+@@ -74,6 +79,19 @@
  
          m_Logger.fine(var0);
      }

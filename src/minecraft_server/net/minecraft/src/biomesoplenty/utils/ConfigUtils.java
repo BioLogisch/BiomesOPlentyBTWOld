@@ -15,4 +15,14 @@ public class ConfigUtils
 	{
 		return BOPConfiguration.idConfigFile.getInt("Block." + name);
 	}
+	
+	public static void setItemID(Properties properties, String name, int id)
+	{
+		properties.setProperty("Item." + name, String.valueOf(id));
+	}
+	
+	public static int getItemID(String name)
+	{
+		return BOPConfiguration.idConfigFile.getInt("Item." + name);
+	}
 }

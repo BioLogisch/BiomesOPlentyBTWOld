@@ -1,0 +1,15 @@
+--- ../src_base/minecraft_server/net/minecraft/src/WorldGenBigMushroom.java
++++ ../src/minecraft_server/net/minecraft/src/WorldGenBigMushroom.java
+@@ -53,8 +53,10 @@
+                         if (var9 >= 0 && var9 < 256)
+                         {
+                             var13 = par1World.getBlockId(var11, var9, var12);
+-
+-                            if (var13 != 0 && var13 != Block.leaves.blockID)
++                            
++                            Block block = Block.blocksList[var13];
++
++                            if (var13 != 0 && block != null && !block.isLeaves(par1World, var11, var9, var12))
+                             {
+                                 var8 = false;
+                             }

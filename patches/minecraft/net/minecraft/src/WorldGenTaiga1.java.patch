@@ -1,0 +1,153 @@
+--- ../src_base/minecraft/net/minecraft/src/WorldGenTaiga1.java
++++ ../src/minecraft/net/minecraft/src/WorldGenTaiga1.java
+@@ -6,101 +6,108 @@
+ {
+     public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
+     {
+-        int var6 = par2Random.nextInt(5) + 7;
+-        int var7 = var6 - par2Random.nextInt(2) - 3;
+-        int var8 = var6 - var7;
+-        int var9 = 1 + par2Random.nextInt(var8 + 1);
+-        boolean var10 = true;
++        int l = par2Random.nextInt(5) + 7;
++        int i1 = l - par2Random.nextInt(2) - 3;
++        int j1 = l - i1;
++        int k1 = 1 + par2Random.nextInt(j1 + 1);
++        boolean flag = true;
+ 
+-        if (par4 >= 1 && par4 + var6 + 1 <= 128)
++        if (par4 >= 1 && par4 + l + 1 <= 128)
+         {
+-            int var11;
+-            int var13;
+-            int var14;
+-            int var15;
+-            int var18;
++            int l1;
++            int i2;
++            int j2;
++            int k2;
++            int l2;
+ 
+-            for (var11 = par4; var11 <= par4 + 1 + var6 && var10; ++var11)
++            for (l1 = par4; l1 <= par4 + 1 + l && flag; ++l1)
+             {
+-                boolean var12 = true;
++                boolean flag1 = true;
+ 
+-                if (var11 - par4 < var7)
++                if (l1 - par4 < i1)
+                 {
+-                    var18 = 0;
++                    l2 = 0;
+                 }
+                 else
+                 {
+-                    var18 = var9;
++                    l2 = k1;
+                 }
+ 
+-                for (var13 = par3 - var18; var13 <= par3 + var18 && var10; ++var13)
++                for (i2 = par3 - l2; i2 <= par3 + l2 && flag; ++i2)
+                 {
+-                    for (var14 = par5 - var18; var14 <= par5 + var18 && var10; ++var14)
++                    for (j2 = par5 - l2; j2 <= par5 + l2 && flag; ++j2)
+                     {
+-                        if (var11 >= 0 && var11 < 128)
++                        if (l1 >= 0 && l1 < 128)
+                         {
+-                            var15 = par1World.getBlockId(var13, var11, var14);
++                            k2 = par1World.getBlockId(i2, l1, j2);
+ 
+-                            if (var15 != 0 && var15 != Block.leaves.blockID)
++                            Block block = Block.blocksList[k2];
++
++                            if (k2 != 0 && (block == null || !block.isLeaves(par1World, i2, l1, j2)))
+                             {
+-                                var10 = false;
++                                flag = false;
+                             }
+                         }
+                         else
+                         {
+-                            var10 = false;
++                            flag = false;
+                         }
+                     }
+                 }
+             }
+ 
+-            if (!var10)
++            if (!flag)
+             {
+                 return false;
+             }
+             else
+             {
+-                var11 = par1World.getBlockId(par3, par4 - 1, par5);
++                l1 = par1World.getBlockId(par3, par4 - 1, par5);
+ 
+-                if ((var11 == Block.grass.blockID || var11 == Block.dirt.blockID) && par4 < 128 - var6 - 1)
++                if ((l1 == Block.grass.blockID || l1 == Block.dirt.blockID) && par4 < 128 - l - 1)
+                 {
+                     this.setBlock(par1World, par3, par4 - 1, par5, Block.dirt.blockID);
+-                    var18 = 0;
++                    l2 = 0;
+ 
+-                    for (var13 = par4 + var6; var13 >= par4 + var7; --var13)
++                    for (i2 = par4 + l; i2 >= par4 + i1; --i2)
+                     {
+-                        for (var14 = par3 - var18; var14 <= par3 + var18; ++var14)
++                        for (j2 = par3 - l2; j2 <= par3 + l2; ++j2)
+                         {
+-                            var15 = var14 - par3;
++                            k2 = j2 - par3;
+ 
+-                            for (int var16 = par5 - var18; var16 <= par5 + var18; ++var16)
++                            for (int i3 = par5 - l2; i3 <= par5 + l2; ++i3)
+                             {
+-                                int var17 = var16 - par5;
++                                int j3 = i3 - par5;
+ 
+-                                if ((Math.abs(var15) != var18 || Math.abs(var17) != var18 || var18 <= 0) && !Block.opaqueCubeLookup[par1World.getBlockId(var14, var13, var16)])
++                                Block block = Block.blocksList[par1World.getBlockId(j2, i2, i3)];
++
++                                if ((Math.abs(k2) != l2 || Math.abs(j3) != l2 || l2 <= 0) && 
++                                    (block == null /*|| block.canBeReplacedByLeaves(par1World, j2, i2, i3)*/))
+                                 {
+-                                    this.setBlockAndMetadata(par1World, var14, var13, var16, Block.leaves.blockID, 1);
++                                    this.setBlockAndMetadata(par1World, j2, i2, i3, Block.leaves.blockID, 1);
+                                 }
+                             }
+                         }
+ 
+-                        if (var18 >= 1 && var13 == par4 + var7 + 1)
++                        if (l2 >= 1 && i2 == par4 + i1 + 1)
+                         {
+-                            --var18;
++                            --l2;
+                         }
+-                        else if (var18 < var9)
++                        else if (l2 < k1)
+                         {
+-                            ++var18;
++                            ++l2;
+                         }
+                     }
+ 
+-                    for (var13 = 0; var13 < var6 - 1; ++var13)
++                    for (i2 = 0; i2 < l - 1; ++i2)
+                     {
+-                        var14 = par1World.getBlockId(par3, par4 + var13, par5);
++                        j2 = par1World.getBlockId(par3, par4 + i2, par5);
+ 
+-                        if (var14 == 0 || var14 == Block.leaves.blockID)
++                        Block block = Block.blocksList[j2];
++
++                        if (j2 == 0 || block == null || block.isLeaves(par1World, par3, par4 + i2, par5))
+                         {
+-                            this.setBlockAndMetadata(par1World, par3, par4 + var13, par5, Block.wood.blockID, 1);
++                            this.setBlockAndMetadata(par1World, par3, par4 + i2, par5, Block.wood.blockID, 1);
+                         }
+                     }
+ 

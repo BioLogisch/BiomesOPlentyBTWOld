@@ -25,7 +25,7 @@ public class BOPConfiguration
 		@Override
 		public void setDefaults() 
 		{
-			properties.setProperty("enableCustomBlocks", "false");
+			properties.setProperty("enableCustomContent", "true");
 		}
 
 		@Override
@@ -117,7 +117,13 @@ public class BOPConfiguration
 		@Override
 		public void setDefaults() 
 		{
+			ConfigUtils.setItemID(properties, "barkID", 25000);
+			
 			ConfigUtils.setBlockID(properties, "planksID", 1947);
+			ConfigUtils.setBlockID(properties, "logs1ID", 1933);
+			ConfigUtils.setBlockID(properties, "logs2ID", 1934);
+			ConfigUtils.setBlockID(properties, "logs3ID", 1935);
+			ConfigUtils.setBlockID(properties, "logs4ID", 1936);
 		}
 
 		@Override

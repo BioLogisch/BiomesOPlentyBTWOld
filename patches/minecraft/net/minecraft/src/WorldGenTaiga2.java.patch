@@ -1,0 +1,24 @@
+--- ../src_base/minecraft/net/minecraft/src/WorldGenTaiga2.java
++++ ../src/minecraft/net/minecraft/src/WorldGenTaiga2.java
+@@ -45,7 +45,9 @@
+                         {
+                             var15 = par1World.getBlockId(var13, var11, var14);
+ 
+-                            if (var15 != 0 && var15 != Block.leaves.blockID)
++                            Block block = Block.blocksList[var15];
++                            
++                            if (var15 != 0 && block != null && !block.isLeaves(par1World, var13, var11, var14))
+                             {
+                                 var10 = false;
+                             }
+@@ -117,7 +119,9 @@
+                     {
+                         var17 = par1World.getBlockId(par3, par4 + var16, par5);
+ 
+-                        if (var17 == 0 || var17 == Block.leaves.blockID)
++                        Block block = Block.blocksList[var13];
++                        
++                        if (var17 == 0 || block == null || block.isLeaves(par1World, par3, par4 + var16, par5))
+                         {
+                             this.setBlockAndMetadata(par1World, par3, par4 + var16, par5, Block.wood.blockID, 1);
+                         }

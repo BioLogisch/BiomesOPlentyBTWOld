@@ -8,6 +8,8 @@ import net.minecraft.src.WorldType;
 import net.minecraft.src.biomesoplenty.configuration.BOPBiomes;
 import net.minecraft.src.biomesoplenty.configuration.BOPBlocks;
 import net.minecraft.src.biomesoplenty.configuration.BOPConfiguration;
+import net.minecraft.src.biomesoplenty.configuration.BOPCrafting;
+import net.minecraft.src.biomesoplenty.configuration.BOPItems;
 import net.minecraft.src.biomesoplenty.configuration.CreativeTabsBOP;
 import net.minecraft.src.biomesoplenty.integration.BetterThanHorsesIntegration;
 import net.minecraft.src.biomesoplenty.utils.LanguageRegistry;
@@ -39,9 +41,10 @@ public class BiomesOPlenty extends FCAddOn
     {
     	tabBiomesOPlenty = new CreativeTabsBOP(CreativeTabs.getNextID(), "tabBiomesOPlenty");
     	
-    	if (BOPConfiguration.mainConfigFile.getBoolean("enableCustomBlocks"))
+    	if (BOPConfiguration.mainConfigFile.getBoolean("enableCustomCotent"))
     	{
     		BOPBlocks.init();
+    		BOPItems.init();
     	}
 
     	BOPBiomes.init();
@@ -71,5 +74,9 @@ public class BiomesOPlenty extends FCAddOn
 	@Override
 	public void PostInitialize()
 	{
+    	if (BOPConfiguration.mainConfigFile.getBoolean("enableCustomContent"))
+    	{
+    		BOPCrafting.init();
+    	}
 	}
 }
