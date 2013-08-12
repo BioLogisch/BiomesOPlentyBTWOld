@@ -41,7 +41,7 @@ public class BiomesOPlenty extends FCAddOn
     {
     	tabBiomesOPlenty = new CreativeTabsBOP(CreativeTabs.getNextID(), "tabBiomesOPlenty");
     	
-    	if (BOPConfiguration.mainConfigFile.getBoolean("enableCustomCotent"))
+    	if (BOPConfiguration.mainConfigFile.getBoolean("enableCustomContent"))
     	{
     		BOPBlocks.init();
     		BOPItems.init();
