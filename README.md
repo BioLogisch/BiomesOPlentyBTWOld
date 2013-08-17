@@ -9,6 +9,13 @@
 - **ted80** - "Biome Fanatic" - Biome Execution, General
 
 ## Changelog 
+Version 0.1.2 (MC 1.5.2) (BTW 4.891123) '17/8/2013'
+- Added a creative tab for BOP
+- Added custom leaves
+- Added custom logs
+- Added custom bark
+- Added custom planks
+
 Version 0.1.1 (MC 1.5.2) (BTW 4.89112) '9/8/2013'
 - Switched to a Java-based patcher
 - Removed a feral creature from the Ominous Woods
