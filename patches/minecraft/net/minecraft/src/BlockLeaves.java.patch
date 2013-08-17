@@ -1,6 +1,20 @@
 --- ../src_base/minecraft/net/minecraft/src/BlockLeaves.java
 +++ ../src/minecraft/net/minecraft/src/BlockLeaves.java
-@@ -106,91 +106,93 @@
+@@ -1,9 +1,12 @@
+ package net.minecraft.src;
+ 
++import java.util.ArrayList;
+ import java.util.List;
+ import java.util.Random;
+ 
+-public class BlockLeaves extends BlockLeavesBase
++import net.minecraft.src.biomesoplenty.utils.IShearable;
++
++public class BlockLeaves extends BlockLeavesBase implements IShearable
+ {
+     public static final String[] LEAF_TYPES = new String[] {"oak", "spruce", "birch", "jungle"};
+     public static final String[][] field_94396_b = new String[][] {{"leaves", "leaves_spruce", "leaves", "leaves_jungle"}, {"leaves_opaque", "leaves_spruce_opaque", "leaves_opaque", "leaves_jungle_opaque"}};
+@@ -106,91 +109,93 @@
      {
          if (!par1World.isRemote)
          {
@@ -157,7 +171,7 @@
                                          }
                                      }
                                  }
-@@ -199,11 +201,11 @@
+@@ -199,11 +204,11 @@
                      }
                  }
  
@@ -174,10 +188,24 @@
                  }
                  else
                  {
-@@ -385,4 +387,10 @@
+@@ -385,4 +390,24 @@
              }
          }
      }
++    
++    @Override
++    public boolean isShearable(ItemStack item, World world, int x, int y, int z)
++    {
++        return true;
++    }
++
++    @Override
++    public ArrayList<ItemStack> onSheared(ItemStack item, World world, int x, int y, int z, int fortune)
++    {
++        ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
++        ret.add(new ItemStack(this, 1, world.getBlockMetadata(x, y, z) & 3));
++        return ret;
++    }
 +    
 +    @Override
 +    public boolean isLeaves(World world, int x, int y, int z)

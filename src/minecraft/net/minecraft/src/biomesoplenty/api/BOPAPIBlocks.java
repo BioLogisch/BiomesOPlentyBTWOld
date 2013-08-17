@@ -10,4 +10,9 @@ public class BOPAPIBlocks
 	public static Block logs2 = null;
 	public static Block logs3 = null;
 	public static Block logs4 = null;
+	
+	// Plants
+	public static Block leaves1 = null;
+	public static Block leaves2 = null;   
+	public static Block leavesColourized = null;   
 }
