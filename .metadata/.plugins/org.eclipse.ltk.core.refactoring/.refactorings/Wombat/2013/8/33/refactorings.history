@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring accessors="true" comment="Delete 4 elements from project &apos;Wombat&apos;&#x0A;- Original project: &apos;Wombat&apos;&#x0A;- Original elements:&#x0A;     BinaryPatcher.java&#x0A;     BOPPatcher.java&#x0A;     Console.java&#x0A;     FileHandler.java" description="Delete elements" element1="Console.java" element2="BinaryPatcher.java" element3="FileHandler.java" element4="BOPPatcher.java" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="4" stamp="1376597118903" subPackages="false" version="1.0"/>
-</session>
