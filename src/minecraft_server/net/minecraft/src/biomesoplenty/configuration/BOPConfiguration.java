@@ -25,7 +25,7 @@ public class BOPConfiguration
 		@Override
 		public void setDefaults() 
 		{
-			properties.setProperty("enableCustomContent", "true");
+			properties.setProperty("enableCustomContent", "false");
 		}
 
 		@Override
