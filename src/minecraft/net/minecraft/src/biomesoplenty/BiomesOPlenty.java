@@ -21,7 +21,7 @@ import net.minecraft.src.biomesoplenty.world.WorldTypeBOP;
 
 public class BiomesOPlenty extends FCAddOn
 {
-    public static String bopVersionString = "0.1.2";
+    public static String bopVersionString = "Custom 0.1.2";
     public static BiomesOPlenty m_instance = new BiomesOPlenty();
     
     public static final WorldType BIOMEOP = (new WorldTypeBOP());  
