@@ -39,6 +39,7 @@ import net.lingala.zip4j.util.Raw;
 import net.lingala.zip4j.util.Zip4jConstants;
 import net.lingala.zip4j.util.Zip4jUtil;
 
+@SuppressWarnings({"unchecked","rawtypes","unused"})
 public class CipherOutputStream extends BaseOutputStream {
 	
 	protected OutputStream outputStream;

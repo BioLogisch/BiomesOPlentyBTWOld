@@ -13,14 +13,14 @@ import org.apache.commons.io.FileUtils;
 
 public class FileHandler 
 {
-	public static void unzipBTW(File jarloc)
+	public static Boolean unzipBTW(File jarloc)
 	{
 		File btwLoc = new File(jarloc.getAbsolutePath() + File.separator + "btw");
 
 		if (btwLoc.exists())
 		{
-			Iterator iterator = FileUtils.iterateFiles(btwLoc, new String[] {"zip"}, false);
-			ArrayList<File> btwZips = new ArrayList();
+			Iterator<File> iterator = FileUtils.iterateFiles(btwLoc, new String[] {"zip"}, false);
+			ArrayList<File> btwZips = new ArrayList<File>();
 
 			while (iterator.hasNext())
 			{
@@ -35,6 +35,7 @@ public class FileHandler
 			if (btwZips.isEmpty())
 			{
 				System.out.println("No BTW zip found!");
+				return false;
 			}
 			else
 			{
@@ -47,13 +48,16 @@ public class FileHandler
 			    catch (ZipException e) 
 			    {
 					e.printStackTrace();
+					return false;
 				}
 			}
 		}
 		else
 		{
 			System.out.println(jarloc.getAbsolutePath() + File.separator + "btw" + " does not exist!");
+			return false;
 		}
+		return true;
 	}
 	
 	public static void copyNonBTWEdits(File jarloc)

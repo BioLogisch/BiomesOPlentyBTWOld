@@ -64,6 +64,7 @@ public class UnzipEngine {
 		this.crc = new CRC32();
 	}
 	
+	@SuppressWarnings("resource")
 	public void unzipFile(ProgressMonitor progressMonitor, 
 			String outPath, String newFileName, UnzipParameters unzipParameters) throws ZipException {
 		if (zipModel == null || fileHeader == null || !Zip4jUtil.isStringNotNullAndNotEmpty(outPath)) {

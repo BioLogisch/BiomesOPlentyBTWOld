@@ -18,6 +18,7 @@ package net.lingala.zip4j.model;
 
 import java.util.ArrayList;
 
+@SuppressWarnings({"rawtypes"})
 public class LocalFileHeader {
 	
 	private int signature;

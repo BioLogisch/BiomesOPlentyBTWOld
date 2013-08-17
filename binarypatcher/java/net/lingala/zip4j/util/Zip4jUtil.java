@@ -30,6 +30,7 @@ import net.lingala.zip4j.exception.ZipException;
 import net.lingala.zip4j.model.FileHeader;
 import net.lingala.zip4j.model.ZipModel;
 
+@SuppressWarnings({"unchecked","rawtypes"})
 public class Zip4jUtil {
 	
 	public static boolean isStringNotNullAndNotEmpty(String str) {

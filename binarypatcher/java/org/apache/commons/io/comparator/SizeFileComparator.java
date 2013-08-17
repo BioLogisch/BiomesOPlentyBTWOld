@@ -49,6 +49,7 @@ import org.apache.commons.io.FileUtils;
  * @version $Id: SizeFileComparator.java 1307462 2012-03-30 15:13:11Z ggregory $
  * @since 1.4
  */
+@SuppressWarnings({"serial"})
 public class SizeFileComparator extends AbstractFileComparator implements Serializable {
 
     /** Size comparator instance - directories are treated as zero size */

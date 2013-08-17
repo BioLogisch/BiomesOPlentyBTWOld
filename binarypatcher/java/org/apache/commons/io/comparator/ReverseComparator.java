@@ -27,6 +27,7 @@ import java.util.Comparator;
  * @version $Id: ReverseComparator.java 1304052 2012-03-22 20:55:29Z ggregory $
  * @since 1.4
  */
+@SuppressWarnings({"serial"})
 class ReverseComparator extends AbstractFileComparator implements Serializable {
 
     private final Comparator<File> delegate;

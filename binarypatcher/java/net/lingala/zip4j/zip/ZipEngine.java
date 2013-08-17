@@ -39,6 +39,7 @@ import net.lingala.zip4j.util.InternalZipConstants;
 import net.lingala.zip4j.util.Zip4jConstants;
 import net.lingala.zip4j.util.Zip4jUtil;
 
+@SuppressWarnings({"unchecked","rawtypes"})
 public class ZipEngine {
 	
 	private ZipModel zipModel;

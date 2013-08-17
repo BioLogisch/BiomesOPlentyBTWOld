@@ -49,6 +49,7 @@ import org.apache.commons.io.IOCase;
  * @version $Id: NameFileComparator.java 1304052 2012-03-22 20:55:29Z ggregory $
  * @since 1.4
  */
+@SuppressWarnings({"serial"})
 public class NameFileComparator extends AbstractFileComparator implements Serializable {
 
     /** Case-sensitive name comparator instance (see {@link IOCase#SENSITIVE}) */

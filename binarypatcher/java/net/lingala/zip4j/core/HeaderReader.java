@@ -42,6 +42,7 @@ import net.lingala.zip4j.util.Zip4jUtil;
  * Helper class to read header information for the zip file
  *
  */
+@SuppressWarnings({"unchecked","rawtypes"})
 public class HeaderReader {
 	
 	private RandomAccessFile zip4jRaf = null;
@@ -359,7 +360,7 @@ public class HeaderReader {
 //					}
 //					
 //				}
-				
+			
 				if (fileCommentLength > 0) {
 					byte[] fileCommentBuf = new byte[fileCommentLength];
 					readIntoBuff(zip4jRaf, fileCommentBuf);

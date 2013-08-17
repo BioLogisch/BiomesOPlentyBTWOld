@@ -45,6 +45,7 @@ import java.util.Comparator;
  * @version $Id: LastModifiedFileComparator.java 1304052 2012-03-22 20:55:29Z ggregory $
  * @since 1.4
  */
+@SuppressWarnings({"serial"})
 public class LastModifiedFileComparator extends AbstractFileComparator implements Serializable {
 
     /** Last modified comparator instance */

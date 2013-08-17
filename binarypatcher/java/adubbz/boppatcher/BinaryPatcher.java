@@ -36,7 +36,7 @@ public class BinaryPatcher
 	
 	private static void applyPatches(File patchdir, File targetdir)
 	{
-		Iterator iterator = FileUtils.iterateFiles(patchdir, new String[] {"patch"}, true);
+		Iterator<File> iterator = FileUtils.iterateFiles(patchdir, new String[] {"patch"}, true);
 		
 		while (iterator.hasNext())
 		{
@@ -45,8 +45,10 @@ public class BinaryPatcher
 			
 			try 
 			{
-				JBPatch.bspatch(targetfile, targetfile, iteratedFile);
-				System.out.println("Patched " + targetfile.getName());
+				if (targetfile != null && targetfile.exists()) {
+					JBPatch.bspatch(targetfile, targetfile, iteratedFile);
+					System.out.println("Patched " + targetfile.getName());
+				}
 			} 
 			catch (IOException e) 
 			{

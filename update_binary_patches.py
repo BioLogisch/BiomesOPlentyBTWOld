@@ -68,6 +68,7 @@ def updatepatches():
             
             os.chdir(bop_dir)
             
+
             call(["java", "-Xmx200m", "ie.wombat.jbdiff.JBDiff", file_base, file_work, patch_file])
 
     cleanDirs(patchd)

@@ -42,6 +42,7 @@ import java.util.List;
  * @version $Id: CompositeFileComparator.java 1304052 2012-03-22 20:55:29Z ggregory $
  * @since 2.0
  */
+@SuppressWarnings({"serial"})
 public class CompositeFileComparator extends AbstractFileComparator implements Serializable {
 
     private static final Comparator<?>[] NO_COMPARATORS = {};

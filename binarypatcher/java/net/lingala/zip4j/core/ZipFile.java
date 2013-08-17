@@ -51,6 +51,7 @@ import net.lingala.zip4j.zip.ZipEngine;
  * </ul>
  *
  */
+@SuppressWarnings({"unchecked","rawtypes"})
 
 public class ZipFile {
 	

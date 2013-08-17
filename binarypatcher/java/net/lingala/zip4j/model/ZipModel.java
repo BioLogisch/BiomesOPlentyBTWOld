@@ -18,6 +18,7 @@ package net.lingala.zip4j.model;
 
 import java.util.List;
 
+@SuppressWarnings({"rawtypes"})
 public class ZipModel implements Cloneable {
 	
 	private List localFileHeaderList;

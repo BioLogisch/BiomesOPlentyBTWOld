@@ -20,7 +20,9 @@ def bop_main(bop_dir, mcp_dir):
     reset_logger()
     updatemd5(None, True, False, False)
     reset_logger()
-    copytree(os.path.join(mcp_dir, 'src'), os.path.join(mcp_dir, 'src_base')) 
+    copytree(os.path.join(mcp_dir, 'src'), os.path.join(mcp_dir, 'src_base'))
+    print 'Coping patches'
+
     os.chdir(bop_dir) 
     apply_bop_patches(mcp_dir, bop_dir, os.path.join(mcp_dir, 'src'), True)  
     shutil.rmtree(os.path.join(mcp_dir, 'eclipse'))

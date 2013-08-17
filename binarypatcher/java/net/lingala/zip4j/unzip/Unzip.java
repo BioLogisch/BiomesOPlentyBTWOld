@@ -29,6 +29,7 @@ import net.lingala.zip4j.progress.ProgressMonitor;
 import net.lingala.zip4j.util.InternalZipConstants;
 import net.lingala.zip4j.util.Zip4jUtil;
 
+@SuppressWarnings({"rawtypes"})
 public class Unzip {
 	
 	private ZipModel zipModel;

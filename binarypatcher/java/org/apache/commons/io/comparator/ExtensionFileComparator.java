@@ -51,6 +51,7 @@ import org.apache.commons.io.IOCase;
  * @version $Id: ExtensionFileComparator.java 1304052 2012-03-22 20:55:29Z ggregory $
  * @since 1.4
  */
+@SuppressWarnings({"serial"})
 public class ExtensionFileComparator extends AbstractFileComparator implements Serializable {
 
     /** Case-sensitive extension comparator instance (see {@link IOCase#SENSITIVE}) */

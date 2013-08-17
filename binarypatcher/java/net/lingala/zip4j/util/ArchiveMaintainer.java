@@ -37,6 +37,7 @@ import net.lingala.zip4j.model.Zip64EndCentralDirRecord;
 import net.lingala.zip4j.model.ZipModel;
 import net.lingala.zip4j.progress.ProgressMonitor;
 
+@SuppressWarnings({"unchecked","rawtypes"})
 public class ArchiveMaintainer {
 	
 	public ArchiveMaintainer() {

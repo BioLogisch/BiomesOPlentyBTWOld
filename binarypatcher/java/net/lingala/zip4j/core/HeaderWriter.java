@@ -34,6 +34,7 @@ import net.lingala.zip4j.util.InternalZipConstants;
 import net.lingala.zip4j.util.Raw;
 import net.lingala.zip4j.util.Zip4jUtil;
 
+@SuppressWarnings({"unchecked","rawtypes","unused"})
 public class HeaderWriter {
 	
 	private final int ZIP64_EXTRA_BUF = 50; 

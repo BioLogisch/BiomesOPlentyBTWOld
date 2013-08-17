@@ -1,7 +1,6 @@
 package adubbz.boppatcher;
 
 import java.io.File;
-import java.io.IOException;
 
 public class BOPPatcher 
 {
@@ -14,16 +13,20 @@ public class BOPPatcher
 		new Console();
 
 		System.out.println("Unzipping BTW");
-		FileHandler.unzipBTW(jarLoc);
-		System.out.println("Applying Binary Pathces");
-		BinaryPatcher.applyBinaryPatches(jarLoc);
-		System.out.println("Copying Non BTW Edits");
-		FileHandler.copyNonBTWEdits(jarLoc);
-		System.out.println("Rezipping BTW");
-		FileHandler.rezipBTW(jarLoc);
-		System.out.println("Removing Temporary Directory");
-		FileHandler.removeTempDir(jarLoc);
-		System.out.println("Done!");
+		Boolean success = FileHandler.unzipBTW(jarLoc);
+		if (success) {
+			System.out.println("Applying Binary Pathces");
+			BinaryPatcher.applyBinaryPatches(jarLoc);
+			System.out.println("Copying Non BTW Edits");
+			FileHandler.copyNonBTWEdits(jarLoc);
+			System.out.println("Rezipping BTW");
+			FileHandler.rezipBTW(jarLoc);
+			System.out.println("Removing Temporary Directory");
+			FileHandler.removeTempDir(jarLoc);
+			System.out.println("Done!");
+		} else {
+			System.out.println("Place your BTWModXXX.zip in the btw folder");
+		}
 	}
 	
 	private static void setJarLoc()

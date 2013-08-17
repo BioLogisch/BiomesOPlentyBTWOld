@@ -41,6 +41,7 @@ import java.util.zip.GZIPInputStream;
  */
 public class JBPatch {
 	
+	@SuppressWarnings("unused")
 	private static final String VERSION="jbdiff-0.1.1";
 	
 	/**
@@ -64,6 +65,7 @@ public class JBPatch {
 	
 		
 
+	@SuppressWarnings({ "resource", "unused" })
 	public static void bspatch (File oldFile, File newFile, File diffFile)
 	throws IOException {
 
