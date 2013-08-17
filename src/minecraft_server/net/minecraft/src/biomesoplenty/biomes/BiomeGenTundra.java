@@ -4,6 +4,8 @@ import java.util.Random;
 
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.Block;
+import net.minecraft.src.EntityWolf;
+import net.minecraft.src.SpawnListEntry;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenShrub;
 import net.minecraft.src.WorldGenTallGrass;
@@ -18,6 +20,7 @@ public class BiomeGenTundra extends BiomeGenBase
 	{
 		super(par1);
 		spawnableCreatureList.clear();
+		spawnableCreatureList.add(new SpawnListEntry(EntityWolf.class, 5, 4, 4));
 		theBiomeDecorator = new BiomeDecoratorBOP(this);
 		customBiomeDecorator = (BiomeDecoratorBOP)theBiomeDecorator;
 		customBiomeDecorator.treesPerChunk = 5;

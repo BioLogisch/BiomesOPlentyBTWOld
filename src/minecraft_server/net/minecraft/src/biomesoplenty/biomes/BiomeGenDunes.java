@@ -23,6 +23,7 @@ public class BiomeGenDunes extends BiomeGenBase
 		//customBiomeDecorator.duneGrassPerChunk = 10;
 		//customBiomeDecorator.desertSproutsPerChunk = 5;
 		//customBiomeDecorator.aloePerChunk = 1;
+		customBiomeDecorator.cactiPerChunk = 3;
 		customBiomeDecorator.reedsPerChunk = -999;
 		customBiomeDecorator.generateLakes = false;
 	}

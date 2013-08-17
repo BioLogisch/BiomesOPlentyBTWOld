@@ -24,6 +24,7 @@ public class BiomeGenDunes extends BiomeGenBase
 		//customBiomeDecorator.desertSproutsPerChunk = 5;
 		//customBiomeDecorator.aloePerChunk = 1;
 		customBiomeDecorator.reedsPerChunk = -999;
+		customBiomeDecorator.cactiPerChunk = 3;
 		customBiomeDecorator.generateLakes = false;
 	}
 	
