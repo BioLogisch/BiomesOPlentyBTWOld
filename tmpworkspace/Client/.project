@@ -15,6 +15,11 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
 	<linkedResources>
+                 <link>
+                        <name>bodsrc</name>
+                        <type>2</type>
+                        <location>PARENT-1-MCP_LOC/src_ores/minecraft</location>
+                </link>
 		<link>
 			<name>bopsrc</name>
 			<type>2</type>
