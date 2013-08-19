@@ -81,7 +81,7 @@ public class FileHandler
 		{
 			try 
 			{
-				FileUtils.copyDirectory(mcJar, new File(jarloc.getAbsoluteFile() + File.separator + "btw" + File.separator + "btwtemp" + File.separator + "MINECRAFT_SERVER-JAR"));
+				FileUtils.copyDirectory(mcServerJar, new File(jarloc.getAbsoluteFile() + File.separator + "btw" + File.separator + "btwtemp" + File.separator + "MINECRAFT_SERVER-JAR"));
 			} 
 			catch (IOException e) 
 			{
