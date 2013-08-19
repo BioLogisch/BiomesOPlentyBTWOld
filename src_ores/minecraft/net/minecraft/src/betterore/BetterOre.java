@@ -36,7 +36,7 @@ public class BetterOre extends FCAddOn
 	@Override
 	public void PostInitialize()
 	{
-		
+		BORecipes.init();
 	}
 
 }
