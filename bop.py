@@ -297,6 +297,9 @@ def cleanup(bop_dir, mcp_dir):
     bop_mcp_csrc_loc = os.path.join(mcp_dir, 'src', 'minecraft', 'net', 'minecraft', 'src', 'biomesoplenty')
     bop_mcp_ssrc_loc = os.path.join(mcp_dir, 'src', 'minecraft_server', 'net', 'minecraft', 'src', 'biomesoplenty')
     
+    bo_mcp_csrc_loc = os.path.join(mcp_dir, 'src', 'minecraft', 'net', 'minecraft', 'src', 'biomesoplenty')
+    bo_mcp_ssrc_loc = os.path.join(mcp_dir, 'src', 'minecraft_server', 'net', 'minecraft', 'src', 'biomesoplenty')
+    
     if os.path.exists(btw_minecraft_jar_loc):
         shutil.rmtree(btw_minecraft_jar_loc)
     if os.path.exists(btw_minecraft_server_jar_loc):
@@ -311,6 +314,12 @@ def cleanup(bop_dir, mcp_dir):
         shutil.rmtree(bop_mcp_csrc_loc)
     if os.path.exists(bop_mcp_ssrc_loc):
         shutil.rmtree(bop_mcp_ssrc_loc)
+
+    if os.path.exists(bo_mcp_csrc_loc):
+        shutil.rmtree(bo_mcp_csrc_loc)
+    if os.path.exists(bo_mcp_ssrc_loc):
+        shutil.rmtree(bo_mcp_ssrc_loc)
+
         
 #==========================================================================
 #                      Zip

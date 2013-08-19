@@ -1,16 +1,18 @@
 --- ../src_base/minecraft/net/minecraft/src/BlockDirt.java
 +++ ../src/minecraft/net/minecraft/src/BlockDirt.java
-@@ -1,4 +1,6 @@
+@@ -1,4 +1,7 @@
  package net.minecraft.src;
 +
++import net.minecraft.src.betterore.BetterOre;
 +import net.minecraft.src.biomesoplenty.BiomesOPlenty;
  
  public class BlockDirt extends Block
  {
-@@ -6,5 +8,6 @@
+@@ -6,5 +9,7 @@
      {
          super(par1, Material.ground);
          this.setCreativeTab(CreativeTabs.tabBlock);
 +        BiomesOPlenty.vanillaConstruct();//BIOMES O PLENTY
++        BetterOre.vanillaConstruct();//BETTER ORE
      }
  }
