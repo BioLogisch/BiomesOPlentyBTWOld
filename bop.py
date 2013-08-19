@@ -250,10 +250,28 @@ def movetodist(bop_dir):
     
     copytree(nonbtweditsdir, os.path.join(binarypatcherdir, 'nonbtwedits')) 
     copytree(patchesdir, os.path.join(binarypatcherdir, 'patches')) 
-    copytree(binarypatcherdir, distdir) 
-        
+    copytree(binarypatcherdir, distdir)
+
     if os.path.isfile(os.path.join(bop_dir, 'tempdist', '.gitignore')):
         os.remove(os.path.join(bop_dir, 'tempdist', '.gitignore'))
+
+    if os.path.isfile(os.path.join(bop_dir, 'tempdist', '.DS_Store')):
+        os.remove(os.path.join(bop_dir, 'tempdist', '.DS_Store'))
+
+    if os.path.isfile(os.path.join(bop_dir, 'tempdist', '.classpath')):
+        os.remove(os.path.join(bop_dir, 'tempdist', '.classpath'))
+    
+    if os.path.isfile(os.path.join(bop_dir, 'tempdist', '.metadata')):
+        os.remove(os.path.join(bop_dir, 'tempdist', '.metadata'))
+
+    if os.path.isfile(os.path.join(bop_dir, 'tempdist', '.project')):
+        os.remove(os.path.join(bop_dir, 'tempdist', '.project'))
+
+    if os.path.exists(os.path.join(bop_dir, 'tempdist', 'bin')):
+        shutil.rmtree(os.path.join(bop_dir, 'tempdist', 'bin'))
+
+    if os.path.isfile(os.path.join(bop_dir, 'tempdist', 'TestJarDesc.jardesc')):
+        os.remove(os.path.join(bop_dir, 'tempdist', 'TestJarDesc.jardesc'))
         
     if os.path.exists(os.path.join(distdir, 'java')):
         shutil.rmtree(os.path.join(distdir, 'java'))

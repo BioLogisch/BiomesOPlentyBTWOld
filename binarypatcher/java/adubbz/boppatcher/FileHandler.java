@@ -44,6 +44,7 @@ public class FileHandler
 					ZipFile zipFile = new ZipFile(btwZips.get(0));
 					
 					zipFile.extractAll(btwLoc.getAbsolutePath() + File.separator + "btwtemp");
+	
 				} 
 			    catch (ZipException e) 
 			    {
@@ -115,9 +116,8 @@ public class FileHandler
 		{
 			ZipFile zipFile = new ZipFile(new File(patched.getAbsolutePath() + File.separator + "BTWMod-BOP-Patched.zip"));
 			ZipParameters zipparam = new ZipParameters();
-			
+			zipparam.setReadHiddenFiles(false);
 			zipparam.setIncludeRootFolder(false);
-			
 			zipFile.createZipFileFromFolder(new File(jarloc.getAbsolutePath() + File.separator + "btw" + File.separator + "btwtemp"), zipparam, false, 0);
 		} 
 		catch (ZipException e) 
@@ -128,6 +128,7 @@ public class FileHandler
 	
 	public static void removeTempDir(File jarloc)
 	{
+	
 		File temp = new File(jarloc.getAbsoluteFile() + File.separator + "btw" + File.separator + "btwtemp");
 
 		if (temp.exists())
