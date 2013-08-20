@@ -13,7 +13,7 @@
  {
      private int m_iOriginalFleeceColor = 0;
      private final InventoryCrafting field_90016_e = new InventoryCrafting(new ContainerSheep(this), 2, 1);
-@@ -138,37 +141,6 @@
+@@ -140,37 +143,6 @@
      }
  
      /**
@@ -32,7 +32,7 @@
 -
 -                for (int var4 = 0; var4 < var3; ++var4)
 -                {
--                    EntityItem var5 = this.entityDropItem(new ItemStack(Block.cloth.blockID, 1, this.getFleeceColor()), 1.0F);
+-                    EntityItem var5 = this.entityDropItem(new ItemStack(FCBetterThanWolves.fcItemWool.itemID, 1, BlockCloth.getDyeFromBlock(this.getFleeceColor())), 1.0F);
 -                    var5.motionY += (double)(this.rand.nextFloat() * 0.05F);
 -                    var5.motionX += (double)((this.rand.nextFloat() - this.rand.nextFloat()) * 0.1F);
 -                    var5.motionZ += (double)((this.rand.nextFloat() - this.rand.nextFloat()) * 0.1F);
@@ -51,7 +51,7 @@
       * (abstract) Protected helper method to write subclass entity data to NBT.
       */
      public void writeEntityToNBT(NBTTagCompound par1NBTTagCompound)
-@@ -786,4 +758,31 @@
+@@ -808,4 +780,31 @@
              }
          }
      }
@@ -74,7 +74,7 @@
 +        	
 +        	for (int j = 0; j < i; j++)
 +        	{
-+        		ret.add(new ItemStack(Block.cloth.blockID, 1, getFleeceColor()));
++                ret.add(new ItemStack(FCBetterThanWolves.fcItemWool.itemID, 1, BlockCloth.getDyeFromBlock(this.getFleeceColor())));
 +        	}
 +        	
 +        	this.worldObj.playSoundAtEntity(this, "mob.sheep.shear", 1.0F, 1.0F);
