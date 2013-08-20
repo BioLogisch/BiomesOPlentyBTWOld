@@ -9,6 +9,9 @@
 - **ted80** - "Biome Fanatic" - Biome Execution, General
 
 ## Changelog 
+Version 0.1.2A (MC 1.5.2) (BTW 4.891124) '20/8/2013'
+- Updated to BTW 4.891124
+
 Version 0.1.2 (MC 1.5.2) (BTW 4.891123) '17/8/2013'
 - Added a creative tab for BOP
 - Added custom leaves

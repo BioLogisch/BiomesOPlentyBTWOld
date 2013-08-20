@@ -13,8 +13,8 @@
                          return false;
                      }
  
--                    if (var2.itemID != Item.silk.itemID && var2.itemID != Item.paper.itemID && var2.itemID != FCBetterThanWolves.fcHempFibers.itemID && var2.itemID != FCBetterThanWolves.fcArcaneScroll.itemID && var2.itemID != FCBetterThanWolves.fcItemFuse.itemID && var2.itemID != FCBetterThanWolves.fcItemBatWing.itemID && var2.itemID != FCBetterThanWolves.fcItemBark.itemID)
-+                    if (var2.itemID != Item.silk.itemID && var2.itemID != Item.paper.itemID && var2.itemID != FCBetterThanWolves.fcHempFibers.itemID && var2.itemID != FCBetterThanWolves.fcArcaneScroll.itemID && var2.itemID != FCBetterThanWolves.fcItemFuse.itemID && var2.itemID != FCBetterThanWolves.fcItemBatWing.itemID && var2.itemID != FCBetterThanWolves.fcItemBark.itemID  && var2.itemID != BOPAPIItems.bark.itemID)
+-                    if (var2.itemID != Item.silk.itemID && var2.itemID != Item.paper.itemID && var2.itemID != FCBetterThanWolves.fcHempFibers.itemID && var2.itemID != FCBetterThanWolves.fcArcaneScroll.itemID && var2.itemID != FCBetterThanWolves.fcItemFuse.itemID && var2.itemID != FCBetterThanWolves.fcItemBatWing.itemID && var2.itemID != FCBetterThanWolves.fcItemBark.itemID && var2.itemID != FCBetterThanWolves.fcItemWool.itemID)
++                    if (var2.itemID != Item.silk.itemID && var2.itemID != Item.paper.itemID && var2.itemID != FCBetterThanWolves.fcHempFibers.itemID && var2.itemID != FCBetterThanWolves.fcArcaneScroll.itemID && var2.itemID != FCBetterThanWolves.fcItemFuse.itemID && var2.itemID != FCBetterThanWolves.fcItemBatWing.itemID && var2.itemID != FCBetterThanWolves.fcItemBark.itemID && var2.itemID != FCBetterThanWolves.fcItemWool.itemID && var2.itemID != BOPAPIItems.bark.itemID)
                      {
                          if (this.m_sFilterType == 5)
                          {
