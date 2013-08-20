@@ -1,0 +1,30 @@
+--- ../src_base/minecraft/net/minecraft/client/Minecraft.java
++++ ../src/minecraft/net/minecraft/client/Minecraft.java
+@@ -15,7 +15,9 @@
+ import java.util.HashMap;
+ import java.util.Iterator;
+ import java.util.List;
++
+ import javax.swing.JPanel;
++
+ import net.minecraft.src.AchievementList;
+ import net.minecraft.src.AnvilSaveConverter;
+ import net.minecraft.src.AxisAlignedBB;
+@@ -116,6 +118,8 @@
+ import net.minecraft.src.WorldInfo;
+ import net.minecraft.src.WorldRenderer;
+ import net.minecraft.src.WorldSettings;
++import net.minecraft.src.betterore.BOOreGen;
++
+ import org.lwjgl.LWJGLException;
+ import org.lwjgl.Sys;
+ import org.lwjgl.input.Keyboard;
+@@ -1890,6 +1894,8 @@
+ 
+         this.mcProfiler.endSection();
+         this.systemTime = getSystemTime();
++        
++        BOOreGen.instance.onClientTick(); //BETTER ORE
+     }
+ 
+     /**

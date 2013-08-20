@@ -1,0 +1,27 @@
+--- ../src_base/minecraft/net/minecraft/server/MinecraftServer.java
++++ ../src/minecraft/net/minecraft/server/MinecraftServer.java
+@@ -9,6 +9,7 @@
+ import java.util.Date;
+ import java.util.Iterator;
+ import java.util.List;
++
+ import net.minecraft.src.AnvilSaveConverter;
+ import net.minecraft.src.AxisAlignedBB;
+ import net.minecraft.src.CallableIsServerModded;
+@@ -51,6 +52,7 @@
+ import net.minecraft.src.WorldServerMulti;
+ import net.minecraft.src.WorldSettings;
+ import net.minecraft.src.WorldType;
++import net.minecraft.src.betterore.BOOreGen;
+ 
+ public abstract class MinecraftServer implements ICommandSender, Runnable, IPlayerUsage
+ {
+@@ -270,6 +272,8 @@
+ 
+     protected void initialWorldChunkLoad()
+     {
++        BOOreGen.instance.onServerStarted(); //BETTER ORE
++
+         int var5 = 0;
+         this.setUserMessage("menu.generatingTerrain");
+         byte var6 = 0;

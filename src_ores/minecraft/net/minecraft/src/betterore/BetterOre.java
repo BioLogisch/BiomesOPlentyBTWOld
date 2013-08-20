@@ -14,6 +14,8 @@ public class BetterOre extends FCAddOn
     	//Called by Block Dirt to kick things off
     }
     
+    
+    
     @Override
     public void InitializeConfigs()
     {
@@ -37,6 +39,8 @@ public class BetterOre extends FCAddOn
 	public void PostInitialize()
 	{
 		BORecipes.init();
+		
+		BOOreGen.init();
 	}
 
 }

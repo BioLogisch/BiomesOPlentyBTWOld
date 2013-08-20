@@ -1,0 +1,21 @@
+--- ../src_base/minecraft/net/minecraft/src/DedicatedServer.java
++++ ../src/minecraft/net/minecraft/src/DedicatedServer.java
+@@ -7,7 +7,10 @@
+ import java.util.Collections;
+ import java.util.List;
+ import java.util.Random;
++
+ import net.minecraft.server.MinecraftServer;
++import net.minecraft.src.betterore.BOOreGen;
++import net.minecraft.src.betterore.BetterOre;
+ 
+ public class DedicatedServer extends MinecraftServer implements IServer
+ {
+@@ -174,6 +177,7 @@
+             this.theRConThreadMain.startThread();
+         }
+ 
++        
+         return true;
+     }
+ 

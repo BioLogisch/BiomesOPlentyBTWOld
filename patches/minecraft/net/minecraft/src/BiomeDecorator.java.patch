@@ -1,0 +1,11 @@
+--- ../src_base/minecraft/net/minecraft/src/BiomeDecorator.java
++++ ../src/minecraft/net/minecraft/src/BiomeDecorator.java
+@@ -76,7 +76,7 @@
+     /**
+      * The number of trees to attempt to generate per chunk. Up to 10 in forests, none in deserts.
+      */
+-    protected int treesPerChunk;
++    public int treesPerChunk; //BETTER ORES
+ 
+     /**
+      * The number of yellow flower patches to generate per chunk. The game generates much less than this number, since

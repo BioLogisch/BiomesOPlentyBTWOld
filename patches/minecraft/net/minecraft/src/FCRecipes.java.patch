@@ -1,0 +1,11 @@
+--- ../src_base/minecraft/net/minecraft/src/FCRecipes.java
++++ ../src/minecraft/net/minecraft/src/FCRecipes.java
+@@ -848,7 +848,7 @@
+         FurnaceRecipes.smelting().getSmeltingList().remove(Integer.valueOf(Block.sand.blockID));
+         FurnaceRecipes.smelting().getSmeltingList().remove(Integer.valueOf(Block.cobblestone.blockID));
+         FurnaceRecipes.smelting().getSmeltingList().remove(Integer.valueOf(Item.clay.itemID));
+-        FurnaceRecipes.smelting().getSmeltingList().remove(Integer.valueOf(Block.wood.blockID));
++        // FurnaceRecipes.smelting().getSmeltingList().remove(Integer.valueOf(Block.wood.blockID)); BETTER ORES
+         FurnaceRecipes.smelting().getSmeltingList().remove(Integer.valueOf(Block.oreEmerald.blockID));
+         FurnaceRecipes.smelting().getSmeltingList().remove(Integer.valueOf(Block.netherrack.blockID));
+         FurnaceRecipes.smelting().getSmeltingList().remove(Integer.valueOf(Block.oreCoal.blockID));

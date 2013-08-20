@@ -1,0 +1,32 @@
+--- ../src_base/minecraft/net/minecraft/src/IntegratedServer.java
++++ ../src/minecraft/net/minecraft/src/IntegratedServer.java
+@@ -2,8 +2,10 @@
+ 
+ import java.io.File;
+ import java.io.IOException;
++
+ import net.minecraft.client.Minecraft;
+ import net.minecraft.server.MinecraftServer;
++import net.minecraft.src.betterore.BOOreGen;
+ 
+ public class IntegratedServer extends MinecraftServer
+ {
+@@ -101,6 +103,8 @@
+         this.setKeyPair(CryptManager.createNewKeyPair());
+         this.loadAllWorlds(this.getFolderName(), this.getWorldName(), this.theWorldSettings.getSeed(), this.theWorldSettings.getTerrainType(), this.theWorldSettings.func_82749_j());
+         this.setMOTD(this.getServerOwner() + " - " + this.worldServers[0].getWorldInfo().getWorldName());
++        
++        
+         return true;
+     }
+ 
+@@ -119,6 +123,9 @@
+             this.saveAllWorlds(false);
+         }
+ 
++        BOOreGen.instance.onServerTick(); //BETTER ORE
++
++        
+         if (!this.isGamePaused)
+         {
+             super.tick();

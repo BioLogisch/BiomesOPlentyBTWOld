@@ -1,0 +1,44 @@
+--- ../src_base/minecraft/net/minecraft/src/GuiCreateWorld.java
++++ ../src/minecraft/net/minecraft/src/GuiCreateWorld.java
+@@ -1,6 +1,10 @@
+ package net.minecraft.src;
+ 
+ import java.util.Random;
++
++import net.minecraft.src.betterore.config.ui.GuiCustomOreGenSettings;
++import net.minecraft.src.betterore.config.ui.GuiCustomOreGenSettings.GuiOpenMenuButton;
++
+ import org.lwjgl.input.Keyboard;
+ 
+ public class GuiCreateWorld extends GuiScreen
+@@ -38,6 +42,8 @@
+      */
+     private GuiButton moreWorldOptions;
+ 
++    private GuiButton betterOreOptions; //BETTER ORE
++    
+     /** The GuiButton in the 'More World Options' screen. Toggles ON/OFF */
+     private GuiButton buttonGenerateStructures;
+     private GuiButton buttonBonusItems;
+@@ -98,6 +104,7 @@
+         this.buttonList.add(new GuiButton(1, this.width / 2 + 5, this.height - 28, 150, 20, var1.translateKey("gui.cancel")));
+         this.buttonList.add(this.buttonGameMode = new GuiButton(2, this.width / 2 - 75, 115, 150, 20, var1.translateKey("selectWorld.gameMode")));
+         this.buttonList.add(this.moreWorldOptions = new GuiButton(3, this.width / 2 - 75, 187, 150, 20, var1.translateKey("selectWorld.moreWorldOptions")));
++        this.buttonList.add(this.betterOreOptions = new GuiOpenMenuButton(this, 99, this.width / 2 - 75, 187-25, 150, 20, "Custom Ore Generation...", new GuiCustomOreGenSettings(this))); //BETTER ORE
+         this.buttonList.add(this.buttonGenerateStructures = new GuiButton(4, this.width / 2 - 155, 100, 150, 20, var1.translateKey("selectWorld.mapFeatures")));
+         this.buttonGenerateStructures.drawButton = false;
+         this.buttonList.add(this.buttonBonusItems = new GuiButton(7, this.width / 2 + 5, 151, 150, 20, var1.translateKey("selectWorld.bonusItems")));
+@@ -388,11 +395,13 @@
+         {
+             var2 = StringTranslate.getInstance();
+             this.moreWorldOptions.displayString = var2.translateKey("gui.done");
++            this.betterOreOptions.drawButton = false;//BETTER ORES
+         }
+         else
+         {
+             var2 = StringTranslate.getInstance();
+             this.moreWorldOptions.displayString = var2.translateKey("selectWorld.moreWorldOptions");
++            this.betterOreOptions.drawButton = true;//BETTER ORES
+         }
+     }
+ 
