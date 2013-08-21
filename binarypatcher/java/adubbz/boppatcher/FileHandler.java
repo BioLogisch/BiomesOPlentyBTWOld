@@ -116,7 +116,6 @@ public class FileHandler
 		{
 			ZipFile zipFile = new ZipFile(new File(patched.getAbsolutePath() + File.separator + "BTWMod-BOP-Patched.zip"));
 			ZipParameters zipparam = new ZipParameters();
-			zipparam.setReadHiddenFiles(false);
 			zipparam.setIncludeRootFolder(false);
 			zipFile.createZipFileFromFolder(new File(jarloc.getAbsolutePath() + File.separator + "btw" + File.separator + "btwtemp"), zipparam, false, 0);
 		} 

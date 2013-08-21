@@ -1,10 +1,11 @@
 --- ../src_base/minecraft/net/minecraft/src/TileEntityFurnace.java
 +++ ../src/minecraft/net/minecraft/src/TileEntityFurnace.java
-@@ -414,7 +414,6 @@
+@@ -414,7 +414,7 @@
          {
              var1 = FurnaceRecipes.smelting().GetCookTimeBinaryShift(this.furnaceItemStacks[0].getItem().itemID);
          }
 -
++        
          return 400 << var1;
      }
  }

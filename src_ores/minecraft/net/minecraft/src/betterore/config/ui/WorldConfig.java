@@ -81,11 +81,12 @@ public class WorldConfig
 
 	public WorldConfig(World world) throws IOException, ParserConfigurationException, SAXException
 	{
-		this(ConfigDir.getConfigDir(), (WorldInfo)null, (File)null, world, (File)null);
+		this(ConfigDir.getConfigDir(), (WorldInfo)world.getWorldInfo(), (File)null, world, (File)null);
 	}
 
 	private WorldConfig(File globalConfigDir, WorldInfo worldInfo, File worldBaseDir, World world, File dimensionDir) throws IOException, ParserConfigurationException, SAXException
 	{
+		Logger.log.fine("Create WorldConfig : " + dimensionDir);
 		this.deferredPopulationRange = 0;
 		this.debuggingMode = false;
 		this.vanillaOreGen = false;
@@ -101,14 +102,14 @@ public class WorldConfig
 		{
 			if (world.getSaveHandler() != null && world.getSaveHandler() instanceof SaveHandler)
 			{
-				worldBaseDir = (File)PrivateAccess.getPrivateValue(SaveHandler.class, (SaveHandler)world.getSaveHandler(), 1);
+				worldBaseDir = ((SaveHandler)world.getSaveHandler()).getWorldDirectory();
 			}
 			else
 			{
 				worldBaseDir = null;
 			}
-
 			configFile = world.provider.dimensionId == 0 ? null : "DIM" + world.provider.dimensionId;
+			Logger.log.fine("Create WorldConfigfrom world : " + configFile);
 
 
 			if (configFile == null)
@@ -254,6 +255,7 @@ public class WorldConfig
 				Logger.log.warning("Choice Option \'" + vangen + "\' not found in config file - defaulting to \'" + this.vanillaOreGen + "\'.");
 			}
 		}
+
 	}
 
 	private int buildFileList(String fileName, File[] files)

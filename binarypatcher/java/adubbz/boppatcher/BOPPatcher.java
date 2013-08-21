@@ -22,7 +22,7 @@ public class BOPPatcher
 			System.out.println("Rezipping BTW");
 			FileHandler.rezipBTW(jarLoc);
 			System.out.println("Removing Temporary Directory");
-			FileHandler.removeTempDir(jarLoc);
+			//FileHandler.removeTempDir(jarLoc);
 			System.out.println("Done!");
 		} else {
 			System.out.println("Place your BTWModXXX.zip in the btw folder");

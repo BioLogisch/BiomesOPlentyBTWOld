@@ -51,6 +51,7 @@ public class ServerState
     private static boolean isChunkSavedPopulated(World world, int chunkX, int chunkZ)
     {
         File saveFolder = getWorldConfig(world).dimensionDir;
+
         DataInputStream stream = RegionFileCache.getChunkInputStream(saveFolder, chunkX, chunkZ);
 
         if (stream != null)
@@ -64,9 +65,9 @@ public class ServerState
                     return true;
                 }
             }
-            catch (IOException var6)
+            catch (IOException e)
             {
-                ;
+                Logger.log.throwing("Error on:", "isChunkSavedPopulated", e);;
             }
         }
 
@@ -77,18 +78,18 @@ public class ServerState
     {
         try
         {
-            WorldGenerator ex = (WorldGenerator)PrivateAccess.getPrivateValue(BiomeDecorator.class, decorator, 10);
-            WorldGenerator ironGen = (WorldGenerator)PrivateAccess.getPrivateValue(BiomeDecorator.class, decorator, 11);
-            WorldGenerator goldGen = (WorldGenerator)PrivateAccess.getPrivateValue(BiomeDecorator.class, decorator, 12);
-            WorldGenerator redstoneGen = (WorldGenerator)PrivateAccess.getPrivateValue(BiomeDecorator.class, decorator, 13);
-            WorldGenerator diamondGen = (WorldGenerator)PrivateAccess.getPrivateValue(BiomeDecorator.class, decorator, 14);
-            WorldGenerator lapisGen = (WorldGenerator)PrivateAccess.getPrivateValue(BiomeDecorator.class, decorator, 15);
-            PrivateAccess.setPrivateValue(BiomeDecorator.class, decorator, 10, new WorldGenEmpty(ex));
-            PrivateAccess.setPrivateValue(BiomeDecorator.class, decorator, 11, new WorldGenEmpty(ironGen));
-            PrivateAccess.setPrivateValue(BiomeDecorator.class, decorator, 12, new WorldGenEmpty(goldGen));
-            PrivateAccess.setPrivateValue(BiomeDecorator.class, decorator, 13, new WorldGenEmpty(redstoneGen));
-            PrivateAccess.setPrivateValue(BiomeDecorator.class, decorator, 14, new WorldGenEmpty(diamondGen));
-            PrivateAccess.setPrivateValue(BiomeDecorator.class, decorator, 15, new WorldGenEmpty(lapisGen));
+        //    WorldGenerator ex = (WorldGenerator)PrivateAccess.getPrivateValue(BiomeDecorator.class, decorator, 10);
+        //    WorldGenerator ironGen = (WorldGenerator)PrivateAccess.getPrivateValue(BiomeDecorator.class, decorator, 11);
+        //    WorldGenerator goldGen = (WorldGenerator)PrivateAccess.getPrivateValue(BiomeDecorator.class, decorator, 12);
+        //    WorldGenerator redstoneGen = (WorldGenerator)PrivateAccess.getPrivateValue(BiomeDecorator.class, decorator, 13);
+        //    WorldGenerator diamondGen = (WorldGenerator)PrivateAccess.getPrivateValue(BiomeDecorator.class, decorator, 14);
+        //    WorldGenerator lapisGen = (WorldGenerator)PrivateAccess.getPrivateValue(BiomeDecorator.class, decorator, 15);
+        //    PrivateAccess.setPrivateValue(BiomeDecorator.class, decorator, 10, new WorldGenEmpty(ex));
+        //    PrivateAccess.setPrivateValue(BiomeDecorator.class, decorator, 11, new WorldGenEmpty(ironGen));
+        //    PrivateAccess.setPrivateValue(BiomeDecorator.class, decorator, 12, new WorldGenEmpty(goldGen));
+        //    PrivateAccess.setPrivateValue(BiomeDecorator.class, decorator, 13, new WorldGenEmpty(redstoneGen));
+        //    PrivateAccess.setPrivateValue(BiomeDecorator.class, decorator, 14, new WorldGenEmpty(diamondGen));
+        //    PrivateAccess.setPrivateValue(BiomeDecorator.class, decorator, 15, new WorldGenEmpty(lapisGen));
         }
         catch (Exception var7)
         {
@@ -229,6 +230,7 @@ public class ServerState
         {
             for (int cZ = chunkZ - var16; cZ <= chunkZ + var16; ++cZ)
             {
+            	
                 int neighborCount = 0;
 
                 for (int iX = var18 - var16; iX <= var18 + var16; ++iX)
@@ -256,7 +258,6 @@ public class ServerState
                         }
                     }
                 }
-            	Logger.log.fine("Pop :" + neighborCount + "=" + var17);
 
                 if (neighborCount == var17)
                 {
@@ -330,7 +331,7 @@ public class ServerState
 
         if (var9 != null && var9 instanceof SaveFormatOld)
         {
-            var8 = (File)PrivateAccess.getPrivateValue(SaveFormatOld.class, (SaveFormatOld)var9, 0);
+            var8 = ((SaveFormatOld)var9).getSavesDirectory();
         }
 
         var8 = new File(var8, _server.getFolderName());
