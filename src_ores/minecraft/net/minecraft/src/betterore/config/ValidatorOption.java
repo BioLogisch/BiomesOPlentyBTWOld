@@ -2,10 +2,10 @@ package net.minecraft.src.betterore.config;
 
 import java.util.Iterator;
 
+import net.minecraft.src.betterore.common.util.BOLogger;
 import net.minecraft.src.betterore.config.ui.ChoiceOption;
 import net.minecraft.src.betterore.config.ui.ConfigOption;
 import net.minecraft.src.betterore.config.ui.NumericOption;
-import net.minecraft.src.betterore.util.Logger;
 
 import org.w3c.dom.Node;
 
@@ -123,7 +123,7 @@ public class ValidatorOption extends ValidatorNode
                     return true;
                 }
 
-                Logger.log.warning("The saved value \'" + loadedValueStr1 + "\' for Config Option \'" + ((ConfigOption)option).getName() + "\' is invalid" + err1 + ".  " + "The default value \'" + (defValue2 == null ? option.getValue() : defValue2) + "\' will be used instead.");
+                BOLogger.log.warning("The saved value \'" + loadedValueStr1 + "\' for Config Option \'" + ((ConfigOption)option).getName() + "\' is invalid" + err1 + ".  " + "The default value \'" + (defValue2 == null ? option.getValue() : defValue2) + "\' will be used instead.");
             }
 
             if (defValue2 != null && !(option.setValue(defValue2)))

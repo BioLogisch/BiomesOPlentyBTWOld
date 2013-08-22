@@ -1,10 +1,10 @@
-package net.minecraft.src.betterore.util;
+package net.minecraft.src.betterore.common.util;
 
 import net.minecraft.src.FCAddOnHandler;
 
-public class Logger {
+public class BOLogger {
 
-	public static Logger log = new Logger();
+	public static BOLogger log = new BOLogger();
 	
 	
 	

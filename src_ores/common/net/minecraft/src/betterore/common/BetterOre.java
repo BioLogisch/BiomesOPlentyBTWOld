@@ -1,7 +1,8 @@
-package net.minecraft.src.betterore;
+package net.minecraft.src.betterore.common;
 
 import net.minecraft.src.FCAddOn;
 import net.minecraft.src.FCAddOnHandler;
+import net.minecraft.src.betterore.common.util.BOConfig;
 
 public class BetterOre extends FCAddOn
 {
@@ -11,15 +12,14 @@ public class BetterOre extends FCAddOn
     
     public static void vanillaConstruct()
     {
-    	//Called by Block Dirt to kick things off
+    	//Called by Block Stone to kick things off
     }
-    
-    
-    
+
     @Override
     public void InitializeConfigs()
     {
-    	
+		FCAddOnHandler.LogMessage("[BetterOre] Better Ore Version " + bodVersionString + " Loading configs...");
+    	BOConfig.init();
     }
     
     @Override
@@ -38,9 +38,7 @@ public class BetterOre extends FCAddOn
 	@Override
 	public void PostInitialize()
 	{
-		BORecipes.init();
 		
-		BOOreGen.init();
 	}
 
 }

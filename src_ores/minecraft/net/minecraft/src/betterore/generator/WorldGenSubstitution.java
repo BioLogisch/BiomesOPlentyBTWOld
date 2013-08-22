@@ -8,10 +8,10 @@ import net.minecraft.src.Block;
 import net.minecraft.src.Chunk;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;
+import net.minecraft.src.betterore.common.util.BOLogger;
 import net.minecraft.src.betterore.generator.DistributionSettingMap.DistributionSetting;
 import net.minecraft.src.betterore.util.BiomeDescriptor;
 import net.minecraft.src.betterore.util.BlockDescriptor;
-import net.minecraft.src.betterore.util.Logger;
 
 
 
@@ -121,7 +121,7 @@ public class WorldGenSubstitution extends WorldGenerator implements IOreDistribu
 
     public void populate(World world, int chunkX, int chunkZ)
     {
-    	Logger.log.fine("Gen Substituiion");
+    	BOLogger.log.fine("Gen Substituiion");
 
         if (this._canGenerate && this._valid && this.oreBlock != null)
         {

@@ -25,13 +25,13 @@ import net.minecraft.src.IChunkProvider;
 import net.minecraft.src.SaveHandler;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldInfo;
+import net.minecraft.src.betterore.common.util.BOLogger;
 import net.minecraft.src.betterore.config.ConfigParser;
 import net.minecraft.src.betterore.config.PropertyIO;
 import net.minecraft.src.betterore.generator.IOreDistribution;
 import net.minecraft.src.betterore.util.BiomeDescriptor;
 import net.minecraft.src.betterore.util.CIStringMap;
 import net.minecraft.src.betterore.util.ConfigDir;
-import net.minecraft.src.betterore.util.Logger;
 import net.minecraft.src.betterore.util.MapCollection;
 import net.minecraft.src.betterore.util.PrivateAccess;
 
@@ -86,7 +86,7 @@ public class WorldConfig
 
 	private WorldConfig(File globalConfigDir, WorldInfo worldInfo, File worldBaseDir, World world, File dimensionDir) throws IOException, ParserConfigurationException, SAXException
 	{
-		Logger.log.fine("Create WorldConfig : " + dimensionDir);
+		BOLogger.log.fine("Create WorldConfig : " + dimensionDir);
 		this.deferredPopulationRange = 0;
 		this.debuggingMode = false;
 		this.vanillaOreGen = false;
@@ -109,7 +109,7 @@ public class WorldConfig
 				worldBaseDir = null;
 			}
 			configFile = world.provider.dimensionId == 0 ? null : "DIM" + world.provider.dimensionId;
-			Logger.log.fine("Create WorldConfigfrom world : " + configFile);
+			BOLogger.log.fine("Create WorldConfigfrom world : " + configFile);
 
 
 			if (configFile == null)
@@ -137,11 +137,11 @@ public class WorldConfig
 
 		if (dimensionDir != null)
 		{
-			Logger.log.finer("Loading config data for dimension \'" + dimensionDir + "\' ...");
+			BOLogger.log.finer("Loading config data for dimension \'" + dimensionDir + "\' ...");
 		}
 		else if (worldBaseDir != null)
 		{
-			Logger.log.finer("Loading config data for world \'" + worldBaseDir + "\' ...");
+			BOLogger.log.finer("Loading config data for world \'" + worldBaseDir + "\' ...");
 		}
 		else
 		{
@@ -150,7 +150,7 @@ public class WorldConfig
 				return;
 			}
 
-			Logger.log.finer("Loading global config \'" + globalConfigDir + "\' ...");
+			BOLogger.log.finer("Loading global config \'" + globalConfigDir + "\' ...");
 		}
 
 		configFile = null;
@@ -161,15 +161,15 @@ public class WorldConfig
 		{
 			if (dimensionDir != null)
 			{
-				Logger.log.warning("No config file found for dimension \'" + dimensionDir + "\' at any scope!");
+				BOLogger.log.warning("No config file found for dimension \'" + dimensionDir + "\' at any scope!");
 			}
 			else if (worldBaseDir != null)
 			{
-				Logger.log.finer("No config file found for world \'" + worldBaseDir + "\' at any scope.");
+				BOLogger.log.finer("No config file found for world \'" + worldBaseDir + "\' at any scope.");
 			}
 			else
 			{
-				Logger.log.finer("No global config file found.");
+				BOLogger.log.finer("No global config file found.");
 			}
 		}
 		else
@@ -228,7 +228,7 @@ public class WorldConfig
 			}
 			else
 			{
-				Logger.log.warning("Numeric Option \'" + var21 + "\' not found in config file - defaulting to \'" + this.deferredPopulationRange + "\'.");
+				BOLogger.log.warning("Numeric Option \'" + var21 + "\' not found in config file - defaulting to \'" + this.deferredPopulationRange + "\'.");
 			}
 
 			var20 = (ConfigOption)this.configOptions.get("debugMode");
@@ -240,7 +240,7 @@ public class WorldConfig
 			}
 			else
 			{
-				Logger.log.warning("Choice Option \'" + var20 + "\' not found in config file - defaulting to \'" + this.debuggingMode + "\'.");
+				BOLogger.log.warning("Choice Option \'" + var20 + "\' not found in config file - defaulting to \'" + this.debuggingMode + "\'.");
 			}
 
 			vangen = (ConfigOption)this.configOptions.get("vanillaOreGen");
@@ -252,7 +252,7 @@ public class WorldConfig
 			}
 			else
 			{
-				Logger.log.warning("Choice Option \'" + vangen + "\' not found in config file - defaulting to \'" + this.vanillaOreGen + "\'.");
+				BOLogger.log.warning("Choice Option \'" + vangen + "\' not found in config file - defaulting to \'" + this.vanillaOreGen + "\'.");
 			}
 		}
 

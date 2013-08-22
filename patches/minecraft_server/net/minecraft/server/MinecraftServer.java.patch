@@ -1,14 +1,6 @@
---- ../src_base/minecraft/net/minecraft/server/MinecraftServer.java
-+++ ../src/minecraft/net/minecraft/server/MinecraftServer.java
-@@ -9,6 +9,7 @@
- import java.util.Date;
- import java.util.Iterator;
- import java.util.List;
-+
- import net.minecraft.src.AnvilSaveConverter;
- import net.minecraft.src.AxisAlignedBB;
- import net.minecraft.src.CallableIsServerModded;
-@@ -51,6 +52,7 @@
+--- ../src_base/minecraft_server/net/minecraft/server/MinecraftServer.java
++++ ../src/minecraft_server/net/minecraft/server/MinecraftServer.java
+@@ -56,6 +56,7 @@
  import net.minecraft.src.WorldServerMulti;
  import net.minecraft.src.WorldSettings;
  import net.minecraft.src.WorldType;
@@ -16,7 +8,7 @@
  
  public abstract class MinecraftServer implements ICommandSender, Runnable, IPlayerUsage
  {
-@@ -265,11 +267,13 @@
+@@ -262,11 +263,13 @@
          }
  
          this.setDifficultyForAllWorlds(this.getDifficulty());
@@ -30,19 +22,19 @@
          int var5 = 0;
          this.setUserMessage("menu.generatingTerrain");
          byte var6 = 0;
-@@ -545,6 +549,7 @@
+@@ -542,6 +545,7 @@
       */
-     public void tick()
+     protected void tick()
      {
-+    	BOTickRegistry.serverTickStart();  //BETTER ORE
++        BOTickRegistry.serverTickStart();  //BETTER ORE
          long var1 = System.nanoTime();
          AxisAlignedBB.getAABBPool().cleanPool();
          ++this.tickCounter;
-@@ -592,6 +597,7 @@
+@@ -589,6 +593,7 @@
  
          this.theProfiler.endSection();
          this.theProfiler.endSection();
-+    	BOTickRegistry.serverTickStart();  //BETTER ORE
++        BOTickRegistry.serverTickStart();  //BETTER ORE
      }
  
      public void updateTimeLightAndEntities()

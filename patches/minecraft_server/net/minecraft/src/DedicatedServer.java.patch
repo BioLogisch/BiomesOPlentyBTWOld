@@ -1,5 +1,5 @@
---- ../src_base/minecraft/net/minecraft/src/DedicatedServer.java
-+++ ../src/minecraft/net/minecraft/src/DedicatedServer.java
+--- ../src_base/minecraft_server/net/minecraft/src/DedicatedServer.java
++++ ../src/minecraft_server/net/minecraft/src/DedicatedServer.java
 @@ -7,7 +7,9 @@
  import java.util.Collections;
  import java.util.List;
@@ -19,12 +19,12 @@
          DedicatedServerCommandThread var1 = new DedicatedServerCommandThread(this);
          var1.setDaemon(true);
          var1.start();
-@@ -173,7 +177,7 @@
+@@ -173,6 +177,8 @@
              this.theRConThreadMain = new RConThreadMain(this);
              this.theRConThreadMain.startThread();
          }
--
++        
 +        BOTickRegistry.serverDidStart(this); //BETTER ORE
+ 
          return true;
      }
- 

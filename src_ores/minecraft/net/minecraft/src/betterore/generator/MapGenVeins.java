@@ -5,9 +5,9 @@ import java.util.Random;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.StructureBoundingBox;
 import net.minecraft.src.World;
+import net.minecraft.src.betterore.common.util.BOLogger;
 import net.minecraft.src.betterore.generator.DistributionSettingMap.DistributionSetting;
 import net.minecraft.src.betterore.util.IGeometryBuilder;
-import net.minecraft.src.betterore.util.Logger;
 import net.minecraft.src.betterore.util.IGeometryBuilder.PrimitiveType;
 import net.minecraft.src.betterore.util.PDist;
 import net.minecraft.src.betterore.util.PDist.Type;
@@ -137,7 +137,7 @@ public class MapGenVeins extends MapGenOreDistribution
 
     public Component generateStructure(StructureGroup structureGroup, Random random)
     {
-    	Logger.log.fine("Gen Vein");
+    	BOLogger.log.fine("Gen Vein");
 
         float mlX = (random.nextFloat() + (float)structureGroup.chunkX) * 16.0F;
         float mlY = this.mlHeight.getValue(random);

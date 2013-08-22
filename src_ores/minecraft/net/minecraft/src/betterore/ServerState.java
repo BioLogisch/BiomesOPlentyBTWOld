@@ -28,6 +28,7 @@ import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;
 import net.minecraft.src.WorldInfo;
 import net.minecraft.src.WorldServer;
+import net.minecraft.src.betterore.common.util.BOLogger;
 import net.minecraft.src.betterore.config.ui.ConfigErrorDialog;
 import net.minecraft.src.betterore.config.ui.ConfigOption;
 import net.minecraft.src.betterore.config.ui.GuiCustomOreGenSettings;
@@ -35,7 +36,6 @@ import net.minecraft.src.betterore.config.ui.WorldConfig;
 import net.minecraft.src.betterore.config.ui.GuiCustomOreGenSettings.GuiOpenMenuButton;
 import net.minecraft.src.betterore.generator.IOreDistribution;
 import net.minecraft.src.betterore.generator.WorldGenEmpty;
-import net.minecraft.src.betterore.util.Logger;
 import net.minecraft.src.betterore.util.PrivateAccess;
 
 
@@ -67,7 +67,7 @@ public class ServerState
             }
             catch (IOException e)
             {
-                Logger.log.throwing("Error on:", "isChunkSavedPopulated", e);;
+                BOLogger.log.throwing("Error on:", "isChunkSavedPopulated", e);;
             }
         }
 
@@ -93,7 +93,7 @@ public class ServerState
         }
         catch (Exception var7)
         {
-            Logger.log.throwing("CustomOreGenBase", "patchBiomeDecorator", var7);
+            BOLogger.log.throwing("CustomOreGenBase", "patchBiomeDecorator", var7);
         }
     }
 
@@ -133,7 +133,7 @@ public class ServerState
 
     public static boolean onConfigError(Throwable error)
     {
-        Logger.log.throwing("CustomOreGen.ServerState", "loadWorldConfig", error);
+        BOLogger.log.throwing("CustomOreGen.ServerState", "loadWorldConfig", error);
         Frame[] frames = Frame.getFrames();
 
         if (frames != null && frames.length > 0)
@@ -184,7 +184,7 @@ public class ServerState
     public static void populateDistributions(Collection<IOreDistribution> distributions, World world, int chunkX, int chunkZ)
     {
     	
-    	Logger.log.fine("Pop :" + distributions);
+    	BOLogger.log.fine("Pop :" + distributions);
         BlockSand.fallInstantly = true;
         world.scheduledUpdatesAreImmediate = true;
         
@@ -312,7 +312,7 @@ public class ServerState
         _populatedChunks.clear();
 
         _server = server;
-        Logger.log.finer("Server world changed to " + worldInfo.getWorldName());
+        BOLogger.log.finer("Server world changed to " + worldInfo.getWorldName());
         BiomeGenBase[] worldBaseDir = BiomeGenBase.biomeList;
         int saveFormat = worldBaseDir.length;
 

@@ -20,6 +20,11 @@
                         <type>2</type>
                         <location>PARENT-1-MCP_LOC/src_ores/minecraft</location>
                 </link>
+                  <link>
+                        <name>bodsrccommon</name>
+                        <type>2</type>
+                        <location>PARENT-1-MCP_LOC/src_ores/common</location>
+                </link>
 		<link>
 			<name>bopsrc</name>
 			<type>2</type>

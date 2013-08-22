@@ -7,26 +7,25 @@
 +
  import net.minecraft.client.Minecraft;
  import net.minecraft.server.MinecraftServer;
-+import net.minecraft.src.betterore.BOOreGen;
++import net.minecraft.src.betterore.common.registry.BOTickRegistry;
  
  public class IntegratedServer extends MinecraftServer
  {
-@@ -101,6 +103,8 @@
+@@ -91,6 +93,7 @@
+      */
+     protected boolean startServer() throws IOException
+     {
++        BOTickRegistry.serverWillStart(this); //BETTER ORE
+         this.serverLogAgent.logInfo("Starting integrated minecraft server version 1.5.2");
+         this.setOnlineMode(false);
+         this.setCanSpawnAnimals(true);
+@@ -101,6 +104,9 @@
          this.setKeyPair(CryptManager.createNewKeyPair());
          this.loadAllWorlds(this.getFolderName(), this.getWorldName(), this.theWorldSettings.getSeed(), this.theWorldSettings.getTerrainType(), this.theWorldSettings.func_82749_j());
          this.setMOTD(this.getServerOwner() + " - " + this.worldServers[0].getWorldInfo().getWorldName());
-+        
++        BOTickRegistry.serverDidStart(this); //BETTER ORE
++
 +        
          return true;
      }
  
-@@ -119,6 +123,9 @@
-             this.saveAllWorlds(false);
-         }
- 
-+        BOOreGen.instance.onServerTick(); //BETTER ORE
-+
-+        
-         if (!this.isGamePaused)
-         {
-             super.tick();
