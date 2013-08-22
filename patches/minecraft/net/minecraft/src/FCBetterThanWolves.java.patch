@@ -1,6 +1,6 @@
 --- ../src_base/minecraft/net/minecraft/src/FCBetterThanWolves.java
 +++ ../src/minecraft/net/minecraft/src/FCBetterThanWolves.java
-@@ -513,7 +513,7 @@
+@@ -515,7 +515,7 @@
      public static final int fcCustomSpawnEntityPacketTypeSpiderWeb = 10;
      public static final int fcCustomSpawnEntityPacketTypeSoulSand = 11;
      public static StepSound fcSoundSquishFootstep = new FCStepSoundSquish("squish", 0.5F, 0.1F);

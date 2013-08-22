@@ -20,7 +20,6 @@ import net.minecraft.src.SpawnerAnimals;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenDungeons;
 import net.minecraft.src.WorldGenLakes;
-import net.minecraft.src.betterore.BOOreGen;
 import net.minecraft.src.biomesoplenty.configuration.BOPBiomes;
 
 public class ChunkProviderGenerateBOP extends ChunkProviderGenerate implements IChunkProvider
@@ -306,7 +305,6 @@ public class ChunkProviderGenerateBOP extends ChunkProviderGenerate implements I
         {
         	e.printStackTrace();
         }
-        BOOreGen.instance.generateOres(var4, var5, this.worldObj); //BETTER ORE
 
         BlockSand.fallInstantly = false;
         this.fixVolcanoBlock(this.worldObj, Block.stone.blockID, var4, var5);

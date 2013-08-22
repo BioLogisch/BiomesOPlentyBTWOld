@@ -1,6 +1,6 @@
 --- ../src_base/minecraft_server/net/minecraft/src/CraftingManager.java
 +++ ../src/minecraft_server/net/minecraft/src/CraftingManager.java
-@@ -144,7 +144,7 @@
+@@ -145,7 +145,7 @@
          System.out.println(this.recipes.size() + " recipes");
      }
  
@@ -9,7 +9,7 @@
      {
          String var3 = "";
          int var4 = 0;
-@@ -218,7 +218,7 @@
+@@ -219,7 +219,7 @@
          return var17;
      }
  

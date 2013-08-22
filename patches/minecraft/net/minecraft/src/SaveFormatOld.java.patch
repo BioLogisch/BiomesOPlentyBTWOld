@@ -1,0 +1,11 @@
+--- ../src_base/minecraft/net/minecraft/src/SaveFormatOld.java
++++ ../src/minecraft/net/minecraft/src/SaveFormatOld.java
+@@ -227,4 +227,8 @@
+         File var2 = new File(this.savesDirectory, par1Str);
+         return var2.isDirectory();
+     }
++
++	public File getSavesDirectory() {
++		return savesDirectory;
++	}
+ }

@@ -14,8 +14,6 @@ def bop_main(bop_dir, mcp_dir):
     print '=============================== Build Biomes O Plenty Start ====================================='
 
     print 'Copying BOP Files'
-    copytree(os.path.join(bop_dir, 'src'), os.path.join(mcp_dir, 'src'))
-    print 'Copying BOP Files'
     copytree(os.path.join(bop_dir, 'src_ores'), os.path.join(mcp_dir, 'src'))
     copytree(os.path.join(bop_dir, 'src', 'minecraft'), os.path.join(mcp_dir, 'src', 'minecraft')) 
     copytree(os.path.join(bop_dir, 'src', 'common'), os.path.join(mcp_dir, 'src', 'minecraft')) 

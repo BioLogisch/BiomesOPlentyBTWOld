@@ -1,6 +1,6 @@
 --- ../src_base/minecraft/net/minecraft/src/FCRecipes.java
 +++ ../src/minecraft/net/minecraft/src/FCRecipes.java
-@@ -848,7 +848,7 @@
+@@ -858,7 +858,7 @@
          FurnaceRecipes.smelting().getSmeltingList().remove(Integer.valueOf(Block.sand.blockID));
          FurnaceRecipes.smelting().getSmeltingList().remove(Integer.valueOf(Block.cobblestone.blockID));
          FurnaceRecipes.smelting().getSmeltingList().remove(Integer.valueOf(Item.clay.itemID));

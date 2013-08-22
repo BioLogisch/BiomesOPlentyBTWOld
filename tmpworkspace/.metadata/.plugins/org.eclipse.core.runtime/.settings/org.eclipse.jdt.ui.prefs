@@ -1,3 +1,4 @@
+content_assist_autoactivation_triggers_java=.ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789
 content_assist_proposals_background=255,255,255
 content_assist_proposals_foreground=0,0,0
 eclipse.preferences.version=1
@@ -7,6 +8,7 @@ org.eclipse.jdt.ui.formatterprofiles.version=12
 org.eclipse.jdt.ui.javadoclocations.migrated=true
 org.eclipse.jface.textfont=1|Monaco|11.0|0|COCOA|1|;
 proposalOrderMigrated=true
+sourceHoverBackgroundColor=250,251,197
 spelling_locale_initialized=true
 tabWidthPropagated=true
 useAnnotationsPrefPage=true
