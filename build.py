@@ -14,11 +14,17 @@ def bop_main(bop_dir, mcp_dir):
     print '=============================== Build Biomes O Plenty Start ====================================='
 
     print 'Copying BOP Files'
-    copytree(os.path.join(bop_dir, 'src_ores'), os.path.join(mcp_dir, 'src'))
-    copytree(os.path.join(bop_dir, 'src', 'minecraft'), os.path.join(mcp_dir, 'src', 'minecraft')) 
+    copytree(os.path.join(bop_dir, 'src', 'minecraft'), os.path.join(mcp_dir, 'src', 'minecraft'))
     copytree(os.path.join(bop_dir, 'src', 'common'), os.path.join(mcp_dir, 'src', 'minecraft')) 
     copytree(os.path.join(bop_dir, 'src', 'minecraft_server'), os.path.join(mcp_dir, 'src', 'minecraft_server')) 
-    copytree(os.path.join(bop_dir, 'src', 'common'), os.path.join(mcp_dir, 'src', 'minecraft_server')) 
+    copytree(os.path.join(bop_dir, 'src', 'common'), os.path.join(mcp_dir, 'src', 'minecraft_server'))
+    
+    print 'Copying BO Files'
+    copytree(os.path.join(bop_dir, 'src_ores', 'minecraft'), os.path.join(mcp_dir, 'src', 'minecraft'))
+    copytree(os.path.join(bop_dir, 'src_ores', 'common'), os.path.join(mcp_dir, 'src', 'minecraft'))
+    copytree(os.path.join(bop_dir, 'src_ores', 'minecraft_server'), os.path.join(mcp_dir, 'src', 'minecraft_server'))
+    copytree(os.path.join(bop_dir, 'src_ores', 'common'), os.path.join(mcp_dir, 'src', 'minecraft_server'))
+
     os.chdir(mcp_dir)
     reset_logger()
     print 'Recompiling'
