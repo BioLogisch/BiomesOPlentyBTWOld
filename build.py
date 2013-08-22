@@ -17,6 +17,10 @@ def bop_main(bop_dir, mcp_dir):
     copytree(os.path.join(bop_dir, 'src'), os.path.join(mcp_dir, 'src'))
     print 'Copying BOP Files'
     copytree(os.path.join(bop_dir, 'src_ores'), os.path.join(mcp_dir, 'src'))
+    copytree(os.path.join(bop_dir, 'src', 'minecraft'), os.path.join(mcp_dir, 'src', 'minecraft')) 
+    copytree(os.path.join(bop_dir, 'src', 'common'), os.path.join(mcp_dir, 'src', 'minecraft')) 
+    copytree(os.path.join(bop_dir, 'src', 'minecraft_server'), os.path.join(mcp_dir, 'src', 'minecraft_server')) 
+    copytree(os.path.join(bop_dir, 'src', 'common'), os.path.join(mcp_dir, 'src', 'minecraft_server')) 
     os.chdir(mcp_dir)
     reset_logger()
     print 'Recompiling'

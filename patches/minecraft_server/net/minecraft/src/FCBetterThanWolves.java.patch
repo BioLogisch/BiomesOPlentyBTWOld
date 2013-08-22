@@ -9,3 +9,13 @@
      public static int fcBlockWoodSidingItemStubID;
      public static int fcBlockWoodMouldingItemStubID;
      public static int fcBlockWoodCornerItemStubID;
+@@ -1140,8 +1140,7 @@
+ 
+     public static void SetFirePropertiesOfBlock(int var0, int var1, int var2)
+     {
+-        BlockFire.chanceToEncourageFire[var0] = var1;
+-        BlockFire.abilityToCatchFire[var0] = var2;
++    	BlockFire.setBurnRate(var0, var1, var2);        
+     }
+ 
+     public static boolean IsHardcoreBucketsEnabled(World var0)

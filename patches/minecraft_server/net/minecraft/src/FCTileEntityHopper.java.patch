@@ -1,20 +1,21 @@
 --- ../src_base/minecraft_server/net/minecraft/src/FCTileEntityHopper.java
 +++ ../src/minecraft_server/net/minecraft/src/FCTileEntityHopper.java
-@@ -1,6 +1,8 @@
+@@ -1,6 +1,9 @@
  package net.minecraft.src;
  
  import java.util.List;
 +
 +import net.minecraft.src.biomesoplenty.api.BOPAPIItems;
++import net.minecraft.src.biomesoplenty.configuration.BOPConfiguration;
  
  public class FCTileEntityHopper extends TileEntity implements IInventory, FCITileEntityDataPacketHandler
  {
-@@ -400,7 +402,7 @@
+@@ -400,7 +403,7 @@
                          return false;
                      }
  
--                    if (var2.itemID != Item.silk.itemID && var2.itemID != Item.paper.itemID && var2.itemID != FCBetterThanWolves.fcHempFibers.itemID && var2.itemID != FCBetterThanWolves.fcArcaneScroll.itemID && var2.itemID != FCBetterThanWolves.fcItemFuse.itemID && var2.itemID != FCBetterThanWolves.fcItemBatWing.itemID && var2.itemID != FCBetterThanWolves.fcItemBark.itemID)
-+                    if (var2.itemID != Item.silk.itemID && var2.itemID != Item.paper.itemID && var2.itemID != FCBetterThanWolves.fcHempFibers.itemID && var2.itemID != FCBetterThanWolves.fcArcaneScroll.itemID && var2.itemID != FCBetterThanWolves.fcItemFuse.itemID && var2.itemID != FCBetterThanWolves.fcItemBatWing.itemID && var2.itemID != FCBetterThanWolves.fcItemBark.itemID  && var2.itemID != BOPAPIItems.bark.itemID)
+-                    if (var2.itemID != Item.silk.itemID && var2.itemID != Item.paper.itemID && var2.itemID != FCBetterThanWolves.fcHempFibers.itemID && var2.itemID != FCBetterThanWolves.fcArcaneScroll.itemID && var2.itemID != FCBetterThanWolves.fcItemFuse.itemID && var2.itemID != FCBetterThanWolves.fcItemBatWing.itemID && var2.itemID != FCBetterThanWolves.fcItemBark.itemID && var2.itemID != FCBetterThanWolves.fcItemWool.itemID)
++                    if (var2.itemID != Item.silk.itemID && var2.itemID != Item.paper.itemID && var2.itemID != FCBetterThanWolves.fcHempFibers.itemID && var2.itemID != FCBetterThanWolves.fcArcaneScroll.itemID && var2.itemID != FCBetterThanWolves.fcItemFuse.itemID && var2.itemID != FCBetterThanWolves.fcItemBatWing.itemID && var2.itemID != FCBetterThanWolves.fcItemBark.itemID && var2.itemID != FCBetterThanWolves.fcItemWool.itemID && (BOPConfiguration.mainConfigFile.getBoolean("enableCustomContent") && var2.itemID != BOPAPIItems.bark.itemID))
                      {
                          if (this.m_sFilterType == 5)
                          {

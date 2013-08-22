@@ -16,16 +16,20 @@
      private Icon[] iconArray;
  
      protected BlockFire(int par1)
-@@ -26,6 +26,8 @@
+@@ -48,10 +48,11 @@
+      * chanceToEncourageFire the faster it will burn and spread to other blocks. Args: blockID, chanceToEncourageFire,
+      * abilityToCatchFire
       */
-     public void initializeBlock()
+-    private void setBurnRate(int par1, int par2, int par3)
++    public static void setBurnRate(int par1, int par2, int par3)
      {
-+        abilityToCatchFire = Block.blockFlammability;
-+        chanceToEncourageFire = Block.blockFireSpreadSpeed;
-         this.setBurnRate(Block.planks.blockID, 5, 20);
-         this.setBurnRate(Block.woodDoubleSlab.blockID, 5, 20);
-         this.setBurnRate(Block.woodSingleSlab.blockID, 5, 20);
-@@ -220,29 +222,34 @@
+         chanceToEncourageFire[par1] = par2;
+         abilityToCatchFire[par1] = par3;
++        Block.blocksList[par1].setBurnProperties(par1, par3, par2);
+     }
+ 
+     /**
+@@ -220,29 +221,34 @@
  
      private void tryToCatchBlockOnFire(World par1World, int par2, int par3, int par4, int par5, Random par6Random, int par7)
      {
@@ -34,16 +38,16 @@
 -        if (par6Random.nextInt(par5) < var8)
 -        {
 -            boolean var9 = par1World.getBlockId(par2, par3, par4) == Block.tnt.blockID;
-+        int j1 = 0;
-+        Block block = Block.blocksList[par1World.getBlockId(par2, par3, par4)];
-+        if (block != null)
-+        {
-+            j1 = block.getFlammability(par1World, par2, par3, par4, par1World.getBlockMetadata(par2, par3, par4));
-+        }
++    	int j1 = 0;
++    	Block block = Block.blocksList[par1World.getBlockId(par2, par3, par4)];
++    	if (block != null)
++    	{
++    		j1 = block.getFlammability(par1World, par2, par3, par4, par1World.getBlockMetadata(par2, par3, par4));
++    	}
 +
-+        if (par6Random.nextInt(par5) < j1)
-+        {
-+            boolean flag = par1World.getBlockId(par2, par3, par4) == Block.tnt.blockID;
++    	if (par6Random.nextInt(par5) < j1)
++    	{
++    		boolean flag = par1World.getBlockId(par2, par3, par4) == Block.tnt.blockID;
  
              if (par6Random.nextInt(par7 + 10) < 5 && !par1World.canLightningStrikeAt(par2, par3, par4))
              {
@@ -55,14 +59,14 @@
 -                }
 -
 -                par1World.setBlock(par2, par3, par4, this.blockID, var10, 3);
-+                int k1 = par7 + par6Random.nextInt(5) / 4;
++            	int k1 = par7 + par6Random.nextInt(5) / 4;
 +
-+                if (k1 > 15)
-+                {
-+                    k1 = 15;
-+                }
++            	if (k1 > 15)
++            	{
++            		k1 = 15;
++            	}
 +
-+                par1World.setBlock(par2, par3, par4, this.blockID, k1, 3);
++            	par1World.setBlock(par2, par3, par4, this.blockID, k1, 3);
              }
              else
              {
@@ -74,10 +78,13 @@
              {
                  Block.tnt.onBlockDestroyedByPlayer(par1World, par2, par3, par4, 1);
              }
-@@ -291,20 +298,36 @@
-     /**
-      * Checks the specified block coordinate to see if it can catch fire.  Args: blockAccess, x, y, z
-      */
+@@ -288,23 +294,36 @@
+         return false;
+     }
+ 
+-    /**
+-     * Checks the specified block coordinate to see if it can catch fire.  Args: blockAccess, x, y, z
+-     */
 -    public boolean canBlockCatchFire(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
 -    {
 -        return chanceToEncourageFire[par1IBlockAccess.getBlockId(par2, par3, par4)] > 0;
@@ -94,12 +101,12 @@
 -        return var6 > par5 ? var6 : par5;
 +    public boolean canBlockCatchFire(IBlockAccess world, int x, int y, int z)
 +    {
-+        Block block = Block.blocksList[world.getBlockId(x, y, z)];
-+        if (block != null)
-+        {
-+            return block.isFlammable(world, x, y, z, world.getBlockMetadata(x, y, z));
-+        }
-+        return false;
++    	Block block = Block.blocksList[world.getBlockId(x, y, z)];
++    	if (block != null)
++    	{
++    		return block.isFlammable(world, x, y, z, world.getBlockMetadata(x, y, z));//chanceToEncourageFire[block.blockID] > 0;//
++    	}
++    	return false;
 +    }
 +
 +    /**
@@ -115,13 +122,13 @@
 +     */
 +    public int getChanceToEncourageFire(World world, int x, int y, int z, int oldChance)
 +    {
-+        int newChance = 0;
-+        Block block = Block.blocksList[world.getBlockId(x, y, z)];
-+        if (block != null)
-+        {
-+            newChance = block.getFireSpreadSpeed(world, x, y, z, world.getBlockMetadata(x, y, z));
-+        }
-+        return (newChance > oldChance ? newChance : oldChance);
++    	int newChance = 0;
++    	Block block = Block.blocksList[world.getBlockId(x, y, z)];
++    	if (block != null)
++    	{
++    		newChance =  block.getFireSpreadSpeed(world, x, y, z, world.getBlockMetadata(x, y, z));
++    	}
++    	return (newChance > oldChance ? newChance : oldChance);
      }
  
      /**

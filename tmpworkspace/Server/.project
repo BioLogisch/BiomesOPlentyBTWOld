@@ -26,6 +26,11 @@
 			<location>PARENT-1-MCP_LOC/src/minecraft_server</location>
 		</link>
 		<link>
+			<name>bopsrccommon</name>
+			<type>2</type>
+			<location>PARENT-1-MCP_LOC/src/common</location>
+		</link>
+		<link>
 			<name>jars</name>
 			<type>2</type>
 			<locationURI>MCP_LOC/jars</locationURI>
