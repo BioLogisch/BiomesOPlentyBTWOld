@@ -2,6 +2,7 @@ package net.minecraft.src.betterore.common;
 
 import net.minecraft.src.FCAddOn;
 import net.minecraft.src.FCAddOnHandler;
+import net.minecraft.src.betterore.common.registry.BOTickRegistry;
 import net.minecraft.src.betterore.common.util.BOConfig;
 
 public class BetterOre extends FCAddOn
@@ -31,8 +32,10 @@ public class BetterOre extends FCAddOn
 	@Override
 	public void Initialize() {
 		FCAddOnHandler.LogMessage("[BetterOre] Better Ore Version " + bodVersionString + " Initializing...");
-        FCAddOnHandler.LogMessage("[BetterOre] Better Ore Initialization Complete.");
 		
+		BOTickRegistry.registerHandler(new BOOreGenEventHandler());
+		
+        FCAddOnHandler.LogMessage("[BetterOre] Better Ore Initialization Complete.");
 	}
 	
 	@Override

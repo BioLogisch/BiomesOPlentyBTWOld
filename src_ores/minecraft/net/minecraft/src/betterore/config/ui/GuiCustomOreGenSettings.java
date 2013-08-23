@@ -7,13 +7,16 @@ import java.util.Vector;
 import net.minecraft.client.Minecraft;
 import net.minecraft.src.EnumOptions;
 import net.minecraft.src.FontRenderer;
-import net.minecraft.src.Gui;
 import net.minecraft.src.GuiButton;
 import net.minecraft.src.GuiScreen;
 import net.minecraft.src.GuiSlider;
 import net.minecraft.src.GuiSlot;
 import net.minecraft.src.Tessellator;
-import net.minecraft.src.betterore.ServerState;
+import net.minecraft.src.betterore.common.config.BOChoiceOption;
+import net.minecraft.src.betterore.common.config.BOConfigOption;
+import net.minecraft.src.betterore.common.config.BONumericOption;
+import net.minecraft.src.betterore.common.config.BOWorldConfig;
+import net.minecraft.src.betterore.util.BOErrorHandler;
 
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
@@ -38,43 +41,43 @@ public class GuiCustomOreGenSettings extends GuiScreen
     {
         super.initGui();
         super.buttonList.clear();
-        ConfigOption.DisplayGroup currentGroup = this._groupPanel == null ? null : this._groupPanel.getSelectedGroup();
+        BOConfigOption.DisplayGroup currentGroup = this._groupPanel == null ? null : this._groupPanel.getSelectedGroup();
 
         if (this.refreshGui >= 2)
         {
             if (this.refreshGui >= 3)
             {
-                WorldConfig.loadedOptionOverrides[0] = null;
+                BOWorldConfig.loadedOptionOverrides[0] = null;
             }
 
-            WorldConfig visibleGroups = null;
+            BOWorldConfig visibleGroups = null;
 
             while (visibleGroups == null)
             {
                 try
                 {
-                    visibleGroups = new WorldConfig();
+                    visibleGroups = new BOWorldConfig();
                 }
                 catch (Exception var7)
                 {
-                    if (ServerState.onConfigError(var7))
+                    if (BOErrorHandler.onConfigError(var7))
                     {
                         visibleGroups = null;
                         continue;
                     }
 
-                    visibleGroups = WorldConfig.createEmptyConfig();
+                    visibleGroups = BOWorldConfig.createEmptyConfig();
                 }
 
-                WorldConfig.loadedOptionOverrides[0] = visibleGroups.getConfigOptions();
+                BOWorldConfig.loadedOptionOverrides[0] = visibleGroups.getConfigOptions();
 
                 if (currentGroup != null)
                 {
-                    ConfigOption visibleOptions = visibleGroups.getConfigOption(currentGroup.getName());
+                    BOConfigOption visibleOptions = visibleGroups.getConfigOption(currentGroup.getName());
 
-                    if (visibleOptions instanceof ConfigOption.DisplayGroup)
+                    if (visibleOptions instanceof BOConfigOption.DisplayGroup)
                     {
-                        currentGroup = (ConfigOption.DisplayGroup)visibleOptions;
+                        currentGroup = (BOConfigOption.DisplayGroup)visibleOptions;
                     }
                 }
             }
@@ -84,13 +87,13 @@ public class GuiCustomOreGenSettings extends GuiScreen
         Vector visibleGroups1 = new Vector();
         Vector visibleOptions1 = new Vector();
         
-        nextOption: for (ConfigOption option : WorldConfig.loadedOptionOverrides[0]) {
+        nextOption: for (BOConfigOption option : BOWorldConfig.loadedOptionOverrides[0]) {
         	
-            if (option.getDisplayState() != null && option.getDisplayState() != ConfigOption.DisplayState.hidden)
+            if (option.getDisplayState() != null && option.getDisplayState() != BOConfigOption.DisplayState.hidden)
             {
-                ConfigOption.DisplayGroup group;
+                BOConfigOption.DisplayGroup group;
 
-                if (option instanceof ConfigOption.DisplayGroup)
+                if (option instanceof BOConfigOption.DisplayGroup)
                 {
                     for (group = currentGroup; group != option.getDisplayGroup(); group = group.getDisplayGroup())
                     {
@@ -100,7 +103,7 @@ public class GuiCustomOreGenSettings extends GuiScreen
                         }
                     }
 
-                    visibleGroups1.add((ConfigOption.DisplayGroup)option);
+                    visibleGroups1.add((BOConfigOption.DisplayGroup)option);
                 }
                 else
                 {
@@ -232,7 +235,7 @@ public class GuiCustomOreGenSettings extends GuiScreen
         protected IOptionControl _currentGroup;
         protected GuiButton _currentButton;
 
-        public GuiGroupPanel(int x, int y, int width, int height, ConfigOption.DisplayGroup selGroup, Vector groups)
+        public GuiGroupPanel(int x, int y, int width, int height, BOConfigOption.DisplayGroup selGroup, Vector groups)
         {
             this.posX = 0;
             this.posY = 0;
@@ -257,7 +260,7 @@ public class GuiCustomOreGenSettings extends GuiScreen
 
             for (int c = -1; !groups.isEmpty() && c < groups.size(); ++c)
             {
-                ConfigOption.DisplayGroup group = c < 0 ? null : (ConfigOption.DisplayGroup)groups.get(c);
+                BOConfigOption.DisplayGroup group = c < 0 ? null : (BOConfigOption.DisplayGroup)groups.get(c);
                 String text = c < 0 ? "[ All ]" : group.getDisplayName();
                 int btnWidth = fontRenderer.getStringWidth(text) + 10;
                 GuiGroupButton control = new GuiGroupButton(c + 1, scrollWidth, 0, btnWidth, height, text, group);
@@ -289,9 +292,9 @@ public class GuiCustomOreGenSettings extends GuiScreen
             }
         }
 
-        public ConfigOption.DisplayGroup getSelectedGroup()
+        public BOConfigOption.DisplayGroup getSelectedGroup()
         {
-            return this._currentGroup == null ? null : (ConfigOption.DisplayGroup)this._currentGroup.getOption();
+            return this._currentGroup == null ? null : (BOConfigOption.DisplayGroup)this._currentGroup.getOption();
         }
 
         public int getScrollPos()
@@ -398,11 +401,11 @@ public class GuiCustomOreGenSettings extends GuiScreen
         
         class GuiGroupButton extends GuiButton implements IOptionControl
         {
-            protected final ConfigOption.DisplayGroup _group;
+            protected final BOConfigOption.DisplayGroup _group;
             private final int _relX;
             private final int _relY;
 
-            public GuiGroupButton(int id, int relX, int relY, int width, int height, String text, ConfigOption.DisplayGroup group)
+            public GuiGroupButton(int id, int relX, int relY, int width, int height, String text, BOConfigOption.DisplayGroup group)
             {
                 super(id, relX, relY, width, height, text);
                 this._group = group;
@@ -410,7 +413,7 @@ public class GuiCustomOreGenSettings extends GuiScreen
                 this._relY = relY;
             }
 
-            public ConfigOption getOption()
+            public BOConfigOption getOption()
             {
                 return this._group;
             }
@@ -505,16 +508,16 @@ public class GuiCustomOreGenSettings extends GuiScreen
 
             for (int c = 0; c < options.size(); ++c)
             {
-                ConfigOption option = (ConfigOption)options.get(c);
+                BOConfigOption option = (BOConfigOption)options.get(c);
                 Object control = null;
 
-                if (option instanceof ChoiceOption)
+                if (option instanceof BOChoiceOption)
                 {
-                    this._optionControls.add(new GuiChoiceButton(this, c, 2 * width / 5 + 15, 0, width / 10 + 100, slotHeight - 6, (ChoiceOption)option));
+                    this._optionControls.add(new GuiChoiceButton(this, c, 2 * width / 5 + 15, 0, width / 10 + 100, slotHeight - 6, (BOChoiceOption)option));
                 }
-                else if (option instanceof NumericOption)
+                else if (option instanceof BONumericOption)
                 {
-                    this._optionControls.add(new GuiNumericSlider(this, c, 2 * width / 5 + 15, 0, width / 10 + 100, slotHeight - 6, (NumericOption)option));
+                    this._optionControls.add(new GuiNumericSlider(this, c, 2 * width / 5 + 15, 0, width / 10 + 100, slotHeight - 6, (BONumericOption)option));
                 }
             }
         }
@@ -530,7 +533,7 @@ public class GuiCustomOreGenSettings extends GuiScreen
             {
                 this._clickTarget.getControl().mouseReleased(super.mouseX, super.mouseY);
 
-                if (this._clickTarget.getOption().getDisplayState() == ConfigOption.DisplayState.shown_dynamic)
+                if (this._clickTarget.getOption().getDisplayState() == BOConfigOption.DisplayState.shown_dynamic)
                 {
                     refreshGui = 2;
                 }
@@ -562,7 +565,7 @@ public class GuiCustomOreGenSettings extends GuiScreen
         protected void drawSlot(int index, int slotX, int slotY, int slotH, Tessellator tess)
         {
             IOptionControl optCtrl = (IOptionControl)this._optionControls.get(index);
-            ConfigOption option = optCtrl.getOption();
+            BOConfigOption option = optCtrl.getOption();
             GuiButton control = optCtrl.getControl();
             String optionName = option.getDisplayName();
             int nameW = fontRenderer.getStringWidth(optionName);
@@ -588,7 +591,7 @@ public class GuiCustomOreGenSettings extends GuiScreen
             {
                 this._clickTarget.getControl().mouseReleased(mouseX, mouseY);
 
-                if (this._clickTarget.getOption().getDisplayState() == ConfigOption.DisplayState.shown_dynamic)
+                if (this._clickTarget.getOption().getDisplayState() == BOConfigOption.DisplayState.shown_dynamic)
                 {
                     refreshGui = 2;
                 }
@@ -599,14 +602,14 @@ public class GuiCustomOreGenSettings extends GuiScreen
         
         class GuiChoiceButton extends GuiButton implements IOptionControl
         {
-            private final ChoiceOption _choice;
+            private final BOChoiceOption _choice;
             private final int _maxWidth;
             private int mouseX;
             private int mouseY;
 
             final GuiOptionSlot this$1;
 
-            public GuiChoiceButton(GuiOptionSlot var1, int id, int x, int y, int maxWidth, int height, ChoiceOption choice)
+            public GuiChoiceButton(GuiOptionSlot var1, int id, int x, int y, int maxWidth, int height, BOChoiceOption choice)
             {
                 super(id, x, y, maxWidth, height, (String)null);
                 this.this$1 = var1;
@@ -617,7 +620,7 @@ public class GuiCustomOreGenSettings extends GuiScreen
                 this.onValueChanged();
             }
 
-            public ConfigOption getOption()
+            public BOConfigOption getOption()
             {
                 return this._choice;
             }
@@ -674,11 +677,11 @@ public class GuiCustomOreGenSettings extends GuiScreen
 
         class GuiNumericSlider extends GuiSlider implements IOptionControl
         {
-            private final NumericOption _numeric;
+            private final BONumericOption _numeric;
 
             final GuiOptionSlot this$1;
 
-            public GuiNumericSlider(GuiOptionSlot var1, int id, int x, int y, int width, int height, NumericOption numeric)
+            public GuiNumericSlider(GuiOptionSlot var1, int id, int x, int y, int width, int height, BONumericOption numeric)
             {
                 super(id, x, y, EnumOptions.ANAGLYPH, (String)null, (float)numeric.getNormalizedDisplayValue());
                 this.this$1 = var1;
@@ -688,7 +691,7 @@ public class GuiCustomOreGenSettings extends GuiScreen
                 this.onValueChanged();
             }
 
-            public ConfigOption getOption()
+            public BOConfigOption getOption()
             {
                 return this._numeric;
             }
@@ -769,7 +772,7 @@ public class GuiCustomOreGenSettings extends GuiScreen
 
     public interface IOptionControl
     {
-        ConfigOption getOption();
+        BOConfigOption getOption();
 
         GuiButton getControl();
     }

@@ -20,6 +20,7 @@ import net.minecraft.src.SpawnerAnimals;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenDungeons;
 import net.minecraft.src.WorldGenLakes;
+import net.minecraft.src.betterore.common.registry.BOTickRegistry;
 import net.minecraft.src.biomesoplenty.configuration.BOPBiomes;
 
 public class ChunkProviderGenerateBOP extends ChunkProviderGenerate implements IChunkProvider
@@ -292,6 +293,8 @@ public class ChunkProviderGenerateBOP extends ChunkProviderGenerate implements I
         }
         
         Method method;
+        
+        BOTickRegistry.postProcessChunk(this.worldObj, this.rand, var4, var5); //BETTER ORE
         
         try 
         {

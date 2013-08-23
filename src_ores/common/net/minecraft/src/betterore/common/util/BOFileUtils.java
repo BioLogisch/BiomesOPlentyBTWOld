@@ -9,13 +9,13 @@ public class BOFileUtils {
 	
 	
 	public static File getBaseDir() {
-		String baseDir = null;
+		File baseDir = null;
 		if (BORuntime.isClient()) {
-			baseDir = BORuntime.getString(BORuntime.getMincraftClass(), "getMinecraftDir");
+			baseDir = BORuntime.getFile(BORuntime.getMincraftClass(), "getMinecraftDir");
 		} else {
-			baseDir = ".";
+			baseDir = new File(".");
 		}
-		return new File(baseDir);
+		return baseDir;
 	}
 	
 	public static File getConfigDir() {

@@ -13,7 +13,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+
 import javax.swing.BoxLayout;
+
+import net.minecraft.src.betterore.common.util.BOLogger;
+
 import org.lwjgl.opengl.Display;
 
 public class ConfigErrorDialog implements WindowListener, ActionListener
@@ -24,6 +28,8 @@ public class ConfigErrorDialog implements WindowListener, ActionListener
     private Button _retry = null;
     private Button _ignore = null;
     private int _returnVal = 0;
+    
+   
 
     public int showDialog(Frame parentWindow, Throwable error)
     {
