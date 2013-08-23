@@ -49,10 +49,24 @@ public class BiomeGenRedwoodForest extends BiomeGenBase
 			int var9 = par4 + par2Random.nextInt(16);
 			int var10 = par1World.getBlockId(var7, var8, var9);
 
-			if (var10 == Block.stone.blockID)
-			{
-				par1World.setBlock(var7, var8, var9, Block.oreEmerald.blockID, 0, 2);
-			}
+            if (var10 == Block.stone.blockID)
+            {
+                int var11 = 0;
+
+                if (var8 <= 48 + par1World.rand.nextInt(2))
+                {
+                    byte var12 = 1;
+
+                    if (var8 <= 24 + par1World.rand.nextInt(2))
+                    {
+                        var12 = 2;
+                    }
+
+                    var11 = Block.oreEmerald.GetMetadataConversionForStrataLevel(var12, 0);
+                }
+
+                par1World.setBlock(var7, var8, var9, Block.oreEmerald.blockID, var11, 2);
+            }
 		}
 	}
 

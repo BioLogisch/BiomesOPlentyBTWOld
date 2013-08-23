@@ -1,23 +1,26 @@
 --- ../src_base/minecraft/net/minecraft/src/FCTileEntityHopper.java
 +++ ../src/minecraft/net/minecraft/src/FCTileEntityHopper.java
-@@ -1,6 +1,16 @@
+@@ -1,6 +1,10 @@
  package net.minecraft.src;
  
  import java.util.List;
 +
-+import net.minecraft.src.biomesoplenty.api.BOPAPIItems;
-+import net.minecraft.src.biomesoplenty.configuration.BOPConfiguration;
-+
-+import net.minecraft.src.biomesoplenty.api.BOPAPIItems;
-+
-+import net.minecraft.src.biomesoplenty.api.BOPAPIItems;
-+
++import net.minecraft.src.biomesoplenty.api.BOPAPIBlocks;
 +import net.minecraft.src.biomesoplenty.api.BOPAPIItems;
 +import net.minecraft.src.biomesoplenty.configuration.BOPConfiguration;
  
  public class FCTileEntityHopper extends TileEntity implements IInventory, FCITileEntityDataPacketHandler
  {
-@@ -400,7 +410,7 @@
+@@ -381,7 +385,7 @@
+ 
+         if (this.m_sFilterType > 0)
+         {
+-            if ((var2.itemID < 256 || var2.itemID == FCBetterThanWolves.fcItemStake.itemID || var2.itemID == Item.skull.itemID || var2.itemID == Item.flowerPot.itemID || var2.itemID == Item.itemFrame.itemID) && var2.itemID != Block.sand.blockID && var2.itemID != Block.gravel.blockID && var2.itemID != Block.torchWood.blockID && var2.itemID != Block.torchRedstoneActive.blockID && var2.itemID != Block.sapling.blockID && var2.itemID != Block.plantYellow.blockID && var2.itemID != Block.plantRed.blockID)
++            if ((var2.itemID < 256 || var2.itemID == FCBetterThanWolves.fcItemStake.itemID || var2.itemID == Item.skull.itemID || var2.itemID == Item.flowerPot.itemID || var2.itemID == Item.itemFrame.itemID) && var2.itemID != Block.sand.blockID && var2.itemID != Block.gravel.blockID && var2.itemID != Block.torchWood.blockID && var2.itemID != Block.torchRedstoneActive.blockID && var2.itemID != Block.sapling.blockID && var2.itemID != Block.plantYellow.blockID && var2.itemID != Block.plantRed.blockID && (BOPConfiguration.mainConfigFile.getBoolean("enableCustomContent") && var2.itemID != BOPAPIBlocks.saplings.blockID))
+             {
+                 return false;
+             }
+@@ -400,7 +404,7 @@
                          return false;
                      }
  

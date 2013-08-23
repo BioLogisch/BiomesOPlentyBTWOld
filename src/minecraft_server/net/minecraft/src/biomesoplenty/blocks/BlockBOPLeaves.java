@@ -1,18 +1,17 @@
 package net.minecraft.src.biomesoplenty.blocks;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.BlockLeavesBase;
-import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.Icon;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
 import net.minecraft.src.World;
 import net.minecraft.src.biomesoplenty.BiomesOPlenty;
+import net.minecraft.src.biomesoplenty.api.BOPAPIBlocks;
 import net.minecraft.src.biomesoplenty.utils.IShearable;
 
 public class BlockBOPLeaves extends BlockLeavesBase implements IShearable
@@ -246,11 +245,11 @@ public class BlockBOPLeaves extends BlockLeavesBase implements IShearable
         }
 
 
-       /* @Override
+        @Override
         public int idDropped(int par1, Random par2Random, int par3)
         {
-                return Blocks.saplings.get().blockID;
-        }*/
+        	return BOPAPIBlocks.saplings.blockID;
+        }
 
         @Override
         public int damageDropped(int meta)

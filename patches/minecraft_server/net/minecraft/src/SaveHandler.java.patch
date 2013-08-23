@@ -1,0 +1,11 @@
+--- ../src_base/minecraft_server/net/minecraft/src/SaveHandler.java
++++ ../src/minecraft_server/net/minecraft/src/SaveHandler.java
+@@ -71,7 +71,7 @@
+     /**
+      * Gets the File object corresponding to the base directory of this world.
+      */
+-    protected File getWorldDirectory()
++    public File getWorldDirectory()
+     {
+         return this.worldDirectory;
+     }

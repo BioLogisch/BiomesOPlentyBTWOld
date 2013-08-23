@@ -1,0 +1,13 @@
+--- ../src_base/minecraft_server/net/minecraft/src/SaveFormatOld.java
++++ ../src/minecraft_server/net/minecraft/src/SaveFormatOld.java
+@@ -159,6 +159,10 @@
+     {
+         return false;
+     }
++    
++    public File getSavesDirectory() {
++		return this.savesDirectory;
++	}
+ 
+     /**
+      * converts the map to mcRegion

@@ -128,6 +128,8 @@ public class BOPConfiguration
 			ConfigUtils.setBlockID(properties, "logs3ID", 1935);
 			ConfigUtils.setBlockID(properties, "logs4ID", 1936);
 			
+			ConfigUtils.setBlockID(properties, "saplingsID", 1937);
+			
 			ConfigUtils.setBlockID(properties, "leavesColourizedID", 1962);
 		}
 
