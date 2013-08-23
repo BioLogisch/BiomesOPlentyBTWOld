@@ -5,6 +5,8 @@ import java.util.Random;
 import net.minecraft.src.Block;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;
+import net.minecraft.src.biomesoplenty.api.BOPAPIBlocks;
+import net.minecraft.src.biomesoplenty.configuration.BOPConfiguration;
 
 public class WorldGenMystic2 extends WorldGenerator
 {
@@ -50,7 +52,7 @@ public class WorldGenMystic2 extends WorldGenerator
 						{
 							var15 = var1.getBlockId(var13, var11, var14);
 
-							if (var15 != 0 && var15 != Block.leaves.blockID)
+							if (var15 != 0 && (BOPConfiguration.mainConfigFile.getBoolean("enableCustomContent") && var15 != BOPAPIBlocks.leaves1.blockID || var15 != Block.leaves.blockID))
 							{
 								var10 = false;
 							}
@@ -69,7 +71,7 @@ public class WorldGenMystic2 extends WorldGenerator
 			{
 				var11 = var1.getBlockId(var3, var4 - 1, var5);
 
-				if ((var11 == Block.grass.blockID || var11 == Block.dirt.blockID) && var4 < 256 - var6 - 1)
+				if ((/*var11 == Blocks.holyGrass.get().blockID ||*/ var11 == Block.grass.blockID || var11 == Block.dirt.blockID) && var4 < 256 - var6 - 1)
 				{
 					var1.setBlock(var3, var4 - 1, var5, Block.dirt.blockID);
 					var21 = var2.nextInt(2);
@@ -92,7 +94,14 @@ public class WorldGenMystic2 extends WorldGenerator
 
 								if ((Math.abs(var18) != var21 || Math.abs(var20) != var21 || var21 <= 0) && !Block.opaqueCubeLookup[var1.getBlockId(var17, var16, var19)])
 								{
-									this.setBlockAndMetadata(var1, var17, var16, var19, Block.leaves.blockID, 0);
+									if (BOPConfiguration.mainConfigFile.getBoolean("enableCustomContent"))
+									{
+										this.setBlockAndMetadata(var1, var17, var16, var19, BOPAPIBlocks.leaves1.blockID, 2);
+									}
+									else
+									{
+										this.setBlockAndMetadata(var1, var17, var16, var19, Block.leaves.blockID, 0);
+									}
 								}
 							}
 						}
@@ -120,9 +129,16 @@ public class WorldGenMystic2 extends WorldGenerator
 					{
 						var17 = var1.getBlockId(var3, var4 + var16, var5);
 
-						if (var17 == 0 || var17 == Block.leaves.blockID)
+						if (var17 == 0 || (BOPConfiguration.mainConfigFile.getBoolean("enableCustomContent") && var17 == BOPAPIBlocks.leaves1.blockID) || var17 == Block.leaves.blockID)
 						{
-							this.setBlockAndMetadata(var1, var3, var4 + var16, var5, Block.wood.blockID, 0);
+							if (BOPConfiguration.mainConfigFile.getBoolean("enableCustomContent"))
+							{
+								this.setBlockAndMetadata(var1, var3, var4 + var16, var5, BOPAPIBlocks.logs2.blockID,1);
+							}
+							else
+							{
+								this.setBlockAndMetadata(var1, var3, var4 + var16, var5, Block.wood.blockID, 0);
+							}
 						}
 					}
 

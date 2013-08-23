@@ -6,6 +6,8 @@ import net.minecraft.src.Block;
 import net.minecraft.src.Material;
 import net.minecraft.src.World;
 import net.minecraft.src.WorldGenerator;
+import net.minecraft.src.biomesoplenty.api.BOPAPIBlocks;
+import net.minecraft.src.biomesoplenty.configuration.BOPConfiguration;
 
 public class WorldGenOminous2 extends WorldGenerator
 {
@@ -50,7 +52,7 @@ public class WorldGenOminous2 extends WorldGenerator
 						{
 							var12 = par1World.getBlockId(var10, var8, var11);
 
-							if (var12 != 0 && var12 != Block.leaves.blockID)
+							if (var12 != 0 && (BOPConfiguration.mainConfigFile.getBoolean("enableCustomContent") && var12 != BOPAPIBlocks.leaves1.blockID || var12 != Block.leaves.blockID))
 							{
 								if (var12 != Block.waterStill.blockID && var12 != Block.waterMoving.blockID)
 								{
@@ -97,7 +99,14 @@ public class WorldGenOminous2 extends WorldGenerator
 
 								if ((Math.abs(var13) != var11 || Math.abs(var15) != var11 || par2Random.nextInt(2) != 0 && var10 != 0) && !Block.opaqueCubeLookup[par1World.getBlockId(var12, var16, var14)])
 								{
-									this.setBlockAndMetadata(par1World, var12, var16, var14, Block.leaves.blockID, 0);
+									if (BOPConfiguration.mainConfigFile.getBoolean("enableCustomContent"))
+									{
+										this.setBlockAndMetadata(par1World, var12, var16, var14, BOPAPIBlocks.leaves1.blockID, 3);
+									}
+									else
+									{
+										this.setBlockAndMetadata(par1World, var12, var16, var14, Block.leaves.blockID, 0);
+									}
 								}
 							}
 						}
@@ -107,9 +116,16 @@ public class WorldGenOminous2 extends WorldGenerator
 					{
 						var10 = par1World.getBlockId(par3, par4 + var16, par5);
 
-						if (var10 == 0 || var10 == Block.leaves.blockID || var10 == Block.waterMoving.blockID || var10 == Block.waterStill.blockID)
+						if (var10 == 0 || (BOPConfiguration.mainConfigFile.getBoolean("enableCustomContent") && var10 == BOPAPIBlocks.leaves1.blockID) || var10 == Block.leaves.blockID || var10 == Block.waterMoving.blockID || var10 == Block.waterStill.blockID)
 						{
-							this.setBlockAndMetadata(par1World, par3, par4 + var16, par5, Block.wood.blockID, 0);
+							if (BOPConfiguration.mainConfigFile.getBoolean("enableCustomContent"))
+							{
+								this.setBlockAndMetadata(par1World, par3, par4 + var16, par5, BOPAPIBlocks.logs1.blockID, 2);
+							}
+							else
+							{
+								this.setBlockAndMetadata(par1World, par3, par4 + var16, par5, Block.wood.blockID, 0);
+							}
 						}
 					}
 
@@ -122,7 +138,7 @@ public class WorldGenOminous2 extends WorldGenerator
 						{
 							for (var13 = par5 - var11; var13 <= par5 + var11; ++var13)
 							{
-								if (par1World.getBlockId(var12, var16, var13) == Block.leaves.blockID)
+								if ( (BOPConfiguration.mainConfigFile.getBoolean("enableCustomContent") && par1World.getBlockId(var12, var16, var13) == BOPAPIBlocks.leaves1.blockID) || par1World.getBlockId(var12, var16, var13) == Block.leaves.blockID)
 								{
 									if (par2Random.nextInt(4) == 0 && par1World.getBlockId(var12 - 1, var16, var13) == 0)
 									{
@@ -161,6 +177,7 @@ public class WorldGenOminous2 extends WorldGenerator
 	 */
 	 private void generateVines(World par1World, int par2, int par3, int par4, int par5)
 	{
+		//this.setBlockAndMetadata(par1World, par2, par3, par4, Blocks.treeMoss.get().blockID, par5);
 		this.setBlockAndMetadata(par1World, par2, par3, par4, Block.vine.blockID, par5);
 		int var6 = 4;
 
@@ -171,6 +188,7 @@ public class WorldGenOminous2 extends WorldGenerator
 			if (par1World.getBlockId(par2, par3, par4) != 0 || var6 <= 0)
 				return;
 
+			//this.setBlockAndMetadata(par1World, par2, par3, par4, Blocks.treeMoss.get().blockID, par5);
 			this.setBlockAndMetadata(par1World, par2, par3, par4, Block.vine.blockID, par5);
 			--var6;
 		}

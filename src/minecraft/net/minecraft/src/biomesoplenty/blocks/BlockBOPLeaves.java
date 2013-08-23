@@ -14,6 +14,7 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
 import net.minecraft.src.World;
 import net.minecraft.src.biomesoplenty.BiomesOPlenty;
+import net.minecraft.src.biomesoplenty.api.BOPAPIBlocks;
 import net.minecraft.src.biomesoplenty.utils.IShearable;
 
 public class BlockBOPLeaves extends BlockLeavesBase implements IShearable
@@ -290,11 +291,11 @@ public class BlockBOPLeaves extends BlockLeavesBase implements IShearable
         }
 
 
-       /* @Override
+        @Override
         public int idDropped(int par1, Random par2Random, int par3)
         {
-                return Blocks.saplings.get().blockID;
-        }*/
+        	return BOPAPIBlocks.saplings.blockID;
+        }
 
         @Override
         public int damageDropped(int meta)

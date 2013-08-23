@@ -12,10 +12,12 @@ import net.minecraft.src.biomesoplenty.blocks.BlockBOPLeaves.LeafCategory;
 import net.minecraft.src.biomesoplenty.blocks.BlockBOPLog;
 import net.minecraft.src.biomesoplenty.blocks.BlockBOPLog.LogCategory;
 import net.minecraft.src.biomesoplenty.blocks.BlockBOPPlank;
+import net.minecraft.src.biomesoplenty.blocks.BlockBOPSapling;
 import net.minecraft.src.biomesoplenty.itemblock.ItemBlockColorizedLeaves;
 import net.minecraft.src.biomesoplenty.itemblock.ItemBlockLeaves;
 import net.minecraft.src.biomesoplenty.itemblock.ItemBlockLog;
 import net.minecraft.src.biomesoplenty.itemblock.ItemBlockPlank;
+import net.minecraft.src.biomesoplenty.itemblock.ItemBlockSapling;
 import net.minecraft.src.biomesoplenty.utils.ConfigUtils;
 import net.minecraft.src.biomesoplenty.utils.GameRegistry;
 import net.minecraft.src.biomesoplenty.utils.LanguageRegistry;
@@ -28,6 +30,7 @@ public class BOPBlocks
 		registerBlocks();
 		setToolEffectiveness();
 		setBuoyancy();
+		setBurnTimes();
 		localizeNames();
 	}
 
@@ -42,6 +45,7 @@ public class BOPBlocks
 		BOPAPIBlocks.logs2 = new BlockBOPLog(ConfigUtils.getBlockID("logs2ID"), LogCategory.CAT2).setUnlocalizedName("bop.wood2");
 		BOPAPIBlocks.logs3 = new BlockBOPLog(ConfigUtils.getBlockID("logs3ID"), LogCategory.CAT3).setUnlocalizedName("bop.wood3");
 		BOPAPIBlocks.logs4 = new BlockBOPLog(ConfigUtils.getBlockID("logs4ID"), LogCategory.CAT4).setUnlocalizedName("bop.wood4");
+		BOPAPIBlocks.saplings = new BlockBOPSapling(ConfigUtils.getBlockID("saplingsID")).setUnlocalizedName("bop.saplings");
 	}
 	
 	private static void registerBlocks()
@@ -55,6 +59,7 @@ public class BOPBlocks
 		GameRegistry.registerCustomBlock(BOPAPIBlocks.logs2, new ItemBlockLog(BOPAPIBlocks.logs2.blockID));
 		GameRegistry.registerCustomBlock(BOPAPIBlocks.logs3, new ItemBlockLog(BOPAPIBlocks.logs3.blockID));
 		GameRegistry.registerCustomBlock(BOPAPIBlocks.logs4, new ItemBlockLog(BOPAPIBlocks.logs4.blockID));
+		GameRegistry.registerCustomBlock(BOPAPIBlocks.saplings, new ItemBlockSapling(BOPAPIBlocks.saplings.blockID));
 	}
 	
 	private static void setToolEffectiveness()
@@ -72,6 +77,8 @@ public class BOPBlocks
 	
 	private static void setBuoyancy()
 	{
+        Item.itemsList[BOPAPIBlocks.saplings.blockID].SetBuoyancy(1.0F);
+		
         Item.itemsList[BOPAPIBlocks.leaves1.blockID].SetBuoyancy(1.0F);
         Item.itemsList[BOPAPIBlocks.leaves2.blockID].SetBuoyancy(1.0F);
         Item.itemsList[BOPAPIBlocks.leavesColourized.blockID].SetBuoyancy(1.0F);
@@ -83,8 +90,29 @@ public class BOPBlocks
         Item.itemsList[BOPAPIBlocks.logs4.blockID].SetBuoyancy(1.0F);
 	}
 	
+	private static void setBurnTimes()
+	{
+        Item.itemsList[BOPAPIBlocks.saplings.blockID].SetDefaultFurnaceBurnTime(25);
+	}
+	
 	private static void localizeNames()
 	{
+		LanguageRegistry.addName(new ItemStack(BOPAPIBlocks.saplings, 1, 0), "Apple Sapling");
+		LanguageRegistry.addName(new ItemStack(BOPAPIBlocks.saplings, 1, 1), "Yellow Autumn Sapling");
+		LanguageRegistry.addName(new ItemStack(BOPAPIBlocks.saplings, 1, 2), "Bamboo Sapling");
+		LanguageRegistry.addName(new ItemStack(BOPAPIBlocks.saplings, 1, 3), "Magic Sapling");
+		LanguageRegistry.addName(new ItemStack(BOPAPIBlocks.saplings, 1, 4), "Dark Sapling");
+		LanguageRegistry.addName(new ItemStack(BOPAPIBlocks.saplings, 1, 5), "Dying Sapling");
+		LanguageRegistry.addName(new ItemStack(BOPAPIBlocks.saplings, 1, 6), "Fir Sapling");
+		LanguageRegistry.addName(new ItemStack(BOPAPIBlocks.saplings, 1, 7), "Loftwood Sapling");
+		LanguageRegistry.addName(new ItemStack(BOPAPIBlocks.saplings, 1, 8), "Orange Autumn Sapling");
+		LanguageRegistry.addName(new ItemStack(BOPAPIBlocks.saplings, 1, 9), "Origin Sapling");
+		LanguageRegistry.addName(new ItemStack(BOPAPIBlocks.saplings, 1, 10), "Pink Cherry Sapling");
+		LanguageRegistry.addName(new ItemStack(BOPAPIBlocks.saplings, 1, 11), "Maple Sapling");
+		LanguageRegistry.addName(new ItemStack(BOPAPIBlocks.saplings, 1, 12), "White Cherry Sapling");
+		LanguageRegistry.addName(new ItemStack(BOPAPIBlocks.saplings, 1, 13), "Hellbark Sapling");
+		LanguageRegistry.addName(new ItemStack(BOPAPIBlocks.saplings, 1, 14), "Jacaranda Sapling");
+		
 		LanguageRegistry.addName(new ItemStack(BOPAPIBlocks.planks, 1, 0), "Acacia Wood Planks");
 		LanguageRegistry.addName(new ItemStack(BOPAPIBlocks.planks, 1, 1), "Cherry Wood Planks");
 		LanguageRegistry.addName(new ItemStack(BOPAPIBlocks.planks, 1, 2), "Dark Wood Planks");
