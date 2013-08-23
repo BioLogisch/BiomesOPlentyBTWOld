@@ -10,17 +10,16 @@
  import net.minecraft.src.AchievementList;
  import net.minecraft.src.AnvilSaveConverter;
  import net.minecraft.src.AxisAlignedBB;
-@@ -116,6 +118,9 @@
+@@ -116,6 +118,8 @@
  import net.minecraft.src.WorldInfo;
  import net.minecraft.src.WorldRenderer;
  import net.minecraft.src.WorldSettings;
-+import net.minecraft.src.betterore.BOOreGen;
 +import net.minecraft.src.betterore.common.registry.BOTickRegistry;
 +
  import org.lwjgl.LWJGLException;
  import org.lwjgl.Sys;
  import org.lwjgl.input.Keyboard;
-@@ -1422,6 +1427,8 @@
+@@ -1422,6 +1426,8 @@
       */
      public void runTick()
      {
@@ -29,7 +28,7 @@
          if (this.rightClickDelayTimer > 0)
          {
              --this.rightClickDelayTimer;
-@@ -1890,6 +1897,8 @@
+@@ -1890,6 +1896,8 @@
  
          this.mcProfiler.endSection();
          this.systemTime = getSystemTime();
